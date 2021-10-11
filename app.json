@@ -1,0 +1,87 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/service/service",
+    "pages/mine/mine",
+    "pages/test/test",
+    "pages/logs/logs",
+    "pages/indexs/garbage/garbage",
+    "pages/services/games/game/game",
+    "pages/services/games/games/games",
+    "pages/services/wikis/wiki/wiki",
+    "pages/services/wikis/wikis/wikis",
+    "pages/services/knowtests/knowtest/knowtest",
+    "pages/services/knowtests/knowtests/knowtests",
+    "pages/services/pictuclocks/pictuclock/pictuclock",
+    "pages/services/pictuclocks/pictuclocks/pictuclocks",
+    "pages/services/policydocs/policydoc/policydoc",
+    "pages/services/policydocs/policydocs/policydocs",
+    "pages/services/activitlists/activitlist/activitlist",
+    "pages/services/activitlists/activitlists/activitlists",
+    "pages/services/wastetreas/wastetrea/wastetrea",
+    "pages/services/wastetreas/wastetreas/wastetreas",
+    "pages/services/welfvideos/welfvideo/welfvideo",
+    "pages/services/welfvideos/welfvideos/welfvideos",
+    "pages/services/collects/collect/collect",
+    "pages/services/collects/collects/collects",
+    "pages/mines/integranks/integrank/integrank",
+    "pages/mines/integranks/integranks/integranks",
+    "pages/mines/integdescs/integdesc/integdesc",
+    "pages/mines/integdescs/integdescs/integdescs",
+    "pages/mines/integexcuhs/integexcuh/integexcuh",
+    "pages/mines/integexcuhs/integexcuhs/integexcuhs",
+    "pages/mines/integlogs/integlog/integlog",
+    "pages/mines/integlogs/integlogs/integlogs",
+    "pages/mines/myhomes/myhome/myhome",
+    "pages/mines/myhomes/myhomes/myhomes",
+    "pages/mines/myorders/myorder/myorder",
+    "pages/mines/myorders/myorders/myorders",
+    "pages/mines/mycontributes/mycontribute/mycontribute",
+    "pages/mines/mycontributes/mycontributes/mycontributes",
+    "pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun",
+    "pages/mines/myrecruvoluns/myrecruvoluns/myrecruvoluns",
+    "pages/mines/mycollects/mycollect/mycollect",
+    "pages/mines/mycollects/mycollects/mycollects",
+    "pages/mines/myinfos/myinfo/myinfo",
+    "pages/mines/myinfos/myinfos/myinfos",
+    "pages/mines/myfeedbacks/myfeedback/myfeedback",
+    "pages/mines/myfeedbacks/myfeedbacks/myfeedbacks",
+    "pages/mines/myabouts/myabout/myabout",
+    "pages/mines/myabouts/myabouts/myabouts",
+    "pages/services/games/game/geam"
+  ],
+  "tabBar": {
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/navbar/主页@2x.png",
+        "selectedIconPath": "/images/navbar/主页(选中)@2x.png"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "text": "服务",
+        "iconPath": "/images/navbar/服务@2x.png",
+        "selectedIconPath": "/images/navbar/服务(选中)@2x.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/navbar/我的@2x.png",
+        "selectedIconPath": "/images/navbar/我的(选中)@2x.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#57be6a",
+    "navigationBarTitleText": "垃圾分类养成",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

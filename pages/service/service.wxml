@@ -1,0 +1,17 @@
+<!--pages/service/service.wxml-->
+<view class="container">
+  <view class="flex-wrp-col">
+    <!-- 行容器开始 -->
+    <view class="flex-wrp-row" wx:for="{{row}}" wx:key="*this">
+      <!-- 游戏专区容器开始 -->
+      <view class="service-col" wx:for="{{item}}" wx:key="*this" bindtap="onClickUrl" data-activity="{{item.activity}}">
+        <view class="service-col-img">
+          <image class="service-game-img" src="{{item.imgurl}}"></image>
+        </view>
+        <view class="service-col-text">{{item.text}}</view>
+      </view>
+      <!-- 游戏专区容器结束 -->
+    </view>
+    <!-- 行容器结束 -->
+  </view>
+</view>

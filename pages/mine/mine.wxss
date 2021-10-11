@@ -1,0 +1,159 @@
+/* pages/mine/mine.wxss */
+/* 头像与昵称容器样式 */
+.flex-wrp-head{
+  height: 520rpx;
+}
+/* 头部绿色样式 */
+.head-top{
+  height: 320rpx;
+  background-color: rgba(87, 190, 106, 1);
+}
+/* 头部白色部分样式 */
+.head-bottom{
+  height: 200rpx;
+  background-color: rgba(250, 250, 250, 1);
+}
+/* 头像、昵称容器样式 */
+.head-nick-view{
+  margin: 0 0 0 35rpx;
+  width: 680rpx;
+  height: 280rpx;
+  position: relative;
+  background-color: white;
+  border-radius: 10rpx;
+  margin-top: -360rpx;
+  text-align: center;
+}
+/* 头像容器样式 */
+.head-nick-img{
+  width: 150rpx;
+  height: 150rpx;
+  position: relative;
+  margin-left: 265rpx;
+  margin-bottom: -150rpx;
+}
+/* 头像样式 */
+.nick-img{
+  width: 140rpx;
+  height: 140rpx;
+  margin-top: -75rpx;
+  border: white 5rpx solid;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow:0 0 30rpx 5rpx rgba(206, 206, 206, 0.65);
+}
+/* 昵称样式 */
+.head-nick-text{
+  margin-top: 140rpx;
+  font-size: 36rpx;
+  font-weight: 900;
+}
+/* 积分头衔与菜单列表容器背景 */
+.flex-wrp-body{
+  width: 100%;
+  background-color: rgba(250, 250, 250, 1);
+}
+/* 积分头衔容器 */
+.body-integ{
+  width: 680rpx;
+  height: 180rpx;
+  margin: 20rpx 0 0 35rpx;
+  background-color: #ffda7e;
+  border-radius: 20rpx;
+}
+/* 积分头衔、箭头容器样式 */
+.body-integ-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+} 
+/* 头衔样式 */
+.body-integ-title{
+  width: 580rpx;
+  height: 78rpx;
+  padding: 20rpx 0 0 33rpx;
+  color: #4e2424;
+  font-size: 36rpx;
+}
+/* 积分箭头样式 */
+.integarrow-img{
+  width: 40rpx;
+  height: 40rpx;
+}
+/* 当前积分与积分容器样式 */
+.bottom-integ-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+/* 当前积分文字样式 */
+.bottom-integ-text{
+  color: #6a4c00;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin: 10rpx 0 0 35rpx;
+  opacity: 0.8;
+}
+/* 积分显示样式 */
+.bottom-integ-number{
+  color: #4e2424;
+  width: 450rpx;
+  text-align: right;
+  font-size: 32rpx;
+  margin: 10rpx 0 0 0;
+}
+/* 积分排行、说明、兑换、记录容器样式 */
+.body-middle-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: center;
+  margin: 20rpx 0 0 35rpx;
+  width: 680rpx;
+  border: 1rpx solid ;
+  background-color: rgba(255, 255, 255, 0.65);
+  box-shadow:0px 2px 5px 5px rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+/* 积分排行、说明、兑换、记录容器样式 */
+.body-middle-col{
+  height: 140rpx;
+  margin: 40rpx 33rpx 0 33rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
+/* 图片容器样式 */
+.middle-img-view{
+  width: 70rpx;
+  height: 70rpx;
+}
+/* 图片样式 */
+.integ-img{
+  width: 70rpx;
+  height: 70rpx;
+}
+/* 文字样式 */
+.integ-text{
+  color: #7f7f7f;
+  font-size: 26rpx;
+  margin: 10rpx 0 0 0;
+}
+/* 导航列表容器 */
+.body-bottom-col{
+  width: 680rpx;
+  height: 900rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 32rpx;
+  margin-top: 42rpx;
+  background-color: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+/* 导航栏图标样式 */
+.bottom-img{
+  width: 40rpx;
+  height: 40rpx;
+  padding: 0 30rpx 0 30rpx;
+}

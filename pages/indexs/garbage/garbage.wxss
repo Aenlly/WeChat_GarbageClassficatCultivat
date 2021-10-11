@@ -1,0 +1,101 @@
+/* pages/indexs/garbage/garbage.wxss */
+/* 上部分容器样式 */
+.top-garbage{
+  width: 100%;
+  height: 800rpx;
+  background-color: rgba(80, 162, 222, 1);
+}
+/* 视频样式 */
+.flex-wrp-video{
+  width: 678rpx;
+  height: 320rpx;
+  margin: 36rpx 36rpx 0 36rpx;
+  border-radius: 12rpx;
+}
+/* 中文名称样式 */
+.top-middle-text-title_cn{
+  width: 296rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2rpx;
+  margin: 48rpx 0 0 36rpx;
+}
+/* 英文名称样式 */
+.top-middle-text-title_en{
+  width: 296rpx;
+  font-size: 32rpx;
+  font-weight: 100;
+  color: #fafafa;
+  position: relative;
+  letter-spacing: 2rpx;
+  margin:  -50rpx 0 0 258rpx;
+}
+/* 简单描述样式 */
+.top-middle-text-desc{
+  width: 532rpx;
+  height: 66rpx;
+  position: relative;
+  margin: -40rpx 0 0 36rpx;
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #fafafa;
+  font-weight: 100;
+}
+/* 图标样式 */
+.top-middle-img{
+  width: 120rpx;
+  height: 120rpx;
+  position: relative;
+  margin: -50rpx 0 0 578rpx;
+}
+/* 详细描述样式 */
+.top-middle-text-context{
+  width: 700rpx;
+  height: 150rpx;
+  padding:  0 0 0 32rpx;
+  letter-spacing: 2rpx;
+  font-size: 24rpx;
+  color: #e9f3ff;
+  font-weight: 100;
+  }
+/* 底部垃圾容器 */
+.bottom-garbage-col{
+  display: flex;
+  width: 750rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  position: relative;
+  margin-top: 50rpx;
+  background-color: white;
+  border-radius: 36rpx;
+}
+
+/* 底部垃圾一行样式 */
+.bottom-garbage-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: center;
+  width: 750rpx;
+  margin: 20rpx 0 0 0;
+}
+/* 底部垃圾图标与文字单个容器 */
+.garbage-col{
+  width: 150rpx;
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
+/* 垃圾图标样式 */
+.garbage-img{
+  width: 100rpx;
+  height: 100rpx;
+}
+/* 垃圾文字样式 */
+.garbage-text{
+  font-size: 24rpx;
+}

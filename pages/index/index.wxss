@@ -1,0 +1,199 @@
+/**index.wxss**/
+/* 通知横向布局 */
+.flex-wrp-row-notice {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 98%;
+  height: 70rpx;
+  margin: 20rpx 0 20rpx 0;
+}
+/* 通知图标外部view */
+.flex-notice-img{
+  width: 66rpx;
+  height: 54rpx;
+  margin: 0;
+  padding: 0;
+}
+/* 通知图标 */
+.notice-img {
+  width: 66rpx;
+  height: 54rpx;
+}
+/* 通知轮播 */
+.swiper-container{
+  height: 45rpx;
+  width: 600rpx;
+}
+/* 通知轮播文字 */
+.swiper_item {
+  font-size: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 4rpx;
+}
+/* 视频外部的view */
+.main-video {
+  width: 95%;
+  height: 328rpx;
+  margin: 0;
+  padding: 0 20rpx 0 20rpx;
+}
+/* 视频 */
+.view-video {
+  width: 100%;
+  height: 328rpx;
+  border-radius: 20rpx;
+}
+/* 垃圾分类容器，包含可回收、厨余、有害、其他垃圾容器 */
+.flex-wrp-garbage-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 400rpx;
+  margin: 8rpx 20rpx 0 20rpx;
+}
+/* 竖向可回收物、有害垃圾的容器 */
+.flex-wrp-garbage-col-left{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 340rpx;
+  margin: 30rpx 0 0 0;
+}
+/* 竖向厨余、其他垃圾的容器 */
+.flex-wrp-garbage-col-right{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 340rpx;
+  margin: 30rpx 0 0 0;
+}
+/* 可回收物的容器 */
+.garbage-view-recyclable-col{
+  display: flex;
+  flex-direction: column;
+  width: 322rpx;
+  height: 130rpx;
+  background-color: #52a1dc;
+  padding: 20rpx 0 0 20rpx;
+  border-radius: 20rpx;
+  border-color: rgba(0, 0, 0, 0.65);
+  box-shadow:rgba(0, 0, 0, 0.1);
+}
+/* 厨余垃圾的容器 */
+.garbage-view-kitchen-col{
+  display: flex;
+  flex-direction: column;
+  width: 322rpx;
+  height: 130rpx;
+  background-color: #36ba57;
+  padding: 20rpx 0 0 20rpx;
+  border-radius: 10px;
+  border-color: rgba(0, 0, 0, 0.65);
+  box-shadow:rgba(0, 0, 0, 0.1);
+}
+/* 有害垃圾容器 */
+.garbage-view-harmful-col{
+  display: flex;
+  flex-direction: column;
+  width: 322rpx;
+  height: 130rpx;
+  background-color: #dd4f4e;
+  margin: 36rpx 20rpx 0 0;
+  padding: 20rpx 0 0 20rpx;
+  border-radius: 10px;
+  border-color: rgba(0, 0, 0, 0.65);
+  box-shadow:rgba(0, 0, 0, 0.1);
+}
+
+/* 其他垃圾容器*/
+.garbage-view-other-col{
+  display: flex;
+  flex-direction: column;
+  width: 322rpx;
+  height: 130rpx;
+  background-color: #eea424;
+  margin: 36rpx 0 0 0;
+  padding: 20rpx 0 0 20rpx;
+  border-radius: 20rpx;
+  border-color: rgba(0, 0, 0, 0.65);
+  box-shadow:rgba(0, 0, 0, 0.1);
+}
+/* 垃圾文字与图标的容器 */
+.garbage-view-row{
+  display: flex;
+  flex-direction: row; 
+  width: 100%;
+  height: 70rpx;
+  margin: 0;
+  padding: 0;
+}
+/* 垃圾分类文字 */
+.garbage-text{
+  font-size: 28rpx;
+  left: 20rpx;
+  margin: 0 20rpx 0 0;
+  color: white;
+}
+/* 可回收物容器 */
+.garbage-img-view{
+  width: 70rpx;
+  height: 70rpx;
+  margin: 0 0 0 20rpx;
+}
+/* 可回收物图标 */
+.garbage-img{
+  width: 66rpx;
+  height: 66rpx;
+  padding-left: 80rpx;
+}
+/* 可回收物文字说明样式 */
+.garbage-view{
+  margin: 0 0 0 0;
+  font-size: 20rpx;
+  color: white;
+  margin: 10rpx 0 0 0;
+}
+
+/* 轮播容器样式 */
+.carousel-view{
+  width: 95%;
+  height: 248rpx;
+  padding: 0 20rpx 0 20rpx;
+}
+/* 轮播图片样式 */
+.carousel-img{
+  border-radius: 20rpx;
+  width: 100%;
+  height: 248rpx;
+}
+/* 全部搜索容器样式 */
+.btn-view-row{
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  padding: 0 20rpx 0 20rpx;
+  margin: 60rpx 0 100rpx 0;
+}
+/* 单个搜索容器样式 */
+.btn-view-col{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  align-items: center;
+  justify-content: center;
+}
+/* 搜索类型图标样式 */
+.btn-img{
+  width: 70rpx;
+  height: 70rpx;
+}
+/* 搜索文字样式 */
+.btn-text{
+  margin: 20rpx 0 0 0;
+  color: #989898;
+}
