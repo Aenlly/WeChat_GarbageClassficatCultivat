@@ -1,1 +1,34 @@
 /* pages/services/wikis/wikis/wikis.wxss */
+/* 容器 */
+.flex-col {
+  margin: 32rpx 32rpx 120rpx 32rpx;
+  background-color: white;
+  border-radius: 10rpx;
+}
+/* 标题样式 */
+.text_title {
+  font-size: 34rpx;
+  text-align: center;
+  font-weight: 600;
+  color: #262626;
+  padding: 10rpx 0;
+  border-bottom: rgba(222, 226, 230, 1) 1rpx solid;
+}
+.text_time {
+  color: #585151;
+  font-size: 24rpx;
+  border-bottom: rgba(222, 226, 230, 1) 1rpx solid;
+  padding: 10rpx 10rpx;
+  text-align: center;
+}
+/* 滚动容器样式 */
+.scroll-view-context {
+  height: 1258rpx;
+  padding: 10rpx 0;
+}
+/* 内容样式 */
+.scroll-view-context .text_content {
+  padding: 10rpx 36rpx;
+  font-size: 28rpx;
+  color: #585151;
+}

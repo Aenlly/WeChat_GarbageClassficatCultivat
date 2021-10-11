@@ -1,1 +1,62 @@
 /* pages/services/pictuclock/pictuclock.wxss */
+/* 面板样式 */
+.weui-panel__bd {
+  border-radius: 10rpx;
+  margin: 32rpx;
+  padding: 32rpx;
+  box-shadow: 0 5px 30rpx 10rpx rgba(206, 206, 206, 0.65);
+}
+/* 图片容器样式 */
+.weui-media-box_appmsg {
+  margin: 0;
+  padding: 0;
+}
+/* 图片样式 */
+.weui-media-box__thumb {
+  height: 100rpx;
+  width: 40rpx;
+  border-radius: 10rpx;
+}
+/* 打卡标题样式 */
+.weui-media-box__title {
+  font-size: 32rpx;
+  color: rgba(38, 38, 38, 1);
+}
+/* 打卡描述样式 */
+.weui-media-box__desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 打卡时间样式 */
+.footer_time {
+  color: rgba(140, 140, 140, 1);
+  font-size: 24rpx;
+  text-align: right;
+  padding-right: 20rpx;
+  margin-top: -10rpx;
+}
+/* 每日打卡容器样式 */
+.btnlock-view {
+  /* 绝对定位，以浏览器位置为标准 */
+  position: fixed;
+  align-items: center;
+  justify-self: center;
+  text-align: center;
+  width: 120rpx;
+  height: 120rpx;
+  /* 定位到距离浏览器下边60rpx，右边322rpx位置 */
+  bottom: 60rpx;
+  right: 322rpx;
+}
+/* 每日打卡图片样式 */
+.btnlock-view .btnlock_img {
+  width: 90rpx;
+  height: 90rpx;
+}
+/* 每日打卡文字样式 */
+.btnlock-view .btnlock_text {
+  font-size: 24rpx;
+  margin-top: -15rpx;
+  color: rgba(165, 165, 165, 1);
+}

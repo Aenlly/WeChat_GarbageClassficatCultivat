@@ -1,0 +1,13 @@
+/* pages/services/pictuclocks/pictuclockadd/pictuclockadd.wxss */
+/* 表单容器样式 */
+.form-view {
+  margin: 32rpx;
+}
+/* 多行文本样式 */
+.form_textarea {
+  width: 100%;
+}
+/* 图片文字样式 */
+.img_title {
+  padding-bottom: 30rpx;
+}

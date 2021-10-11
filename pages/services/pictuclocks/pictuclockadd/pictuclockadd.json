@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-form":"/miniprogram_npm/weui-miniprogram/form/form",
+    "mp-form-page":"/miniprogram_npm/weui-miniprogram/form-page/form-page",
+    "mp-cells":"/miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-cell":"/miniprogram_npm/weui-miniprogram/cell/cell",
+    "mp-uploader":"/miniprogram_npm/weui-miniprogram/uploader/uploader"
+  }
+}

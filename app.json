@@ -13,7 +13,7 @@
     "pages/services/knowtests/knowtest/knowtest",
     "pages/services/knowtests/knowtests/knowtests",
     "pages/services/pictuclocks/pictuclock/pictuclock",
-    "pages/services/pictuclocks/pictuclocks/pictuclocks",
+    "pages/services/pictuclocks/pictuclockadd/pictuclockadd",
     "pages/services/policydocs/policydoc/policydoc",
     "pages/services/policydocs/policydocs/policydocs",
     "pages/services/activitlists/activitlist/activitlist",
@@ -47,8 +47,7 @@
     "pages/mines/myfeedbacks/myfeedback/myfeedback",
     "pages/mines/myfeedbacks/myfeedbacks/myfeedbacks",
     "pages/mines/myabouts/myabout/myabout",
-    "pages/mines/myabouts/myabouts/myabouts",
-    "pages/services/games/game/geam"
+    "pages/mines/myabouts/myabouts/myabouts"
   ],
   "tabBar": {
     "backgroundColor": "#FFFFFF",

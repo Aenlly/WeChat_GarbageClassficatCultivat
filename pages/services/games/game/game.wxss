@@ -1,1 +1,97 @@
 /* pages/services/games/game/game.wxss */
+.container {
+  background-color: white;
+}
+/* 广告容器样式 */
+.banner-view {
+  height: 320rpx;
+  margin: 36rpx 30rpx 0 30rpx;
+  border-radius: 10rpx;
+}
+/* 广告图片样式 */
+.banner-view .banner_img {
+  width: 100%;
+  height: 100%;
+}
+/* 游戏内容容器样式 */
+.pages-col {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 30rpx 0 30rpx;
+}
+/* 游戏类型样式 */
+.pages-col .pages_title {
+  margin: 30rpx 0;
+  letter-spacing: 2rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+/* 游戏类型简介样式 */
+.pages-col .pages_desc {
+  letter-spacing: 2rpx;
+  font-size: 32rpx;
+  color: #919191;
+}
+/* 游戏容器样式 */
+.pages-games-row {
+  width: 100%;
+}
+/* 滚动容器样式 */
+.scroll-view {
+  width: 100%;
+}
+/* 滚动内部容器样式 */
+.scroll-view .scroll-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+/* 无游戏提示样式 */
+.game_msg {
+  text-align: center;
+  padding-top: 30rpx;
+  width: 100%;
+  height: 100rpx;
+  color: rgba(191, 191, 191, 1);
+}
+/* 单个游戏容器样式 */
+.pages-game-view {
+  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  text-align: center;
+  margin: 20rpx 40rpx 0 0;
+}
+/* 游戏图片样式 */
+.pages-game-view .game_img {
+  width: 120rpx;
+  height: 120rpx;
+}
+/* 游戏名称样式 */
+.pages-game-view .game_name {
+  color: black;
+  letter-spacing: 2rpx;
+  font-size: 28rpx;
+  width: 160rpx;
+  margin: 10rpx 0;
+}
+/* 游戏简介样式 */
+.pages-game-view .game_desc {
+  color: #919191;
+  letter-spacing: 2rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  margin: 10rpx 0;
+}
+/* 游戏标签样式 */
+.pages-game-view .game_tag {
+  letter-spacing: 2rpx;
+  font-size: 28rpx;
+  margin: 10rpx 0;
+}

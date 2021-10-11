@@ -1,0 +1,35 @@
+<!-- pages/services/pictuclocks/pictuclockadd/pictuclockadd.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <view class="form-view">
+            <!-- form表单开始 -->
+            <mp-form id="form" class="form-add" rules="{{rules}}" models="{{formData}}">
+                <mp-cells>
+                    <mp-cell title="每日标题">
+                        <input placeholder="请输入内容" maxlength="20" required />
+                    </mp-cell>
+                    <mp-cell title="每日描述">
+                        <textarea placeholder="请输入内容" maxlength="140" required class="form_textarea"></textarea>
+                    </mp-cell>
+                    <mp-cell show-error="true">
+                        <view class="img_title">每日一拍</view>
+                        <view>
+                            <block wx:for="{{file}}" wx:key="*this">
+                                <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                    <image class="weui-uploader__img" model:src="{{item}}" mode="aspectFill" />
+                                </view>
+                            </block>
+                        </view>
+                        <view class="weui-uploader__input-box">
+                            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                        </view>
+                    </mp-cell>
+                    <mp-cell>
+                        <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+                    </mp-cell>
+                </mp-cells>
+            </mp-form>
+            <!-- form表单结束 -->
+        </view>
+    </view>
+</view>

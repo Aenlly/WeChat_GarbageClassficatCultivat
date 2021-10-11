@@ -1,2 +1,63 @@
-<!--pages/services/games/game/game.wxml-->
-<text>pages/services/games/game/game.wxml</text>
+<!-- pages/services/games/game/game.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <!-- 广告banner位开始 -->
+        <view class="banner-view">
+            <image src="{{banner}}" mode="aspectFill" class="banner_img" />
+        </view>
+        <!-- 广告banner位结束 -->
+        <!-- 游戏内容容器开始 -->
+        <view class="pages-col">
+            <view class="pages_title">多人作战</view>
+            <view class="pages_desc">在互动中享受在一起的快乐</view>
+            <!-- 游戏容器开始 -->
+            <view class="pages-games-row">
+                <!-- 横向滚动容器开始 -->
+                <scroll-view scroll-x="{{true}}" class="scroll-view">
+                    <view class="scroll-row">
+                        <view class="game_msg" wx:if="{{gamelist[2].length==0}}">游戏正在开发中</view>
+                        <!-- 单个游戏容器开始 -->
+                        <view class="pages-game-view" wx:if="{{gamelist[2].length>0}}" wx:for="{{gamelist[2]}}" wx:key="*this" data-game_id="{{item.game_id}}">
+                            <image class="game_img" mode="aspectFill" src="{{item.game_img}}"></image>
+                            <view class="game_name">{{item.game_name}}</view>
+                            <view class="game_desc">{{item.game_desc}}</view>
+                            <view class="game_tag" style="color:{{item.game_tag_color}}">
+                                #{{item.game_tag}}
+                            </view>
+                        </view>
+                        <!-- 单个游戏容器结束 -->
+                    </view>
+                </scroll-view>
+                <!-- 横向滚动容器结束 -->
+            </view>
+            <!-- 游戏容器结束 -->
+        </view>
+        <!-- 游戏内容容器结束 -->
+        <view class="pages-col">
+            <view class="pages_title">单人作战</view>
+            <view class="pages_desc">我就是独行的环保行者</view>
+            <!-- 游戏容器开始 -->
+            <view class="pages-games-row">
+                <!-- 横向滚动容器开始 -->
+                <scroll-view scroll-x="{{true}}" class="scroll-view">
+                    <view class="scroll-row">
+                        <view class="game_msg" wx:if="{{gamelist[1].length==0}}">游戏正在开发中</view>
+                        <!-- 单个游戏容器开始 -->
+                        <view class="pages-game-view" wx:if="{{gamelist[1].length>0}}" wx:for="{{gamelist[1]}}" wx:key="*this" data-game_id="{{item.game_id}}">
+                            <image class="game_img" mode="aspectFill" src="{{item.game_img}}"></image>
+                            <view class="game_name">{{item.game_name}}</view>
+                            <view class="game_desc">{{item.game_desc}}</view>
+                            <view class="game_tag" style="color:{{item.game_tag_color}}">
+                                #{{item.game_tag}}
+                            </view>
+                        </view>
+                        <!-- 单个游戏容器结束 -->
+                    </view>
+                </scroll-view>
+                <!-- 横向滚动容器结束 -->
+            </view>
+            <!-- 游戏容器结束 -->
+        </view>
+        <!-- 游戏内容容器结束 -->
+    </view>
+</view>

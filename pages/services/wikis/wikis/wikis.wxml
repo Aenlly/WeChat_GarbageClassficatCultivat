@@ -1,2 +1,15 @@
-<!--pages/services/wikis/wikis/wikis.wxml-->
-<text>pages/services/wikis/wikis/wikis.wxml</text>
+<!-- pages/services/wikis/wikis/wikis.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <view class="flex-col">
+            <view class="text_title">{{wiki.wiki_title}}</view>
+            <view class="text_time">发布时间：{{wiki.insert_time}}</view>
+            <scroll-view class="scroll-view-context" scroll-y="{{true}}">
+                <view class="text_content">
+                    <mp-html content="{{wiki.wiki_context}}"></mp-html>
+                    <rich-text nodes=""></rich-text>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

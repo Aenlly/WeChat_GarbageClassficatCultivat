@@ -5,7 +5,60 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    banner: "/images/service/game/gamebanner.png",
+    gamelist: {
+      1: [],
+      2: [{
+        game_id: 0,
+        game_img: "/images/service/game/youcompmerob.jpeg",
+        game_name: "你争我抢",
+        game_desc: "争分夺秒，眼力实力大比拼",
+        game_tag: "休闲",
+        game_tag_color: "#75ce8c",
+        game_url: ""
+      }, {
+        game_id: 0,
+        game_img: "/images/service/game/garbagellk.jpeg",
+        game_name: "垃圾连连看",
+        game_desc: "真正的考验，谁才是分类大师",
+        game_tag: "益智",
+        game_tag_color: "#6eb1e3",
+        game_url: ""
+      }, {
+        game_id: 0,
+        game_img: "/images/service/game/garbagellk.jpeg",
+        game_name: "垃圾连连看",
+        game_desc: "真正的考验，谁才是分类大师",
+        game_tag: "益智",
+        game_tag_color: "#6eb1e3",
+        game_url: ""
+      }, {
+        game_id: 0,
+        game_img: "/images/service/game/garbagellk.jpeg",
+        game_name: "垃圾连连看",
+        game_desc: "真正的考验，谁才是分类大师",
+        game_tag: "益智",
+        game_tag_color: "#6eb1e3",
+        game_url: ""
+      }, {
+        game_id: 0,
+        game_img: "/images/service/game/garbagellk.jpeg",
+        game_name: "垃圾连连看",
+        game_desc: "真正的考验，谁才是分类大师",
+        game_tag: "益智",
+        game_tag_color: "#6eb1e3",
+        game_url: ""
+      }, {
+        game_id: 0,
+        game_img: "/images/service/game/garbagellk.jpeg",
+        game_name: "垃圾连连看",
+        game_desc: "真正的考验，谁才是分类大师",
+        game_tag: "益智",
+        game_tag_color: "#6eb1e3",
+        game_url: ""
+      }
+      ]
+    }
   },
 
   /**

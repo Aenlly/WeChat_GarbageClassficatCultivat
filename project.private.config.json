@@ -61,6 +61,42 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "热门资讯详情页",
+          "pathName": "pages/services/wikis/wikis/wikis",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "游戏专区",
+          "pathName": "pages/services/games/game/game",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "拍照打卡",
+          "pathName": "pages/services/pictuclocks/pictuclock/pictuclock",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "每日打卡",
+          "pathName": "pages/services/pictuclocks/pictuclockadd/pictuclockadd",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }
