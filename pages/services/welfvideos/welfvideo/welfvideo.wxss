@@ -1,1 +1,8 @@
 /* pages/services/welfvideo/welfvideo.wxss */
+.container {
+  background-color: white;
+}
+.weui-media-box__thumb {
+  width: 194rpx;
+  height: 194rpx;
+}

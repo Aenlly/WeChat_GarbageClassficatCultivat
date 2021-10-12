@@ -18,3 +18,12 @@
   width: 100%;
   flex-direction: column;
 }
+.panel-media {
+  display: flex;
+  flex-direction: row;
+  border-bottom: rgba(250, 250, 250, 1) 2rpx solid;
+}
+.panel-media .panel-media-right {
+  width: 194rpx;
+  height: 194rpx;
+}

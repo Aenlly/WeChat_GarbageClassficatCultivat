@@ -3,7 +3,6 @@
 .top-garbage{
   width: 100%;
   height: 800rpx;
-  background-color: rgba(80, 162, 222, 1);
 }
 /* 视频样式 */
 .flex-wrp-video{

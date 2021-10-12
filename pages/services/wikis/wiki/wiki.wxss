@@ -1,11 +1,6 @@
 /* pages/services/wiki/wiki.wxss */
-/*  */
-.index{
-  color: rgba(218, 80, 79, 1);
-  font-size: 24rpx;
-}
 /* 标题样式 */
-.weui-media-box__title{
+.weui-media-box__title {
   color: rgba(38, 38, 38, 1);
   font-size: 24rpx;
 }

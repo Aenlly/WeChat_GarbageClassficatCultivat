@@ -1,17 +1,15 @@
-<!--pages/services/wiki/wiki.wxml-->
-<mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult">
-</mp-searchbar>
-
+<!-- pages/services/wiki/wiki.wxml -->
+<!-- 搜索栏 -->
+<mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+<!-- 面板 -->
 <view class="page" wx:if="{{!is_sear}}">
   <view class="page__bd">
     <view class="weui-panel__hd">热门资讯</view>
     <view class="weui-panel__bd">
-      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{wiki}}"
-        wx:for-index="index" wx:if="{{index<6}}" url="/pages/test/test?wiki_id='{{item.wiki_id}}'">
+      <!-- 数据 -->
+      <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{wiki}}" wx:for-index="index" wx:if="{{index<6}}" url="/pages/test/test?wiki_id='{{item.wiki_id}}'">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-          <view class="index">
-            {{index}}
-          </view>
+          <image class="weui-media-box__thumb" src="{{item.imgurl}}" />
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="weui-media-box__title">{{item.wiki_title}}</view>
@@ -19,7 +17,6 @@
         </view>
       </navigator>
     </view>
-
     <view class="weui-panel__ft">
       <view class="weui-cell weui-cell_access weui-cell_link">
         <view class="weui-cell__bd">查看更多</view>

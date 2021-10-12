@@ -6,12 +6,14 @@ Page({
    */
   data: {
     garbage:{
+      garbage_id:0,
       video_url:"",
       title_cn:"可回收物",
       title_en:"Recycloble",
       ico_img:"/images/index/recyclable.png",
       text_desc:"事宜回收可循环利用的生活废弃物。",
       text_context:"可回收物：投放可回收物时，应尽量保持清洁干燥，避免污染;立体包装应清空内容物，情节后压扁投放;易破损或有尖锐边角的应包后投放。",
+      background_color:"#50a2de",
       garbage_list:{
         0:[{img_url:"/images/index/garbage/newspaper.png",text:"报纸"},
         {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},

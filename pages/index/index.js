@@ -41,7 +41,6 @@ Page({
     var garbage = e.currentTarget.dataset.garbage
     wx.navigateTo({
       url: '/pages/indexs/garbage/garbage?garbage=' + garbage
-
     })
   },
 

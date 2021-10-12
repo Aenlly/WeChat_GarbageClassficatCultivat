@@ -21,7 +21,7 @@
     "pages/services/wastetreas/wastetrea/wastetrea",
     "pages/services/wastetreas/wastetreas/wastetreas",
     "pages/services/welfvideos/welfvideo/welfvideo",
-    "pages/services/welfvideos/welfvideos/welfvideos",
+    "pages/services/welfvideos/welfvideoinfo/welfvideoinfo",
     "pages/services/collects/collect/collect",
     "pages/services/collects/collects/collects",
     "pages/mines/integranks/integrank/integrank",
@@ -81,6 +81,6 @@
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
-  "style": "v2",
+
   "sitemapLocation": "sitemap.json"
 }

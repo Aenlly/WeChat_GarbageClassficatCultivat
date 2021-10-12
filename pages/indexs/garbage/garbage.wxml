@@ -1,8 +1,8 @@
 <!--pages/indexs/garbage/garbage.wxml-->
 <view class="container">
   <view class="flex-wrp-col">
-    <view class="top-garbage">
-      <video class="flex-wrp-video" model:src="{{video_url}}"></video>
+    <view class="top-garbage" style="background-color: {{garbage.background_color}};">
+      <video class="flex-wrp-video" model:src="{{garbage.video_url}}"></video>
       <view>
         <view class="top-middle-text-title_cn">{{garbage.title_cn}}</view>
         <view class="top-middle-text-title_en">{{garbage.title_en}}</view>

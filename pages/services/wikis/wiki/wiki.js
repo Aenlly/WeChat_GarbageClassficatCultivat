@@ -6,55 +6,65 @@ Page({
    */
   data: {
     wiki: [{
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      },
-      {
-        wiki_id: 0,
-        wiki_title: "标题一",
-        wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
-      }
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    },
+    {
+      wiki_id: 0,
+      wiki_title: "标题一",
+      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
+      imgurl: "/images/index/textsear.png"
+    }
     ]
   },
 
@@ -73,7 +83,7 @@ Page({
         /* json数据在组件文件中更改，miniprogram_npm\weui-miniprogram\searchbar\searchbar.wxml
         17行修改
          */
-        resolve([{wiki_title: '标题', wiki_id: 1,index:3}])
+        resolve([{ text: '标题', wiki_id: 1, index: 3 }])
       }, 500)
     })
   },

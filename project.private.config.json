@@ -86,11 +86,35 @@
           "name": "拍照打卡",
           "pathName": "pages/services/pictuclocks/pictuclock/pictuclock",
           "query": "",
-          "scene": null
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         },
         {
           "name": "每日打卡",
           "pathName": "pages/services/pictuclocks/pictuclockadd/pictuclockadd",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "公益视频",
+          "pathName": "pages/services/welfvideos/welfvideo/welfvideo",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "视频详情",
+          "pathName": "pages/services/welfvideos/welfvideoinfo/welfvideoinfo",
           "query": "",
           "scene": null,
           "partialCompile": {

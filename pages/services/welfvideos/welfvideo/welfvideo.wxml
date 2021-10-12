@@ -1,2 +1,24 @@
-<!--pages/services/welfvideo/welfvideo.wxml-->
-<text>pages/services/welfvideo/welfvideo.wxml</text>
+<!-- pages/services/welfvideo/welfvideo.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+        <view class="weui-panel__bd" wx:if="{{!is_sear}}">
+            <view class="panel-media" wx:for="{{welfvideolist}}" bindtap="onClicktap" wx:key="*this" data-welfvideo_id="{{item.welfvideo_id}}">
+                <view class="panel-media-left">
+                    <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text">
+                            {{item.title}}
+                        </view>
+                        <view class="weui-media-box__desc">{{item.content}}</view>
+                        <view class="weui-media-box__info">
+                            <view class="weui-media-box__info__meta">{{item.time}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="panel-media-right">
+                    <image class="weui-media-box__thumb" src="{{item.imgurl}}" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
