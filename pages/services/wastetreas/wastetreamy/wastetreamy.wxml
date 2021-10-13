@@ -1,4 +1,4 @@
-<!-- pages/services/wastetrea/wastetrea.wxml -->
+<!-- pages/services/wastetreas/wastetreamy/wastetreamy.wxml -->
 <view class="container">
     <view class="flex-wrp-col">
         <!-- 搜索栏 -->
@@ -37,20 +37,6 @@
                 </block>
             </mp-tabs>
             <!-- 选项卡结束 -->
-        </view>
-        <!-- 选项卡容器结束 -->
-        <view class="footer">
-            <view class="footer-flex">
-                <view>
-                    <image src="/images/service/waste/wastemy.png" />
-                </view>
-                <view>
-                    <image src="/images/service/waste/wastepublish.png" />
-                </view>
-                <view>
-                    <image src="/images/service/waste/wastecollect.png" />
-                </view>
-            </view>
         </view>
     </view>
 </view>

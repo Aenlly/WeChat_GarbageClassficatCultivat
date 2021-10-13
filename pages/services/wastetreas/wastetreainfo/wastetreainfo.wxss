@@ -1,0 +1,110 @@
+/* pages/services/wastetreas/wastetreainfo/wastetreainfo.wxss */
+/* 整体容器样式 */
+.video-info {
+  padding: 0 30rpx;
+  background-color: white;
+}
+/* 列表容器边距样式 */
+.video-info .mp-cell {
+  margin: 0 -30rpx -20rpx -30rpx;
+}
+/* 头像样式 */
+.nick_img {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 32rpx;
+  border-radius: 50%;
+  background-color: rgb(16, 19, 14);
+}
+/* 顶部头像、文本样式 */
+.nick_img,
+.video_title {
+  /* 上下居中 */
+  vertical-align: middle;
+}
+/* 视频样式 */
+.video-info .video {
+  margin: 10rpx 0 0 0;
+  width: 100%;
+  border-radius: 20rpx;
+}
+.page-view {
+  text-align: center;
+}
+/* 清除列表边距 */
+.page-view .weui-cell {
+  padding: 0;
+}
+/* 分享与文字中间对齐 */
+image,
+text {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+}
+/* 去除分享按钮边框 */
+button::after {
+  border: none;
+}
+/* 去除分享按钮背景和边距 */
+.page-view button {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+/* 点赞，收藏，分享文字样式 */
+.icon-view,
+.collect-view,
+.share-view text {
+  color: #9b9b9b;
+  width: max-content;
+  font-size: 24rpx;
+}
+/* 收藏容器 */
+.collect-view {
+  margin-left: 30rpx;
+}
+/* 标题与内容容器 */
+.footer-view-row {
+  display: flex;
+  flex-direction: row;
+}
+/* 视频标题 */
+.video_title {
+  font-size: 30rpx;
+  font-weight: 600;
+  width: 620rpx;
+  height: 100%;
+  /* 长单词换行显示，数字会识别成单词 */
+  word-wrap: break-word;
+}
+.desc_view {
+  /* 长单词换行显示，数字会识别成单词 */
+  word-wrap: break-word;
+  font-size: 28rpx;
+  width: 680rpx;
+  height: 100%;
+  color: #9b9b9b;
+}
+.video_title_ell {
+  /* 溢出隐藏 */
+  overflow: hidden;
+  white-space: nowrap;
+  /* 显示省略号 */
+  text-overflow: ellipsis;
+}
+/* 展开样式 */
+.video_title_unell {
+  white-space: normal;
+}
+.bottom_img,
+.top_img {
+  vertical-align: middle;
+}
+.bottom_img,
+.top_img {
+  width: 50rpx;
+  height: 50rpx;
+  right: 0;
+  border-radius: 50%;
+}

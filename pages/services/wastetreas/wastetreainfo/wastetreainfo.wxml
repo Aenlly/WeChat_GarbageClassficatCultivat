@@ -1,4 +1,4 @@
-<!-- pages/services/welfvideos/welfvideoinfo/welfvideoinfo.wxml -->
+<!-- pages/services/wastetreas/wastetreainfo/wastetreainfo.wxml -->
 <view class="container">
     <view class="flex-wrp-col">
         <view class="video-info">
@@ -6,10 +6,10 @@
             <mp-cell ext-class="mp-cell">
                 <image class="nick_img" slot="icon" src="/images/index/textsear.png" />
                 <view class="nick_name" sloct="title">4151</view>
-                <view class="video_time" slot="footer">{{welfvideo.insert_time}}</view>
+                <view class="video_time" slot="footer">{{wastetrea.insert_time}}</view>
             </mp-cell>
             <!-- 发布者容器结束 -->
-            <video class="video" src="{{welfvideo.videoUrl}}"></video>
+            <video class="video" src="{{welfvideo.videoUrl}}" />
             <view class="page-view">
                 <mp-cell ex-class="mp-cell-one">
                     <!-- 点赞容器开始 -->
@@ -44,13 +44,13 @@
             <view class="footer-view">
                 <!-- 视频标题 -->
                 <view class="footer-view-row">
-                    <text class="video_title {{video_title}}">{{welfvideo.title}}</text>
+                    <text class="video_title {{video_title}}">{{wastetrea.title}}</text>
                     <image class="bottom_img" slot="footer" src="/images/service/bottom.png" hidden="{{icon}}" bindtap="onClickIcon" />
                     <image class="top_img" slot="footer" src="/images/service/top.png" hidden="{{!icon}}" bindtap="onClickIcon" />
                 </view>
                 <!-- 简介 -->
                 <mp-cell ext-class="mp-cell">
-                    <view class="desc_view  {{video_title}}">{{welfvideo.desc}}</view>
+                    <view class="desc_view  {{video_title}}">{{wastetrea.desc}}</view>
                 </mp-cell>
             </view>
         </view>

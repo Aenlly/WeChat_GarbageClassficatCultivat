@@ -1,4 +1,4 @@
-// pages/services/wastetreas/wastetreas/wastetreas.js
+// pages/services/wastetreas/wastetreapublish/wastetreapublish.js
 Page({
 
   /**

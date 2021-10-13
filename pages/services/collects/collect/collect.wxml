@@ -1,2 +1,24 @@
-<!--pages/services/collect/collect.wxml-->
-<text>pages/services/collect/collect.wxml</text>
+<!-- pages/services/collect/collect.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <!-- 搜索栏 -->
+        <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+        <!-- 内容容器 -->
+        <view class="content-view">
+            <!-- 卡片栏 -->
+            <block wx:for="{{collect}}">
+                <view class="panel" wx:key="{{index}}" bindtap="onClickUrl" wx:for-index="index" data-index="{{index}}">
+                    <view class="text-title">
+                        <view class="title weui-media-box__title">{{item.title}}</view>
+                        <view class="tag">
+                            <text>{{item.tag}}</text>
+                        </view>
+                    </view>
+                    <view class="text-content weui-media-box__desc">{{item.content}}</view>
+                </view>
+            </block>
+            <!-- 卡片结束 -->
+        </view>
+        <!-- 内容栏结束 -->
+    </view>
+</view>

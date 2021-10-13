@@ -1,4 +1,4 @@
-// pages/services/wastetrea/wastetrea.js
+// pages/services/wastetreas/wastetreacollect/wastetreacollect.js
 Page({
 
   /**

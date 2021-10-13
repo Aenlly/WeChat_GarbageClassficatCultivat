@@ -1,0 +1,16 @@
+<!-- pages/services/wastetreas/wastetreapublish/wastetreapublish.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <mp-form>
+            <mp-cells>
+                <mp-cell title="标题">
+                    <input />
+                </mp-cell>
+                <mp-cell title="简介">
+                    <textarea></textarea>
+                </mp-cell>
+                <mp-cell title="上传视频"></mp-cell>
+            </mp-cells>
+        </mp-form>
+    </view>
+</view>

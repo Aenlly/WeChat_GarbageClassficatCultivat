@@ -1,7 +1,7 @@
 /**app.wxss**/
 @import "/style/weui.wxss";
 @import "/style/widget/weui-panel/weui-panel.wxss";
-
+/* 全局最外容器样式 */
 .container {
   height: 100%;
   width: 100%;
@@ -10,14 +10,15 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  background-color: rgba(250, 250, 250, 1);
 }
+/* 全局第二个容器 */
 .flex-wrp-col {
   padding: 0;
   margin: 0;
   width: 100%;
   flex-direction: column;
 }
+
 .panel-media {
   display: flex;
   flex-direction: row;
@@ -27,3 +28,48 @@
   width: 194rpx;
   height: 194rpx;
 }
+
+/* 卡片全局样式开始 */
+/* 卡片面板样式 */
+.panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10rpx;
+  margin: 20rpx 0;
+  padding: 20rpx 0;
+  box-shadow: 0 2px 20rpx 1rpx rgba(206, 206, 206, 0.65);
+}
+/* 标题与标签容器 */
+.text-title,
+.text-content {
+  display: flex;
+  flex-direction: row;
+  padding: 0 20rpx;
+}
+
+/* 标题样式 */
+.text-title .title {
+  width: 600rpx;
+  /* 溢出隐藏 */
+  overflow: hidden;
+  white-space: nowrap;
+  /* 显示省略号 */
+  text-overflow: ellipsis;
+}
+.text-title .tag {
+  width: 90rpx;
+  height: 50rpx;
+  display: table-cell;
+  background-color: #fafafa;
+  text-align: center;
+  /*设置文本垂直居中*/
+  vertical-align: middle;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+.tag text {
+  line-height: 50rpx;
+  color: rgba(238, 165, 37, 1);
+}
+/* 卡片全局样式结束 */

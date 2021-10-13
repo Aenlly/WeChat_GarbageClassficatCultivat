@@ -67,7 +67,7 @@ Page({
     }
     ]
   },
-
+  // 搜索取消事件
   bindclearSear: function (e) {
     this.setData({
       is_sear: false
@@ -80,9 +80,6 @@ Page({
         this.setData({
           is_sear: true
         })
-        /* json数据在组件文件中更改，miniprogram_npm\weui-miniprogram\searchbar\searchbar.wxml
-        17行修改
-         */
         resolve([{ text: '标题', wiki_id: 1, index: 3 }])
       }, 500)
     })
