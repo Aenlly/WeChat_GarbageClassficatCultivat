@@ -6,26 +6,6 @@
     "pages/test/test",
     "pages/logs/logs",
     "pages/indexs/garbage/garbage",
-    "pages/services/games/game/game",
-    "pages/services/games/games/games",
-    "pages/services/wikis/wiki/wiki",
-    "pages/services/wikis/wikiinfo/wikiinfo",
-    "pages/services/knowtests/knowtest/knowtest",
-    "pages/services/knowtests/knowtests/knowtests",
-    "pages/services/pictuclocks/pictuclock/pictuclock",
-    "pages/services/pictuclocks/pictuclockadd/pictuclockadd",
-    "pages/services/policydocs/policydoc/policydoc",
-    "pages/services/policydocs/policydocinfo/policydocinfo",
-    "pages/services/activitys/activity/activity",
-    "pages/services/activitys/activityinfo/activityinfo",
-    "pages/services/wastetreas/wastetrea/wastetrea",
-    "pages/services/wastetreas/wastetreainfo/wastetreainfo",
-    "pages/services/wastetreas/wastetreamy/wastetreamy",
-    "pages/services/wastetreas/wastetreapublish/wastetreapublish",
-    "pages/services/wastetreas/wastetreacollect/wastetreacollect",
-    "pages/services/welfvideos/welfvideo/welfvideo",
-    "pages/services/welfvideos/welfvideoinfo/welfvideoinfo",
-    "pages/services/collects/collect/collect",
     "pages/mines/integranks/integrank/integrank",
     "pages/mines/integranks/integranks/integranks",
     "pages/mines/integdescs/integdesc/integdesc",
@@ -50,6 +30,40 @@
     "pages/mines/myfeedbacks/myfeedbacks/myfeedbacks",
     "pages/mines/myabouts/myabout/myabout",
     "pages/mines/myabouts/myabouts/myabouts"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/packageService/",
+      "pages": [
+        "pages/services/games/game/game",
+        "pages/services/games/games/games",
+        "pages/services/wikis/wiki/wiki",
+        "pages/services/wikis/wikiinfo/wikiinfo",
+        "pages/services/knowtests/knowtest/knowtest",
+        "pages/services/knowtests/knowtests/knowtests",
+        "pages/services/pictuclocks/pictuclock/pictuclock",
+        "pages/services/pictuclocks/pictuclockadd/pictuclockadd",
+        "pages/services/policydocs/policydoc/policydoc",
+        "pages/services/policydocs/policydocinfo/policydocinfo",
+        "pages/services/activitys/activity/activity",
+        "pages/services/activitys/activityinfo/activityinfo",
+        "pages/services/wastetreas/wastetrea/wastetrea",
+        "pages/services/wastetreas/wastetreainfo/wastetreainfo",
+        "pages/services/wastetreas/wastetreamy/wastetreamy",
+        "pages/services/wastetreas/wastetreapublish/wastetreapublish",
+        "pages/services/wastetreas/wastetreacollect/wastetreacollect",
+        "pages/services/welfvideos/welfvideo/welfvideo",
+        "pages/services/welfvideos/welfvideoinfo/welfvideoinfo",
+        "pages/services/collects/collect/collect"
+      ]
+    }, {
+      "root": "packageB",
+      "name": "pack2",
+      "pages": [
+        "pages/apple",
+        "pages/banana"
+      ]
+    }
   ],
   "tabBar": {
     "backgroundColor": "#FFFFFF",
