@@ -10,51 +10,51 @@ Page({
         game: {
           imgurl: "/images/service/game.png",
           text: "游戏专区",
-          activity: "/pages/services/games/game/game"
+          activity: "/pages/packageService/pages/services/games/game/game"
         },
         wiki: {
           imgurl: "/images/service/wiki.png",
           text: "热门资讯",
-          activity: "/pages/services/wikis/wiki/wiki"
+          activity: "/pages/packageService/pages/services/wikis/wiki/wiki"
         },
         knowtest: {
           imgurl: "/images/service/knowtest.png",
           text: "知识测验",
-          activity: "/pages/services/knowtests/knowtest/knowtest"
+          activity: "/pages/packageService/pages/services/knowtests/knowtest/knowtest"
         }
       },
       1: {
         game: {
           imgurl: "/images/service/pictuclock.png",
           text: "拍照打卡",
-          activity: "/pages/services/pictuclocks/pictuclock/pictuclock"
+          activity: "/pages/packageService/pages/services/pictuclocks/pictuclock/pictuclock"
         },
         wiki: {
           imgurl: "/images/service/policydoc.png",
           text: "政策宣传",
-          activity: "/pages/services/policydocs/policydoc/policydoc"
+          activity: "/pages/packageService/pages/services/policydocs/policydoc/policydoc"
         },
         knowtest: {
           imgurl: "/images/service/activitlist.png",
           text: "志愿招募",
-          activity: "/pages/services/activits/activit/activit"
+          activity: "/pages/packageService/pages/services/activits/activit/activit"
         }
       },
       2: {
         game: {
           imgurl: "/images/service/wastetrea.png",
           text: "变废为宝",
-          activity: "/pages/services/wastetreas/wastetrea/wastetrea"
+          activity: "/pages/packageService/pages/services/wastetreas/wastetrea/wastetrea"
         },
         wiki: {
           imgurl: "/images/service/welfvideo.png",
           text: "公益视频",
-          activity: "/pages/services/welfvideos/welfvideo/welfvideo"
+          activity: "/pages/packageService/pages/services/welfvideos/welfvideo/welfvideo"
         },
         knowtest: {
           imgurl: "/images/service/collect.png",
           text: "我的收藏",
-          activity: "/pages/services/collects/collect/collect"
+          activity: "/pages/packageService/pages/services/collects/collect/collect"
         }
       }
     },
