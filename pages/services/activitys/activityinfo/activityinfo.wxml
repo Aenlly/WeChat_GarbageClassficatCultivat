@@ -1,0 +1,41 @@
+<!-- pages/services/activitys/activityinfo/activityinfo.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <view class="top-view">
+            <view class="title-view">{{activity.title}}</view>
+            <view class="desc-view">
+                <view class="left-view">
+                    <!-- 点赞容器开始 -->
+                    <view bindtap="onClickGiveCollectShare" id="isgive" class="give-view">
+                        <image hidden="{{give.isgive}}" src="/images/service/give_off.png" />
+                        <image hidden="{{!give.isgive}}" src="/images/service/give_on.png" />
+                        <text>{{give.count}}</text>
+                    </view>
+                    <!-- 点赞容器结束 -->
+                    <!-- 收藏容器开始 -->
+                    <view bindtap="onClickGiveCollectShare" id="iscollect" class="collect-view">
+                        <image hidden="{{collect.iscollect}}" src="/images/service/collect_off.png" />
+                        <image hidden="{{!collect.iscollect}}" src="/images/service/collect_on.png" />
+                        <text>{{collect.count}}</text>
+                    </view>
+                    <!-- 收藏容器开始 -->
+                </view>
+                <view class="time">{{activity.insert_time}}</view>
+            </view>
+        </view>
+        <!-- 内容容器开始 -->
+        <view class="content-view">
+            <scroll-view class="scroll-view" scroll-y="{{true}}">
+                <view>
+                    <mp-html content="{{activity.content}}"></mp-html>
+                </view>
+            </scroll-view>
+        </view>
+        <!-- 内容容器结束 -->
+        <!-- 按钮容器开始 -->
+        <view class="footer-view">
+            <button class="weui-btn" type="primary" bindtap="submitForm">立即报名</button>
+        </view>
+        <!-- 按钮容器结束 -->
+    </view>
+</view>

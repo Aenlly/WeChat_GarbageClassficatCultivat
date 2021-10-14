@@ -4,7 +4,7 @@
         <!-- 搜索栏 -->
         <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
         <!-- 选项卡容器开始 -->
-        <view class="panel-tabs">
+        <view class="panel-tabs" wx:if="{{!is_sear}}">
             <!-- 选项卡容器开始 -->
             <mp-tabs tabs="{{tabs}}" class="mp-tabs" swiper-class="swiper-class" activeTab="{{activeTab}}" tab-class="tab-class" tab-active-text-color="#1e90ff" tab-inactive-text-color="#909399" tab-underline-color="#096dd9" bindtabclick="onTabClick">
                 <block wx:for="{{tabs}}" wx:key="title">

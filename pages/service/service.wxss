@@ -1,4 +1,7 @@
 /* pages/service/service.wxss */
+page{
+  background-color: white;
+}
 /* 一行容器的样式 */
 .flex-wrp-row{
   display: flex;

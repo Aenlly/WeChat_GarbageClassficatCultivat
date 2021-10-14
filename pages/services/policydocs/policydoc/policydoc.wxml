@@ -1,2 +1,29 @@
-<!--pages/services/policydoc/policydoc.wxml-->
-<text>pages/services/policydoc/policydoc.wxml</text>
+<!-- pages/services/policydoc/policydoc.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+        <view class="banner-view" wx:if="{{!is_sear}}">
+            <image class="imgurl" src="{{policydoc.imgUrl}}" />
+        </view>
+        <view class="panel-view" wx:if="{{!is_sear}}">
+            <scroll-view scroll-y="{{true}}">
+                <view class="scroll-panel">
+                    <view class="weui-panel">
+                        <view class="weui-panel__bd">
+                            <view class="weui-media-box weui-media-box_text" bind:tap="onClickTapNav" hover-class="weui-cell_active" wx:for="{{policydoc.content}}" wx:for-index="index" wx:key="*this" data-id="{{item.policydoc_id}}">
+                                <view class="weui-media-box__title weui-media-box__title_in-text">
+                                    {{item.title}}
+                                </view>
+                                <view class="weui-media-box__desc">{{item.desc}}</view>
+                                <view class="weui-media-box__info">
+                                    <view class="weui-media-box__info__meta">文字来源</view>
+                                    <view class="weui-media-box__info__meta">{{item.time}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

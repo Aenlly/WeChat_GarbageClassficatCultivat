@@ -1,16 +1,31 @@
 <!-- pages/services/wastetreas/wastetreapublish/wastetreapublish.wxml -->
 <view class="container">
     <view class="flex-wrp-col">
-        <mp-form>
-            <mp-cells>
-                <mp-cell title="标题">
-                    <input />
-                </mp-cell>
-                <mp-cell title="简介">
-                    <textarea></textarea>
-                </mp-cell>
-                <mp-cell title="上传视频"></mp-cell>
-            </mp-cells>
-        </mp-form>
+        <!-- 表单容器开始 -->
+        <view class="form-view">
+            <mp-form>
+                <mp-cells>
+                    <mp-cell title="标题">
+                        <input maxlength="20" placeholder="请输入标题" required />
+                    </mp-cell>
+                    <mp-cell title="简介">
+                        <textarea placeholder="请输入简介" class="form_textarea" maxlength="200" required></textarea>
+                    </mp-cell>
+                    <mp-cell>
+                        <view class="up_title">上传视频</view>
+                        <view class="weui-uploader__input-box">
+                            <view class="weui-uploader__input" bindtap="chooseVideo"></view>
+                        </view>
+                        上传进度：
+                        <progress percent="{{progress}}" show-info border-radius="5" duration="20" active-mode="forwards" active></progress>
+                        <button bindtap="handleCancel">取消上传</button>
+                    </mp-cell>
+                    <mp-cell>
+                        <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+                    </mp-cell>
+                </mp-cells>
+            </mp-form>
+        </view>
+        <!-- 表单容器结束 -->
     </view>
 </view>

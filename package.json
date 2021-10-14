@@ -3,6 +3,7 @@
     "@miniprogram-component-plus/tabs": "^1.0.0",
     "@miniprogram-component-plus/video-swiper": "^1.0.1",
     "@miniprogram-component-plus/vtabs": "^1.0.0",
+    "miniprogram-file-uploader": "^1.0.0",
     "miniprogram-recycle-view": "^0.1.5",
     "mp-html": "^2.1.5",
     "weui-miniprogram": "^1.1.1"

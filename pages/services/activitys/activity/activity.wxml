@@ -1,0 +1,32 @@
+<!-- pages/services/activitlist/activitlist.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <!-- 搜索栏 -->
+        <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+        <view class="srcoll-panel">
+            <scroll-view scroll-y="{{true}}" style="height:1290rpx;">
+                <view class="weui-panel">
+                    <block wx:for="{{activitlist}}" wx:key="index" wx:for-index="index">
+                        <!-- 面板容器 -->
+                        <view class="panel" bind:tap="onClickNav" data-index="{{index}}">
+                            <view class="img-view">
+                                <image class="imgurl" mode="aspectFill" src="{{item.imgUrl}}" />
+                            </view>
+                            <view class="panel-col">
+                                <view class="text-title">
+                                    <view class="title">{{item.title}}</view>
+                                    <view class="tag">
+                                        <text>{{item.tag}}</text>
+                                    </view>
+                                </view>
+                                <view class="text-content">
+                                    <text class="weui-media-box__desc">{{item.desc}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

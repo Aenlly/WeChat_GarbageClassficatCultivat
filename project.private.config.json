@@ -64,7 +64,7 @@
         },
         {
           "name": "热门资讯详情页",
-          "pathName": "pages/services/wikis/wikis/wikis",
+          "pathName": "pages/services/wikis/wikiinfo/wikiinfo",
           "query": "",
           "scene": null,
           "partialCompile": {
@@ -116,7 +116,11 @@
           "name": "视频详情",
           "pathName": "pages/services/welfvideos/welfvideoinfo/welfvideoinfo",
           "query": "",
-          "scene": null
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         },
         {
           "name": "我的收藏",
@@ -171,6 +175,46 @@
         {
           "name": "变废为宝(发布)",
           "pathName": "pages/services/wastetreas/wastetreapublish/wastetreapublish",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "政策宣传",
+          "pathName": "pages/services/policydocs/policydoc/policydoc",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "志愿招募",
+          "pathName": "pages/services/activitys/activity/activity",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "招募详情",
+          "pathName": "pages/services/activitys/activityinfo/activityinfo",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "政策详情",
+          "pathName": "pages/services/policydocs/policydocinfo/policydocinfo",
           "query": "",
           "scene": null,
           "partialCompile": {

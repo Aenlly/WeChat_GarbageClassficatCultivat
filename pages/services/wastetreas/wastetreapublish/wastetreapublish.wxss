@@ -1,1 +1,7 @@
 /* pages/services/wastetreas/wastetreapublish/wastetreapublish.wxss */
+.form_textarea {
+  width: 100%;
+}
+.up_title {
+  padding-bottom: 30rpx;
+}

@@ -1,1 +1,27 @@
 /* pages/services/policydoc/policydoc.wxss */
+/* 图片容器 */
+.banner-view {
+  padding: 0 20rpx;
+  height: 280rpx;
+}
+/* 图片样式 */
+.imgurl {
+  width: 100%;
+  height: 280rpx;
+  border-radius: 10rpx;
+}
+/* 面板容器样式 */
+.panel-view {
+  background-color: white;
+  margin: 20rpx 20rpx 0 20rpx;
+  border-radius: 10rpx;
+}
+/* 滚动容器样式 */
+scroll-view {
+  height: 1090rpx;
+}
+/* 滚动容器内面板样式 */
+.scroll-panel {
+  width: 100%;
+  height: 100%;
+}

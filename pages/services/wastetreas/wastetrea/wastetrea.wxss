@@ -1,7 +1,10 @@
 /* pages/services/wastetrea/wastetrea.wxss */
+.flex-wrp-col {
+  background-color: white;
+}
 /* 选项卡容器样式 */
 .penal-tabs {
-  background-color: #ededed;
+  background-color: white;
   display: flex;
   flex-direction: column;
 }
@@ -32,20 +35,12 @@
   width: 710rpx;
   margin: 0rpx 20rpx 40rpx 20rpx;
 }
-/* 面板文字容器样式 */
-.panel-col {
-  display: flex;
-  flex-direction: column;
-}
 /* 图片\图片容器样式 */
 .img-view,
 .imgurl {
   width: 150rpx;
   height: 150rpx;
-}
-/* 标题文字样式 */
-.text-title .title {
-  width: 410rpx;
+  padding-left: 10rpx;
 }
 /* 底部浏览器布局样式 */
 .footer {

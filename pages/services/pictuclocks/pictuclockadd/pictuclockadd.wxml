@@ -6,7 +6,7 @@
             <mp-form id="form" class="form-add" rules="{{rules}}" models="{{formData}}">
                 <mp-cells>
                     <mp-cell title="每日标题">
-                        <input placeholder="请输入内容" maxlength="20" required />
+                        <input placeholder="请输入标题" maxlength="20" required />
                     </mp-cell>
                     <mp-cell title="每日描述">
                         <textarea placeholder="请输入内容" maxlength="140" required class="form_textarea"></textarea>

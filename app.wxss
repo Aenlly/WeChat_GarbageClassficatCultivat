@@ -1,6 +1,9 @@
 /**app.wxss**/
 @import "/style/weui.wxss";
 @import "/style/widget/weui-panel/weui-panel.wxss";
+page {
+  background-color: #ededed;
+}
 /* 全局最外容器样式 */
 .container {
   height: 100%;
@@ -18,7 +21,10 @@
   width: 100%;
   flex-direction: column;
 }
-
+/* 表单容器样式 */
+.form-view {
+  margin: 32rpx;
+}
 .panel-media {
   display: flex;
   flex-direction: row;
@@ -73,3 +79,90 @@
   color: rgba(238, 165, 37, 1);
 }
 /* 卡片全局样式结束 */
+
+/* 面板样式 */
+/* 面板文字容器样式 */
+.panel-col {
+  display: flex;
+  flex-direction: column;
+}
+/* 图片\图片容器样式 */
+.img-view,
+.imgurl {
+  width: 100rpx;
+  height: 100rpx;
+  padding-left: 10rpx;
+  margin-top: 10rpx;
+  margin-right: 10rpx;
+}
+/* 标题文字样式 */
+.text-title .title {
+  width: 410rpx;
+}
+
+/* 文章布局样式开始 */
+/* 头部容器样式 */
+.top-view,
+.content-view {
+  margin: 0 20rpx;
+}
+/* 标题容器样式 */
+.title-view {
+  font-size: 36rpx;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+/* 收藏、点赞、时间同一行布局样式开始 */
+/* 收藏、点赞、时间容器样式 */
+.desc-view {
+  display: flex;
+  flex-direction: row;
+  text-align: right;
+}
+/* 收藏、点赞共同容器样式 */
+.left-view {
+  display: flex;
+  flex-direction: row;
+}
+/* 收藏、点赞容器样式 */
+.give-view,
+.collect-view {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5rpx;
+  padding-right: 30rpx;
+}
+/* 收藏、点赞图片样式 */
+.give-view image,
+.collect-view image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 7rpx;
+}
+/* 收藏，点赞数量文字样式 */
+.give-view text,
+.collect-view text {
+  font-size: 28rpx;
+  color: #9b9b9b;
+}
+/* 时间样式 */
+.time {
+  font-size: 32rpx;
+  color: #9b9b9b;
+  width: 100%;
+}
+/* 收藏、点赞、时间同一行布局样式结束 */
+/* 内容样式开始 */
+/* 滚动容器样式 */
+.content-view .scroll-view {
+  width: 100%;
+  height: 1200rpx;
+  box-shadow: 0 1px 1rpx rgba(206, 206, 206, 0.65);
+}
+/* div渲染控件样式 */
+mp-html {
+  width: 100%;
+}
+/* 内容样式结束 */
+/* 文章布局样式结束 */
