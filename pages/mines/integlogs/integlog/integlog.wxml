@@ -1,2 +1,25 @@
-<!--pages/mines/integlog/integlog.wxml-->
-<text>pages/mines/integlog/integlog.wxml</text>
+<!-- pages/mines/integlog/integlog.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <!-- 内容容器 -->
+        <view class="content-view">
+            <!-- 卡片栏 -->
+            <block wx:for="{{integlog}}">
+                <view class="panel" wx:key="{{index}}" bindtap="onClickUrl" wx:for-index="index" data-index="{{index}}">
+                    <view class="text-title">
+                        <view class="title weui-media-box__title">积分变动：{{item.number}}</view>
+                        <view class="tag">
+                            <text>{{item.type}}</text>
+                        </view>
+                    </view>
+                    <view class="text-content weui-media-box__desc">{{item.desc}}</view>
+                    <view class="text-content weui-media-box__info">
+                        <view class="weui-media-box__info__meta">{{item.insert_time}}</view>
+                    </view>
+                </view>
+            </block>
+            <!-- 卡片结束 -->
+        </view>
+        <!-- 内容栏结束 -->
+    </view>
+</view>

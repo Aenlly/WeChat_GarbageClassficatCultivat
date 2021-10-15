@@ -5,134 +5,188 @@ Page({
    * 页面的初始数据
    */
   data: {
-    middleInfo:{
-      integrank:{
-        imgurl:"/images/mine/integrank.png",
-        text:"积分排行",
-        activity:"/pages/mines/integranks/integrank/integrank"
+    middleInfo: {
+      integrank: {
+        imgurl: "/images/mine/integrank.png",
+        text: "积分排行",
+        activity: "/pages/mines/integranks/integrank/integrank"
       },
-      integdesc:{
-        imgurl:"/images/mine/integdesc.png",
-        text:"积分说明",
-        activity:"/pages/mines/integdescs/integdesc/integdesc"
+      integdesc: {
+        imgurl: "/images/mine/integdesc.png",
+        text: "积分说明",
+        activity: "/pages/mines/integdescs/integdesc/integdesc"
       },
-      integexcuh:{
-        imgurl:"/images/mine/integexcuh.png",
-        text:"积分兑换",
-        activity:"/pages/mines/integexcuhs/integexcuh/integexcuh"
+      integexcuh: {
+        imgurl: "/images/mine/integexcuh.png",
+        text: "积分兑换",
+        activity: "/pages/mines/integexcuhs/integexcuh/integexcuh"
       },
-      integlog:{
-        imgurl:"/images/mine/integlog.png",
-        text:"积分记录",
-        activity:"/pages/mines/integlogs/integlog/integlog"
+      integlog: {
+        imgurl: "/images/mine/integlog.png",
+        text: "积分记录",
+        activity: "/pages/mines/integlogs/integlog/integlog"
       }
     },
-    bottomInfo:{
-      myhome:{
-        imgurl:"/images/mine/myhome.png",
-        text:"我的家",
-        activity:"/pages/mines/myhomes/myhome/myhome"
+    bottomInfo: {
+      myhome: {
+        imgurl: "/images/mine/myhome.png",
+        text: "我的家",
+        activity: "/pages/mines/myhomes/myhome/myhome",
+        isnotice:false,
+        count:0
       },
-      myorder:{
-        imgurl:"/images/mine/myorder.png",
-        text:"我的订单",
-        activity:"/pages/mines/myorders/myorder/myorder"
+      myorder: {
+        imgurl: "/images/mine/myorder.png",
+        text: "我的订单",
+        activity: "/pages/mines/myorders/myorder/myorder",
+        isnotice:false,
+        count:0
       },
-      mycontribute:{
-        imgurl:"/images/mine/mycontribute.png",
-        text:"我要投稿",
-        activity:"/pages/mines/mycontributes/mycontribute/mycontribute"
+      // mycontribute:{
+      //   imgurl:"/images/mine/mycontribute.png",
+      //   text:"我要投稿",
+      //   activity:"/pages/mines/mycontributes/mycontribute/mycontribute"
+      // },
+      myrecruvolun: {
+        imgurl: "/images/mine/myrecruvolun.png",
+        text: "志愿通知",
+        activity: "/pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun",
+        isnotice:true,
+        count:5
       },
-      myrecruvolun:{
-        imgurl:"/images/mine/myrecruvolun.png",
-        text:"招募志愿者",
-        activity:"/pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun"
+      mycollect: {
+        imgurl: "/images/mine/mycollect.png",
+        text: "我的收藏",
+        activity: "/pages/packageService/pages/services/collects/collect/collect",
+        isnotice:true,
+        count:6
       },
-      mycollect:{
-        imgurl:"/images/mine/mycollect.png",
-        text:"我的收藏",
-        activity:"/pages/mines/mycollects/mycollect/mycollect"
+      // myinfo: {
+      //   imgurl: "/images/mine/myinfo.png",
+      //   text: "个人信息",
+      //   activity: "/pages/mines/myinfos/myinfo/myinfo",
+      //   isnotice:false,
+      //   count:0
+      // },
+      myfeedback: {
+        imgurl: "/images/mine/myfeedback.png",
+        text: "进行反馈",
+        activity: "/pages/mines/myfeedbacks/myfeedback/myfeedback",
+        isnotice:false,
+        count:0
       },
-      myinfo:{
-        imgurl:"/images/mine/myinfo.png",
-        text:"个人信息",
-        activity:"/pages/mines/myinfos/myinfo/myinfo",
+      myabout: {
+        imgurl: "/images/mine/myabout.png",
+        text: "关于我们",
+        activity: "/pages/mines/myabouts/myabout/myabout",
+        isnotice:false,
+        count:0
       },
-      myfeedback:{
-        imgurl:"/images/mine/myfeedback.png",
-        text:"进行反馈",
-        activity:"/pages/mines/myfeedbacks/myfeedback/myfeedback"
-      },
-      myabout:{
-        imgurl:"/images/mine/myabout.png",
-        text:"关于我们",
-        activity:"/pages/mines/myabouts/myabout/myabout"
-      },
-      logoff:{
-        imgurl:"/images/mine/logoff.png",
-        text:"退出登录",
-        activity:""
+      logoff: {
+        imgurl: "/images/mine/logoff.png",
+        text: "退出登录",
+        activity: "",
+        isnotice:false,
+        count:0
       }
     },
-    mine:{
-      integ_title:"无",
-      integ_number:0,
+    mine: {
+      integ_title: "无",
+      integ_number: 0,
     },
-    userInfo:{
-      avatarUrl:"/images/mine/headprictu.png",
-      nickName:"未登录，点击头像授权"
+    userInfo: {
+      avatarUrl: "/images/mine/headprictu.png",
+      nickName: "未登录，点击头像授权"
     },
-    hasUserInfo:false
+    hasUserInfo: false
   },
-  onClickUrl(e){
-    if(e.currentTarget.dataset.activity.length==0){
-      
-    }else{
-    wx.navigateTo({
-      url: e.currentTarget.dataset.activity,
-    })
-  }
-    
+  // 导航栏列表单击事件
+  onClickUrl(e) {
+    // 退出登录事件
+    if (e.currentTarget.dataset.activity.length == 0) {
+      wx.clearStorage({
+        success:(res)=>{
+          this.setData({
+            userInfo: {
+              avatarUrl: "/images/mine/headprictu.png",
+              nickName: "未登录，点击头像授权"
+            },
+            hasUserInfo: false
+          })
+          wx.showToast({
+            title: '退出成功',
+          })
+        }}
+      )
+    } else {
+      wx.navigateTo({
+        url: e.currentTarget.dataset.activity,
+      })
+    }
+
   },
-  onClickLogin(e){
-    var that=this
-    wx.login({
-      success (res) {
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            //后台接口
-            url: 'https://example.com/onLogin',
-            data: {
-              code: res.code
+  onClickLogin(e) {
+    var that = this
+    if (!that.data.hasUserInfo) {
+      console.log(that.data.hasUserInfo)
+      // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+      // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+      wx.getUserProfile({
+        desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        success: (res) => {
+          that.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+          wx.setStorage({
+            key: "userInfo",
+            data: res.userInfo
+          })
+          wx.setStorage({key: "hasUserInfo",
+          data: true})
+          wx.login({
+            success(res) {
+              if (res.code) {
+                //发起网络请求
+                wx.request({
+                  url: '', //服务器地址
+                  data: {
+                    code: res.code
+                  }
+                })
+              } else {
+                console.log('登录失败！' + res.errMsg)
+              }
             }
           })
-          if(!that.data.hasUserInfo){
-            // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
-            // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-            wx.getUserProfile({
-              desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-              success: (res) => {
-                that.setData({
-                  userInfo: res.userInfo,
-                  hasUserInfo: true
-                })
-                console.log(res)
-              }
-            })
-          }
-        } else {
-          console.log('登录失败！' + res.errMsg)
+          console.log(res)
         }
-      }
-    })
-    
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _this=this
+    // 获取本地信息
+    wx.getStorage({
+      key: 'userInfo',
+      success (res) {
+        _this.setData({
+          userInfo:res.data
+        })
+      },
+    })
+    // 判断本地数据是否授权
+    wx.getStorage({
+      key: 'hasUserInfo',
+      success (res) {
+        _this.setData({
+          hasUserInfo:res.data
+        })
+      },
+    })
   },
 
   /**

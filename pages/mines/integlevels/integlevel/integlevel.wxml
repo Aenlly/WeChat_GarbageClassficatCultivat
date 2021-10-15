@@ -1,0 +1,58 @@
+<!-- pages/mines/integlevels/integlevel/integlevel.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <view class="user-view">
+            <view class="user-desc">
+                <image class="image" src="/images/mine/pointscrown.png" />
+                <text class="nickname">石室诗士施氏，嗜狮，</text>
+            </view>
+            <view class="user-progress">
+                <view class="text-view">
+                    <view class="new_level">
+                        <text class="text-desc">下一等级：</text>
+                        213234234
+                    </view>
+                </view>
+                <view class="progress-view">
+                    <progress class="progress" percent="{{(user.count/user.new_level)*100}}" stroke-width="2" activeColor="#eea525" />
+                </view>
+            </view>
+            <view class="user-integ">
+                <text class="left_text">当前累计积分：0</text>
+                <text class="right_text">还需积分：100</text>
+            </view>
+        </view>
+        <view class="nav-view">
+            <!-- 积分排行、说明、兑换、记录容器开始 -->
+            <view class="body-middle-row">
+                <view class="body-middle-col" wx:for="{{middleInfo}}" wx:key="*this" data-activity="{{item.activity}}" bindtap="onClickUrl">
+                    <view class="middle-img-view">
+                        <image class="integ-img" src="{{item.imgurl}}"></image>
+                    </view>
+                    <view class="integ-text">{{item.text}}</view>
+                </view>
+            </view>
+            <!-- 积分排行、说明、兑换、记录容器结束 -->
+        </view>
+        <!-- 等级容器开始 -->
+        <view class="level-view">
+            <view class="title-cell">
+                <view class="left-view">
+                    <view class="title_left">积分等级</view>
+                </view>
+                <view class="right-view">
+                    <view class="title_right">累计积分</view>
+                </view>
+            </view>
+            <view class="content-cell" wx:for="{{integlevel}}" wx:key="{{index}}" wx:for-index="index">
+                <view class="left-view">
+                    <view class="title_left">{{item.title}}</view>
+                </view>
+                <view class="right-view">
+                    <view class="title_right">{{item.number}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- 等级容器结束 -->
+    </view>
+</view>

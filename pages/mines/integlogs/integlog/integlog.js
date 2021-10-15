@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    integlog: [{
+      type: "增加",
+      number: "20",
+      desc: "每日答题",
+      insert_time: "2021-05-06 14:29:44"
+    }]
   },
 
   /**

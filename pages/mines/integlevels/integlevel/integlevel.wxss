@@ -1,0 +1,128 @@
+/* pages/mines/integlevels/integlevel/integlevel.wxss */
+/* 用户信息容器样式 */
+.user-view {
+  background-color: #ffda7e;
+  margin: 32rpx;
+  height: 338rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+/* 下一等级样式 */
+.user-desc {
+  height: 148rpx;
+  padding: 34rpx 32rpx 0 32rpx;
+}
+/* 头部样式 */
+.user-desc,
+.text-view,
+.user-integ {
+  display: flex;
+  flex-direction: row;
+}
+/* 皇冠图片样式 */
+.image {
+  width: 60rpx;
+  height: 60rpx;
+}
+/* 昵称样式 */
+.nickname {
+  color: #4e2424;
+  font-size: 36rpx;
+}
+/* 进度条样式 */
+.user-progress {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+/* 头部容器中底部容器样式 */
+.text-view .new_level {
+  width: 100%;
+  text-align: right;
+  padding-right: 18rpx;
+}
+/* 下一等级样式 */
+.text-desc {
+  font-size: 28rpx;
+  color: #4e2424;
+  line-height: 56rpx;
+  opacity: 0.6;
+}
+/* 下一等级头衔样式 */
+.new_level {
+  color: black;
+  font-weight: normal;
+  font-size: 28rpx;
+  line-height: 56rpx;
+  opacity: 0.6;
+}
+/* 进度条容器 */
+.progress-view {
+  margin: 0 18rpx;
+}
+/* 积分容器 */
+.user-integ {
+  padding: 20rpx 32rpx;
+}
+/* 当前积分文本样式 */
+.left_text {
+  width: 100%;
+  font-size: 32rpx;
+  color: #4e2424;
+  text-align: left;
+  line-height: 64rpx;
+  font-family: OPPOSans, OPPOSans-Regular;
+  font-weight: 400;
+  opacity: 0.8;
+}
+/* 还需积分样式 */
+.right_text {
+  margin-top: 10rpx;
+  width: 100%;
+  font-size: 28rpx;
+  color: #4e2424;
+  text-align: right;
+  line-height: 56rpx;
+  opacity: 0.8;
+}
+/* 底部等级容器样式 */
+.level-view {
+  margin: 32rpx 32rpx 100rpx 32rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+/* 标题样式 */
+.title-cell,
+.content-cell {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100rpx;
+}
+/* 内容容器样式 */
+.content-cell {
+  border-top: rgba(253, 253, 253, 1) 2rpx solid;
+}
+/* 底部容器左边容器对齐样式 */
+.title-cell .left-view,
+.content-cell .left-view {
+  width: 100%;
+  text-align: left;
+  padding: 10rpx 32rpx 10rpx 32rpx;
+}
+/* 底部容器右边容器对齐样式 */
+.title-cell .right-view,
+.content-cell .right-view {
+  width: 100%;
+  text-align: right;
+  padding: 10rpx 32rpx 10rpx 32rpx;
+}
+/* 底部文字样式 */
+.title-cell .title_left,
+.title-cell .title_right {
+  font-size: 32rpx;
+  color: #7f7f7f;
+  opacity: 0.8;
+  line-height: 64rpx;
+}

@@ -6,14 +6,13 @@
     "pages/test/test",
     "pages/logs/logs",
     "pages/indexs/garbage/garbage",
+    "pages/mines/integlevels/integlevel/integlevel",
     "pages/mines/integranks/integrank/integrank",
     "pages/mines/integranks/integranks/integranks",
     "pages/mines/integdescs/integdesc/integdesc",
-    "pages/mines/integdescs/integdescs/integdescs",
     "pages/mines/integexcuhs/integexcuh/integexcuh",
     "pages/mines/integexcuhs/integexcuhs/integexcuhs",
     "pages/mines/integlogs/integlog/integlog",
-    "pages/mines/integlogs/integlogs/integlogs",
     "pages/mines/myhomes/myhome/myhome",
     "pages/mines/myhomes/myhomes/myhomes",
     "pages/mines/myorders/myorder/myorder",
@@ -55,13 +54,6 @@
         "pages/services/welfvideos/welfvideo/welfvideo",
         "pages/services/welfvideos/welfvideoinfo/welfvideoinfo",
         "pages/services/collects/collect/collect"
-      ]
-    }, {
-      "root": "packageB",
-      "name": "pack2",
-      "pages": [
-        "pages/apple",
-        "pages/banana"
       ]
     }
   ],

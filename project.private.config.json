@@ -26,7 +26,7 @@
           "query": "",
           "scene": null,
           "partialCompile": {
-            "enabled": false,
+            "enabled": true,
             "pages": [
               "pages/service/service"
             ]
@@ -215,6 +215,36 @@
         {
           "name": "政策详情",
           "pathName": "pages/packageService/pages/services/policydocs/policydocinfo/policydocinfo",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "积分说明",
+          "pathName": "pages/mines/integdescs/integdesc/integdesc",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "积分记录",
+          "pathName": "pages/mines/integlogs/integlog/integlog",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "积分等级",
+          "pathName": "pages/mines/integlevels/integlevel/integlevel",
           "query": "",
           "scene": null,
           "partialCompile": {

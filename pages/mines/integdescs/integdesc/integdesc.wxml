@@ -1,2 +1,13 @@
-<!--pages/mines/integdesc/integdesc.wxml-->
-<text>pages/mines/integdesc/integdesc.wxml</text>
+<!-- pages/mines/integdesc/integdesc.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <view class="head-view">
+            <text class="title">什么是积分</text>
+            <text class="content">{{content}}</text>
+        </view>
+        <view class="head-view">
+            <text class="title">如何获得积分</text>
+            <text class="content">用户可以通过游戏、知识测验、志愿报名、变废为宝、拍照分享、我的家等方式获得积分，快去试试吧！</text>
+        </view>
+    </view>
+</view>

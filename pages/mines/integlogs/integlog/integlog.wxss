@@ -1,1 +1,13 @@
 /* pages/mines/integlog/integlog.wxss */
+page {
+  background-color: white;
+}
+.text-title .title {
+  width: 600rpx;
+}
+.text-title .tag {
+  background-color: #57be6a;
+}
+.tag text {
+  color: white;
+}

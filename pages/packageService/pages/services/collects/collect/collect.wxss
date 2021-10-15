@@ -6,3 +6,6 @@
   padding: 0 20rpx;
   background-color: white;
 }
+.text-title .title {
+  width: 600rpx;
+}

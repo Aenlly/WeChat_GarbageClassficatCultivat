@@ -37,7 +37,7 @@ Page({
         knowtest: {
           imgurl: "/images/service/activitlist.png",
           text: "志愿招募",
-          activity: "/pages/packageService/pages/services/activits/activit/activit"
+          activity: "/pages/packageService/pages/services/activitys/activity/activity"
         }
       },
       2: {
