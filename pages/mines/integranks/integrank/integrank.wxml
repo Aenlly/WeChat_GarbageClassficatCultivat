@@ -1,2 +1,34 @@
-<!--pages/mines/integrank/integrank.wxml-->
-<text>pages/mines/integrank/integrank.wxml</text>
+<!-- pages/mines/integrank/integrank.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <view class="user-view" style="background-image: url('https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/945eab16-f436-4d9b-aa65-063da327a867.png');">
+            <view class="nickrank">16</view>
+            <view class="nick-img">
+                <image class="nickurl" src="https://placeimg.com/640/480/any" mode="aspectFill" />
+            </view>
+            <view class="nickname">石室诗士施氏，嗜狮，誓食十狮。施氏时时适</view>
+            <view class="nickinteg">累计积分：100</view>
+        </view>
+        <!-- 排名容器开始 -->
+        <view class="rank-view">
+            <scroll-view scroll-y="{{true}}" class="scroll-view">
+                <view class="content-cell" wx:for="{{userrank}}" wx:key="{{index}}" wx:for-index="index">
+                    <view class="left-view">
+                        <view class="rank-text">
+                            <text class="rank_text" style="color:{{index==0?'#FF0000':''}}{{index==1?'#f5b623':''}}{{index==2?'#f8e71c':''}}">{{index+1}}
+                            </text>
+                        </view>
+                        <view class="user-rank">
+                            <image src="https://placeimg.com/640/480/any" mode="aspectFill" />
+                        </view>
+                    </view>
+                    <view class="title_left">{{item.nickname}}</view>
+                    <view class="right-view">
+                        <view class="title_right">{{item.integcount}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <!-- 排名容器结束 -->
+    </view>
+</view>

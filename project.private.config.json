@@ -251,6 +251,16 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "积分排名",
+          "pathName": "pages/mines/integranks/integrank/integrank",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }
