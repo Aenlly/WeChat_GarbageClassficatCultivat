@@ -1,15 +1,18 @@
 /* pages/mines/myabout/myabout.wxss */
+/* 关于我们容器 */
 .about {
   margin: 32rpx;
   padding: 32rpx;
   background-color: white;
   border-radius: 20rpx;
 }
+/* 标题样式 */
 .about_title {
   text-align: center;
   font-size: 54rpx;
   font-weight: 600;
 }
+/* 内容样式 */
 text {
   font-size: 32rpx;
   color: dimgrey;

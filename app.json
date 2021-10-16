@@ -26,8 +26,7 @@
     "pages/mines/myinfos/myinfos/myinfos",
     "pages/mines/myfeedbacks/myfeedback/myfeedback",
     "pages/mines/myfeedbacks/myfeedbacks/myfeedbacks",
-    "pages/mines/myabouts/myabout/myabout",
-    "pages/mines/myabouts/myabouts/myabouts"
+    "pages/mines/myabouts/myabout/myabout"
   ],
   "subPackages": [
     {
