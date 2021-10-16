@@ -32,15 +32,15 @@ Page({
         imgurl: "/images/mine/myhome.png",
         text: "我的家",
         activity: "/pages/mines/myhomes/myhome/myhome",
-        isnotice:false,
-        count:0
+        isnotice: false,
+        count: 0
       },
       myorder: {
         imgurl: "/images/mine/myorder.png",
         text: "我的订单",
         activity: "/pages/mines/myorders/myorder/myorder",
-        isnotice:false,
-        count:0
+        isnotice: false,
+        count: 0
       },
       // mycontribute:{
       //   imgurl:"/images/mine/mycontribute.png",
@@ -51,15 +51,15 @@ Page({
         imgurl: "/images/mine/myrecruvolun.png",
         text: "志愿通知",
         activity: "/pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun",
-        isnotice:true,
-        count:5
+        isnotice: true,
+        count: 5
       },
       mycollect: {
         imgurl: "/images/mine/mycollect.png",
         text: "我的收藏",
         activity: "/pages/packageService/pages/services/collects/collect/collect",
-        isnotice:true,
-        count:6
+        isnotice: true,
+        count: 6
       },
       // myinfo: {
       //   imgurl: "/images/mine/myinfo.png",
@@ -72,22 +72,22 @@ Page({
         imgurl: "/images/mine/myfeedback.png",
         text: "进行反馈",
         activity: "/pages/mines/myfeedbacks/myfeedback/myfeedback",
-        isnotice:false,
-        count:0
+        isnotice: false,
+        count: 0
       },
       myabout: {
         imgurl: "/images/mine/myabout.png",
         text: "关于我们",
         activity: "/pages/mines/myabouts/myabout/myabout",
-        isnotice:false,
-        count:0
+        isnotice: false,
+        count: 0
       },
       logoff: {
         imgurl: "/images/mine/logoff.png",
         text: "退出登录",
         activity: "",
-        isnotice:false,
-        count:0
+        isnotice: false,
+        count: 0
       }
     },
     mine: {
@@ -100,12 +100,18 @@ Page({
     },
     hasUserInfo: false
   },
+  // 我的头衔容器单击事件
+  onClickNavlevel: function (e) {
+    wx.navigateTo({
+      url: "/pages/mines/integlevels/integlevel/integlevel"
+    })
+  },
   // 导航栏列表单击事件
   onClickUrl(e) {
     // 退出登录事件
     if (e.currentTarget.dataset.activity.length == 0) {
       wx.clearStorage({
-        success:(res)=>{
+        success: (res) => {
           this.setData({
             userInfo: {
               avatarUrl: "/images/mine/headprictu.png",
@@ -116,7 +122,8 @@ Page({
           wx.showToast({
             title: '退出成功',
           })
-        }}
+        }
+      }
       )
     } else {
       wx.navigateTo({
@@ -142,8 +149,10 @@ Page({
             key: "userInfo",
             data: res.userInfo
           })
-          wx.setStorage({key: "hasUserInfo",
-          data: true})
+          wx.setStorage({
+            key: "hasUserInfo",
+            data: true
+          })
           wx.login({
             success(res) {
               if (res.code) {
@@ -168,22 +177,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this=this
+    var _this = this
     // 获取本地信息
     wx.getStorage({
       key: 'userInfo',
-      success (res) {
+      success(res) {
         _this.setData({
-          userInfo:res.data
+          userInfo: res.data
         })
       },
     })
     // 判断本地数据是否授权
     wx.getStorage({
       key: 'hasUserInfo',
-      success (res) {
+      success(res) {
         _this.setData({
-          hasUserInfo:res.data
+          hasUserInfo: res.data
         })
       },
     })

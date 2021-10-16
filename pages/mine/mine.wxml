@@ -1,4 +1,4 @@
-<!--pages/mine/mine.wxml-->
+<!-- pages/mine/mine.wxml -->
 <view class="container">
   <view class="flex-wrp-col">
     <view class="flex-wrp-head">
@@ -8,15 +8,13 @@
         <view class="head-nick-img" bindtap="onClickLogin">
           <image class="nick-img" model:src="{{userInfo.avatarUrl}}"></image>
         </view>
-        <view class="head-nick-text">
-          {{userInfo.nickName}}
-        </view>
+        <view class="head-nick-text">{{userInfo.nickName}}</view>
       </view>
     </view>
     <!-- 头衔与菜单列表容器 -->
     <view class="flex-wrp-body">
       <!-- 积分头衔容器 -->
-      <view class="body-integ">
+      <view class="body-integ" bind:tap="onClickNavlevel">
         <view class="body-integ-row">
           <view class="body-integ-title">头衔:{{mine.integ_title}}</view>
           <view class="integarrow-view-img">
@@ -31,8 +29,7 @@
       <!-- 积分头衔容器结束 -->
       <!-- 积分排行、说明、兑换、记录容器开始 -->
       <view class="body-middle-row">
-        <view class="body-middle-col" wx:for="{{middleInfo}}" wx:key="*this" data-activity="{{item.activity}}"
-          bindtap="onClickUrl">
+        <view class="body-middle-col" wx:for="{{middleInfo}}" wx:key="*this" data-activity="{{item.activity}}" bindtap="onClickUrl">
           <view class="middle-img-view">
             <image class="integ-img" src="{{item.imgurl}}"></image>
           </view>
@@ -40,17 +37,13 @@
         </view>
       </view>
       <!-- 积分排行、说明、兑换、记录容器结束 -->
-
       <!-- 导航列表容器开始 -->
       <view class="body-bottom-col">
         <!-- 列表容器遍历开始 -->
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{bottomInfo}}"
-          wx:key="*this" data-activity="{{item.activity}}" bindtap="onClickUrl" >
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{bottomInfo}}" wx:key="*this" data-activity="{{item.activity}}" bindtap="onClickUrl">
           <image class="bottom-img" model:src="{{item.imgurl}}"></image>
           <view class="weui-cell__bd weui-cell_primary margin-left-icon">
-            <view class='text-size-09 init-wordspace'>
-            {{item.text}}
-            </view>
+            <view class='text-size-09 init-wordspace'>{{item.text}}</view>
           </view>
           <!-- 消息通知 -->
           <view wx:if="{{item.isnotice}}">
@@ -61,7 +54,7 @@
         </view>
       </view>
       <!-- 导航列表容器结束 -->
-    <view class="footer-view"></view>
+      <view class="footer-view"></view>
     </view>
   </view>
 </view>
