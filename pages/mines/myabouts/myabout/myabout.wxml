@@ -1,2 +1,18 @@
-<!--pages/mines/myabout/myabout.wxml-->
-<text>pages/mines/myabout/myabout.wxml</text>
+<!-- pages/mines/myabout/myabout.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <view class="about">
+            <view class="about_title">垃圾分类养成</view>
+            <view>
+                <text>
+                    1、能轻松帮您识别各种垃圾类别，只需输入文字或拍照及录入语音均可识别
+
+                    2、欢迎分享垃圾分类养成小程序，扩大学习垃圾分类人群
+
+                    3、欢迎用户进行反馈使用中出现的问题,可使用程序内部反馈，也可发送邮件\n
+                </text>
+                <text>邮箱地址：aenlly123@vip.qq.com\n</text>
+            </view>
+        </view>
+    </view>
+</view>

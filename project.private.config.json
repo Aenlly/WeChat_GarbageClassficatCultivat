@@ -261,6 +261,16 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "关于我们",
+          "pathName": "pages/mines/myabouts/myabout/myabout",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }

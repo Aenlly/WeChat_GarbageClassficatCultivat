@@ -1,1 +1,16 @@
 /* pages/mines/myabout/myabout.wxss */
+.about {
+  margin: 32rpx;
+  padding: 32rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+.about_title {
+  text-align: center;
+  font-size: 54rpx;
+  font-weight: 600;
+}
+text {
+  font-size: 32rpx;
+  color: dimgrey;
+}
