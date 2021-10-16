@@ -271,6 +271,16 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "积分兑换",
+          "pathName": "pages/mines/integexcuhs/integexcuh/integexcuh",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }

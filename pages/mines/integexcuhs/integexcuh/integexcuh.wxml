@@ -1,2 +1,45 @@
-<!--pages/mines/integexcuhs/integexcuh/integexcuh.wxml-->
-<text>pages/mines/integexcuhs/integexcuh/integexcuh.wxml</text>
+<!-- pages/mines/integexcuhs/integexcuh/integexcuh.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <!-- 搜索栏 -->
+        <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+        <view class="banner-view">
+            <image src="https://placeimg.com/640/480/any" mode="aspectFill" />
+        </view>
+        <!-- 指定搜索容器开始 -->
+        <view class="middle-view">
+            <view class="middle-col" wx:for="{{presentwhere}}" wx:key="*this">
+                <image src="{{item.imageUrl}}" mode="aspectFill" />
+                <view class="text">{{item.text}}</view>
+            </view>
+        </view>
+        <!-- 指定搜索容器结束 -->
+        <!-- 底部商品容器开始 -->
+        <view class="bottom-view">
+            <view class="bottom_title">=== 礼品兑换区域 ===</view>
+            <scroll-view scroll-y="{{true}}">
+                <view class="scroll-content">
+                    <view class="present-left">
+                        <view class="present-view" wx:for="{{present}}" wx:key="{{index}}" wx:for-index="index" wx:if="{{index%2==0}}">
+                            <image class="image" src="https://placeimg.com/640/480/any" />
+                            <view class="present_name">{{item.name}}</view>
+                            <view class="present_integ">积分：{{item.integr}}</view>
+                            <view class="present_price">市场价：{{item.price}}</view>
+                            <button class="btn_nav" type="warn">兑换</button>
+                        </view>
+                    </view>
+                    <view class="present-right">
+                        <view class="present-view" wx:for="{{present}}" wx:key="{{index}}" wx:for-index="index" wx:if="{{index%2==1}}">
+                            <image class="image" src="https://placeimg.com/640/480/any" />
+                            <view class="present_name">{{item.name}}</view>
+                            <view class="present_integ">积分：{{item.integr}}</view>
+                            <view class="present_price">市场价：{{item.price}}</view>
+                            <button class="btn_nav" type="warn">兑换</button>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <!-- 底部商品容器结束 -->
+    </view>
+</view>

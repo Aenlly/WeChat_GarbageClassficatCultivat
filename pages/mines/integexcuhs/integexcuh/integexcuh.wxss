@@ -1,1 +1,92 @@
 /* pages/mines/integexcuhs/integexcuh/integexcuh.wxss */
+/* 广告容器样式 */
+.banner-view {
+  margin: 0 20rpx;
+  height: 300rpx;
+}
+/* 广告图片样式 */
+.banner-view image {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 20rpx;
+}
+/* 指定搜索容器样式 */
+.middle-view {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  margin: 32rpx 20rpx 0 20rpx;
+  border-radius: 20rpx;
+}
+/* 指定搜索容器单个样式 */
+.middle-col {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  align-items: center;
+  padding: 20rpx;
+}
+/* 指定搜索图片样式 */
+.middle-col image {
+  width: 100%;
+  height: 120rpx;
+}
+/* 指定搜索文本样式 */
+.middle-col .text {
+  font-size: 26rpx;
+}
+/* 底部容器样式 */
+.bottom-view {
+  margin: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+scroll-view {
+  margin-top: 20rpx;
+}
+/* 搜索图片样式 */
+.image {
+  width: 328rpx;
+  height: 328rpx;
+  border-radius: 20rpx;
+}
+/* 滚动内部容器样式 */
+.scroll-content {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 20rpx;
+}
+/* 商品容器布局样式 */
+.present-left,
+.present-right {
+  width: 50%;
+}
+/* 商品容器样式 */
+.present-view {
+  margin: 20rpx 30rpx;
+  justify-self: left;
+}
+/* 名称样式 */
+.present_name {
+  font-size: 28rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(0, 0, 0, 0.8);
+}
+/* 积分样式 */
+.present_integ {
+  font-size: 24rpx;
+}
+/* 市场价样式 */
+.present_price {
+  font-size: 28rpx;
+  color: rgba(240, 62, 62, 1);
+  text-decoration: line-through;
+}
+/* 按钮样式 */
+.btn_nav {
+  width: 300rpx;
+}
