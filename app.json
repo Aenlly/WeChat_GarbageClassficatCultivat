@@ -35,7 +35,6 @@
         "pages/services/wikis/wiki/wiki",
         "pages/services/wikis/wikiinfo/wikiinfo",
         "pages/services/knowtests/knowtest/knowtest",
-        "pages/services/knowtests/knowtests/knowtests",
         "pages/services/pictuclocks/pictuclock/pictuclock",
         "pages/services/pictuclocks/pictuclockadd/pictuclockadd",
         "pages/services/policydocs/policydoc/policydoc",
