@@ -42,11 +42,6 @@ Page({
         isnotice: false,
         count: 0
       },
-      // mycontribute:{
-      //   imgurl:"/images/mine/mycontribute.png",
-      //   text:"我要投稿",
-      //   activity:"/pages/mines/mycontributes/mycontribute/mycontribute"
-      // },
       myrecruvolun: {
         imgurl: "/images/mine/myrecruvolun.png",
         text: "志愿通知",

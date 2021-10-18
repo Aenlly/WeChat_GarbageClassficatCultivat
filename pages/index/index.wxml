@@ -10,7 +10,7 @@
       <!-- 滚动通知内容 -->
       <view class="flex-swiper">
         <swiper class="swiper-container" vertical="true" autoplay="true" interval="2000">
-          <block wx:for="{{msgList}}">
+          <block wx:for="{{msgList}}" wx:key="*this">
             <swiper-item>
               <navigator url="/pages/test/test" open-type="navigate" hover-class="none">
                 <view class="swiper-item">{{item.title}}</view>
@@ -95,7 +95,7 @@
     <view class="carousel-view">
       <!-- 轮播滑块视图容器开始 -->
       <swiper class="carousel-swiper" autoplay="true" interval="2000">
-        <block wx:for="{{carousel}}" wx:key="{{carousel.carousel_id}}">
+        <block wx:for="{{carousel}}" wx:key="*this">
           <swiper-item>
             <navigator>
               <image class="carousel-img" src="{{item.carousel_img}}"></image>

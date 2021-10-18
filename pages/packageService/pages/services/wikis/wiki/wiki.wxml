@@ -9,7 +9,7 @@
       <view class="weui-panel__bd">
         <!-- 数据 -->
         <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{wiki}}"
-          wx:for-index="index" bindtap="onClicktapNav">
+          wx:for-index="index" bindtap="onClicktapNav" wx:key="*this">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
             <image class="weui-media-box__thumb" src="{{item.imgurl}}" />
           </view>
