@@ -291,6 +291,16 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "答题规则",
+          "pathName": "pages/packageService/pages/services/knowtests/testrules/testrules",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }

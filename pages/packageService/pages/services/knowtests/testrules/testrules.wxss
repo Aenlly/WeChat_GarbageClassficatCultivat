@@ -1,1 +1,31 @@
 /* pages/packageService/pages/services/knowtests/testrules/testrules.wxss */
+/* 规则容器样式 */
+.top-view,
+.bottom-view {
+  margin: 32rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 20rpx;
+  height: 320rpx;
+  padding: 32rpx;
+}
+/* 规则类别样式 */
+.title_text {
+  font-size: 32rpx;
+  text-align: left;
+  color: #141414;
+  font-weight: bold;
+}
+/* 规则内容样式 */
+.content_text {
+  font-size: 28rpx;
+  color: #262626;
+  height: 100%;
+  padding-top: 20rpx;
+}
+/* 规则计算样式 */
+.bottom_text {
+  font-size: 28rpx;
+  color: #37b958;
+}

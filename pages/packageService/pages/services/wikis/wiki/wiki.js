@@ -91,7 +91,7 @@ Page({
   //跳转详情事件
   onClicktapNav:function(e){
     wx.navigateTo({
-      url: '/pages/packageService/pages/services/wikiinfo/wikiinfo?wiki_id=',
+      url: '/pages/packageService/pages/services/wikis/wikiinfo/wikiinfo?wiki_id='+e.currentTarget.dataset.id,
     })
   },
   /**
