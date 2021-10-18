@@ -281,6 +281,16 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "知识测试",
+          "pathName": "pages/packageService/pages/services/knowtests/knowtest/knowtest",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }

@@ -1,2 +1,50 @@
 <!--pages/services/knowtest/knowtest.wxml-->
-<text>pages/services/knowtest/knowtest.wxml</text>
+<view class="container">
+  <view class="flex-wrp-col">
+    <!-- 顶部操作栏开始 -->
+    <view class="top-view">
+      <view class="top-view-col" wx:for="{{knowtest}}" wx:key="*this">
+        <view class="image-view">
+          <image class="image" src="{{item.imageUrl}}" />
+        </view>
+        <view class="text_view">{{item.text}}</view>
+      </view>
+    </view>
+    <!-- 顶部操作栏结束 -->
+    <!-- 排名容器开始 -->
+    <view class="rank-view">
+      <scroll-view scroll-y="{{true}}" class="scroll-view">
+        <!-- 排名表头开始 -->
+        <view class="content-cell">
+          <view style="width: 300rpx;line-height: 120rpx;text-align: center;font-size: 38rpx;">
+            排名
+          </view>
+          <view style="width: 100%;line-height: 120rpx;padding-left:50rpx;font-size: 38rpx;">用户</view>
+          <view style="line-height: 120rpx;width: 500rpx;font-size: 38rpx;padding-right: 32rpx;text-align: right;">答题积分
+          </view>
+        </view>
+        <!-- 排名表头结束 -->
+        <!-- 排名内容开始 -->
+        <view class="content-cell" wx:for="{{testrank}}" wx:key="index" wx:for-index="index">
+          <view class="left-view">
+            <view class="rank-text">
+              <view class="rank_text"
+                style="color:{{index==0?'#FF0000':''}}{{index==1?'#f5b623':''}}{{index==2?'#f8e71c':''}}">
+                {{index+1}}
+              </view>
+            </view>
+            <view class="user-rank">
+              <image src="{{item.imageUrl}}" mode="aspectFill" />
+            </view>
+          </view>
+          <view class="title_left">{{item.nickname}}</view>
+          <view class="right-view">
+            <view class="title_right">{{item.integcount}}分</view>
+          </view>
+        </view>
+        <!-- 排名内容结束 -->
+      </scroll-view>
+    </view>
+    <!-- 排名容器结束 -->
+  </view>
+</view>

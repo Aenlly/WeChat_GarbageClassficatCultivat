@@ -12,7 +12,7 @@
         <!-- 排名容器开始 -->
         <view class="rank-view">
             <scroll-view scroll-y="{{true}}" class="scroll-view">
-                <view class="content-cell" wx:for="{{userrank}}" wx:key="{{index}}" wx:for-index="index">
+                <view class="content-cell" wx:for="{{userrank}}" wx:key="index" wx:for-index="index">
                     <view class="left-view">
                         <view class="rank-text">
                             <view class="rank_text" style="color:{{index==0?'#FF0000':''}}{{index==1?'#f5b623':''}}{{index==2?'#f8e71c':''}}">

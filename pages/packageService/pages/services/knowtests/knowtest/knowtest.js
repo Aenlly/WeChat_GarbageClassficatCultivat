@@ -5,7 +5,56 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    knowtest:[{
+      imageUrl:"/images/service/knowtest/dailyquizzes.png",
+      text:"每日答题",
+      activity:""
+    },{
+      imageUrl:"/images/service/knowtest/classquiz.png",
+      text:"分类小考",
+      activity:""
+    },{
+      imageUrl:"/images/service/knowtest/answerhistory.png",
+      text:"答题历史",
+      activity:""
+    },{
+      imageUrl:"/images/service/knowtest/answerrules.png",
+      text:"答题规则",
+      activity:""
+    }],
+    testrank: [{
+      nickname: "浮动四大",
+      imageUrl:"https://placeimg.com/640/480/any",
+      integcount: "151541",
+    }, {
+      nickname: "浮动四大",
+      imageUrl:"https://placeimg.com/640/480/any",
+      integcount: "151541",
+    }, {
+      nickname: "浮动四大",
+      imageUrl:"https://placeimg.com/640/480/any",
+      integcount: "151541",
+    }, {
+      nickname: "浮动四大",
+      imageUrl:"https://placeimg.com/640/480/any",
+      integcount: "151541",
+    }, {
+      nickname: "浮动四大",
+      imageUrl:"https://placeimg.com/640/480/any",
+      integcount: "151541",
+    }, {
+      nickname: "浮动四大",
+      imageUrl:"https://placeimg.com/640/480/any",
+      integcount: "151541",
+    }, {
+      nickname: "浮动四大",
+      imageUrl:"https://placeimg.com/640/480/any",
+      integcount: "151541",
+    }, {
+      nickname: "浮动四大",
+      imageUrl:"https://placeimg.com/640/480/any",
+      integcount: "151541",
+    }]
   },
 
   /**
