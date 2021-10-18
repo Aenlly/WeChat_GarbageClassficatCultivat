@@ -29,7 +29,8 @@
       <!-- 积分头衔容器结束 -->
       <!-- 积分排行、说明、兑换、记录容器开始 -->
       <view class="body-middle-row">
-        <view class="body-middle-col" wx:for="{{middleInfo}}" wx:key="*this" data-activity="{{item.activity}}" bindtap="onClickUrl">
+        <view class="body-middle-col" wx:for="{{middleInfo}}" wx:key="*this" data-activity="{{item.activity}}"
+          bindtap="onClickUrl">
           <view class="middle-img-view">
             <image class="integ-img" src="{{item.imgurl}}"></image>
           </view>
@@ -40,8 +41,9 @@
       <!-- 导航列表容器开始 -->
       <view class="body-bottom-col">
         <!-- 列表容器遍历开始 -->
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{bottomInfo}}" wx:key="*this" data-activity="{{item.activity}}" bindtap="onClickUrl">
-          <image class="bottom-img" model:src="{{item.imgurl}}"></image>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{bottomInfo}}" wx:key="*this"
+          data-activity="{{item.activity}}" bindtap="onClickUrl">
+          <image class="bottom-img" src="{{item.imgurl}}"></image>
           <view class="weui-cell__bd weui-cell_primary margin-left-icon">
             <view class='text-size-09 init-wordspace'>{{item.text}}</view>
           </view>
@@ -52,9 +54,26 @@
           <!-- 箭头图标 -->
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
+        <!-- 进行反馈 -->
+        <button class="weui-cell weui-cell_access" hover-class="weui-cell_active" open-type="feedback">
+            <image class="bottom-img" src="/images/mine/myfeedback.png"></image>
+            <view class="weui-cell__bd weui-cell_primary margin-left-icon">
+              <view class='text-size-09 init-wordspace'>进行反馈</view>
+            </view>
+            <!-- 箭头图标 -->
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </button>
+        <!-- 退出登录事件 -->
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="onClickQuit">
+          <image class="bottom-img" src="/images/mine/logoff.png"></image>
+          <view class="weui-cell__bd weui-cell_primary margin-left-icon">
+            <view class='text-size-09 init-wordspace'>退出登录</view>
+          </view>
+          <!-- 箭头图标 -->
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
       </view>
       <!-- 导航列表容器结束 -->
-      <view class="footer-view"></view>
     </view>
   </view>
 </view>

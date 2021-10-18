@@ -61,31 +61,10 @@ Page({
         isnotice: true,
         count: 6
       },
-      // myinfo: {
-      //   imgurl: "/images/mine/myinfo.png",
-      //   text: "个人信息",
-      //   activity: "/pages/mines/myinfos/myinfo/myinfo",
-      //   isnotice:false,
-      //   count:0
-      // },
-      myfeedback: {
-        imgurl: "/images/mine/myfeedback.png",
-        text: "进行反馈",
-        activity: "/pages/mines/myfeedbacks/myfeedback/myfeedback",
-        isnotice: false,
-        count: 0
-      },
       myabout: {
         imgurl: "/images/mine/myabout.png",
         text: "关于我们",
         activity: "/pages/mines/myabouts/myabout/myabout",
-        isnotice: false,
-        count: 0
-      },
-      logoff: {
-        imgurl: "/images/mine/logoff.png",
-        text: "退出登录",
-        activity: "",
         isnotice: false,
         count: 0
       }
@@ -109,28 +88,26 @@ Page({
   // 导航栏列表单击事件
   onClickUrl(e) {
     // 退出登录事件
-    if (e.currentTarget.dataset.activity.length == 0) {
-      wx.clearStorage({
-        success: (res) => {
-          this.setData({
-            userInfo: {
-              avatarUrl: "/images/mine/headprictu.png",
-              nickName: "未登录，点击头像授权"
-            },
-            hasUserInfo: false
-          })
-          wx.showToast({
-            title: '退出成功',
-          })
-        }
+    wx.navigateTo({
+      url: e.currentTarget.dataset.activity,
+    })
+  },
+  //退出登录单击事件
+  onClickQuit: function (e) {
+    wx.clearStorage({
+      success: (res) => {
+        this.setData({
+          userInfo: {
+            avatarUrl: "/images/mine/headprictu.png",
+            nickName: "未登录，点击头像授权"
+          },
+          hasUserInfo: false
+        })
+        wx.showToast({
+          title: '退出成功',
+        })
       }
-      )
-    } else {
-      wx.navigateTo({
-        url: e.currentTarget.dataset.activity,
-      })
-    }
-
+    })
   },
   onClickLogin(e) {
     var that = this
