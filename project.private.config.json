@@ -301,6 +301,16 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "每日答题",
+          "pathName": "pages/packageService/pages/services/knowtests/answereveryday/answereveryday",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }

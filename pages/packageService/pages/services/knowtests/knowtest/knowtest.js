@@ -8,15 +8,15 @@ Page({
     knowtest: [{
       imageUrl: "/images/service/knowtest/dailyquizzes.png",
       text: "每日答题",
-      activity: ""
+      activity: "/pages/packageService/pages/services/knowtests/answereveryday/answereveryday"
     }, {
       imageUrl: "/images/service/knowtest/classquiz.png",
       text: "分类小考",
-      activity: ""
+      activity: "/pages/packageService/pages/services/knowtests/classquiz/classquiz"
     }, {
       imageUrl: "/images/service/knowtest/answerhistory.png",
       text: "答题历史",
-      activity: ""
+      activity: "/pages/packageService/pages/services/knowtests/testhistory/testhistory"
     }, {
       imageUrl: "/images/service/knowtest/answerrules.png",
       text: "答题规则",

@@ -35,6 +35,7 @@
         "pages/services/wikis/wiki/wiki",
         "pages/services/wikis/wikiinfo/wikiinfo",
         "pages/services/knowtests/knowtest/knowtest",
+        "pages/services/knowtests/answereveryday/answereveryday",
         "pages/services/knowtests/classquiz/classquiz",
         "pages/services/knowtests/testhistory/testhistory",
         "pages/services/knowtests/testrules/testrules",

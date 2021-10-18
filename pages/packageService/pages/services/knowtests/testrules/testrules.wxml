@@ -4,7 +4,7 @@
     <!-- 每日答题规则开始 -->
     <view class="top-view">
       <view class="title_text">每日答题</view>
-      <view class="content_text">每天可进行一次答题获得积分，题目数量为5，每道题20分，满分100分，每道题倒计时10秒钟，错过答题时间视为错。</view>
+      <view class="content_text">每天可进行一次答题获得积分，题目数量为10，每道题10分，满分100分，每道题倒计时10秒钟，超过答题时间视为错。</view>
       <view class="bottom_text">积分=得分*10%</view>
     </view>
     <!-- 每日答题规则结束 -->
