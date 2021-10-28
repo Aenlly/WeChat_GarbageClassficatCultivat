@@ -11,26 +11,29 @@
                     <view class="tab-content" slot="tab-content-{{index}}">
                         <!-- 纵向滚动容器开始 -->
                         <scroll-view scroll-y="true" class="sroll-view">
-                            <view style="margin-bottom:20rpx;"></view>
-                            <block wx:for="{{item.wastetrea}}" wx:key="index" wx:for-index="index">
-                                <!-- 面板容器 -->
-                                <view class="panel" bind:tap="onClickNav" data-index="{{index}}">
-                                    <view class="img-view">
-                                        <image class="imgurl" mode="aspectFill" src="{{item.imgUrl}}" />
-                                    </view>
-                                    <view class="panel-col">
-                                        <view class="text-title">
-                                            <view class="title">{{item.title}}</view>
-                                            <view class="tag">
-                                                <text>{{tabs[activeTab].title}}</text>
+                            <view class="content-view">
+                                <block wx:for="{{item.wastetrea}}" wx:key="index" wx:for-index="index">
+                                    <!-- 面板容器 -->
+                                    <view class="panel" bind:tap="onClickNav" data-index="{{index}}">
+                                        <view class="img-view">
+                                            <image class="imgurl" mode="aspectFill" src="{{item.imgUrl}}" />
+                                        </view>
+                                        <view class="panel-col">
+                                            <view class="text-title">
+                                                <view class="title">{{item.title}}</view>
+                                                <view class="tag">
+                                                    <text>{{tabs[activeTab].title}}</text>
+                                                </view>
+                                            </view>
+                                            <view class="text-content">
+                                                <text class="weui-media-box__desc">
+                                                    {{item.desc}}
+                                                </text>
                                             </view>
                                         </view>
-                                        <view class="text-content">
-                                            <text class="weui-media-box__desc">{{item.desc}}</text>
-                                        </view>
                                     </view>
-                                </view>
-                            </block>
+                                </block>
+                            </view>
                         </scroll-view>
                         <!-- 纵向滚动容器结束 -->
                     </view>

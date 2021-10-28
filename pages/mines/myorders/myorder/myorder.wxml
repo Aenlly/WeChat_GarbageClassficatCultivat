@@ -1,2 +1,42 @@
-<!--pages/mines/myorder/myorder.wxml-->
-<text>pages/mines/myorder/myorder.wxml</text>
+<!-- pages/mines/myorder/myorder.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <mp-tabs tabs="{{tabs}}" swiper-class="swiper-class" activeTab="{{activeTab}}" tab-class="tab-class" tab-active-text-color="#1e90ff" tab-inactive-text-color="#909399" tab-underline-color="#096dd9" bindtabclick="onTabClick">
+            <block wx:for="{{tabs}}" wx:key="title">
+                <!-- 纵向滚动容器 -->
+                <view class="tab-content" slot="tab-content-{{index}}">
+                    <scroll-view scroll-y="{{true}}" class="scroll-view">
+                        <!-- 内容容器 -->
+                        <view class="content-view">
+                            <!-- 卡片栏 -->
+                            <block wx:for="{{item.orders}}" wx:key="*this">
+                                <view class="panel" wx:key="{{index}}" wx:for-index="index" data-index="{{index}}">
+                                    <view class="text-title">
+                                        <view class="title weui-media-box__title">
+                                            {{item.order_name}}
+                                        </view>
+                                        <view class="tag">
+                                            <text>{{item.order_tag}}</text>
+                                        </view>
+                                    </view>
+                                    <view class="text-content weui-media-box__info">
+                                        <view class="text_desc weui-media-box__desc">
+                                            订单号：{{item.order_code}}
+                                        </view>
+                                    </view>
+                                    <view class="text-content weui-media-box__info">
+                                        <view class="weui-media-box__info__meta">
+                                            {{item.insert_time}}
+                                        </view>
+                                    </view>
+                                </view>
+                            </block>
+                            <!-- 卡片结束 -->
+                        </view>
+                        <!-- 内容栏结束 -->
+                    </scroll-view>
+                </view>
+            </block>
+        </mp-tabs>
+    </view>
+</view>

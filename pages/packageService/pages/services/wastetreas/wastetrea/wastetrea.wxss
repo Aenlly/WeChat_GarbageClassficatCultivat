@@ -21,11 +21,11 @@
 }
 /* 横向滚动容器 */
 .swiper-class {
-  height: 1350rpx;
+  height: 1240rpx;
 }
 /* 纵向滚动容器 */
 .sroll-view {
-  height: 1350rpx;
+  height: 1240rpx;
   display: flex;
 }
 /* 面板样式 */

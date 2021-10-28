@@ -1,4 +1,7 @@
 /* pages/services/wastetreas/wastetreacollect/wastetreacollect.wxss */
+page {
+  background-color: white;
+}
 /* 选项卡容器样式 */
 .penal-tabs {
   background-color: #ededed;
@@ -18,11 +21,11 @@
 }
 /* 横向滚动容器 */
 .swiper-class {
-  height: 1350rpx;
+  height: 1240rpx;
 }
 /* 纵向滚动容器 */
 .sroll-view {
-  height: 1350rpx;
+  height: 1240rpx;
   display: flex;
 }
 /* 面板样式 */
@@ -30,7 +33,6 @@
   display: flex;
   flex-direction: row;
   width: 710rpx;
-  margin: 0rpx 20rpx 40rpx 20rpx;
 }
 /* 面板文字容器样式 */
 .panel-col {

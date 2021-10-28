@@ -134,7 +134,7 @@
         },
         {
           "name": "变废为宝",
-          "pathName": "pages/services/wastetreas/wastetrea/wastetrea",
+          "pathName": "pages/packageService/pages/services/wastetreas/wastetrea/wastetrea",
           "query": "",
           "scene": null,
           "partialCompile": {
@@ -154,7 +154,7 @@
         },
         {
           "name": "变废为宝(我的)",
-          "pathName": "pages/services/wastetreas/wastetreamy/wastetreamy",
+          "pathName": "pages/packageService/pages/services/wastetreas/wastetreamy/wastetreamy",
           "query": "",
           "scene": null,
           "partialCompile": {
@@ -164,7 +164,7 @@
         },
         {
           "name": "变废为宝(收藏)",
-          "pathName": "pages/services/wastetreas/wastetreacollect/wastetreacollect",
+          "pathName": "pages/packageService/pages/services/wastetreas/wastetreacollect/wastetreacollect",
           "query": "",
           "scene": null,
           "partialCompile": {
@@ -325,6 +325,16 @@
         {
           "name": "分类小考",
           "pathName": "pages/packageService/pages/services/knowtests/classquiz/classquiz",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "订单记录",
+          "pathName": "pages/mines/myorders/myorder/myorder",
           "query": "",
           "scene": null,
           "partialCompile": {

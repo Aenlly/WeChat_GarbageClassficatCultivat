@@ -5,7 +5,74 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tabs: [{
+      title: "未核销",
+      orders: [{
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "未核销",
+        insert_time: "2021-01-02 14:30:58"
+      }, {
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "未核销",
+        insert_time: "2021-01-02 14:30:58"
+      }, {
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "未核销",
+        insert_time: "2021-01-02 14:30:58"
+      }, {
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "未核销",
+        insert_time: "2021-01-02 14:30:58"
+      }, {
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "未核销",
+        insert_time: "2021-01-02 14:30:58"
+      }]
+    }, {
+      title: "已核销",
+      orders: [{
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "已核销",
+        insert_time: "2021-01-02 14:30:58"
+      }, {
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "已核销",
+        insert_time: "2021-01-02 14:30:58"
+      }, {
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "已核销",
+        insert_time: "2021-01-02 14:30:58"
+      }, {
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "已核销",
+        insert_time: "2021-01-02 14:30:58"
+      }, {
+        order_code: "123456789",
+        order_name: "垃圾袋",
+        order_img: "https://placeimg.com/640/480/any",
+        order_tag: "已核销",
+        insert_time: "2021-01-02 14:30:58"
+      }]
+    }],
+    activeTab: 0,
   },
 
   /**
