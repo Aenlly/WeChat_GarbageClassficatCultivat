@@ -1,4 +1,7 @@
 /**index.wxss**/
+page {
+  background-color: white;
+}
 /* 通知横向布局 */
 .flex-wrp-row-notice {
   display: flex;
@@ -10,7 +13,7 @@
   margin: 20rpx 0 20rpx 0;
 }
 /* 通知图标外部view */
-.flex-notice-img{
+.flex-notice-img {
   width: 66rpx;
   height: 54rpx;
   margin: 0;
@@ -22,7 +25,7 @@
   height: 54rpx;
 }
 /* 通知轮播 */
-.swiper-container{
+.swiper-container {
   height: 45rpx;
   width: 600rpx;
 }
@@ -48,7 +51,7 @@
   border-radius: 20rpx;
 }
 /* 垃圾分类容器，包含可回收、厨余、有害、其他垃圾容器 */
-.flex-wrp-garbage-row{
+.flex-wrp-garbage-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -57,7 +60,7 @@
   margin: 8rpx 20rpx 0 20rpx;
 }
 /* 竖向可回收物、有害垃圾的容器 */
-.flex-wrp-garbage-col-left{
+.flex-wrp-garbage-col-left {
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -65,7 +68,7 @@
   margin: 30rpx 0 0 0;
 }
 /* 竖向厨余、其他垃圾的容器 */
-.flex-wrp-garbage-col-right{
+.flex-wrp-garbage-col-right {
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -73,7 +76,7 @@
   margin: 30rpx 0 0 0;
 }
 /* 可回收物的容器 */
-.garbage-view-recyclable-col{
+.garbage-view-recyclable-col {
   display: flex;
   flex-direction: column;
   width: 322rpx;
@@ -82,10 +85,10 @@
   padding: 20rpx 0 0 20rpx;
   border-radius: 20rpx;
   border-color: rgba(0, 0, 0, 0.65);
-  box-shadow:rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1);
 }
 /* 厨余垃圾的容器 */
-.garbage-view-kitchen-col{
+.garbage-view-kitchen-col {
   display: flex;
   flex-direction: column;
   width: 322rpx;
@@ -94,10 +97,10 @@
   padding: 20rpx 0 0 20rpx;
   border-radius: 10px;
   border-color: rgba(0, 0, 0, 0.65);
-  box-shadow:rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1);
 }
 /* 有害垃圾容器 */
-.garbage-view-harmful-col{
+.garbage-view-harmful-col {
   display: flex;
   flex-direction: column;
   width: 322rpx;
@@ -107,11 +110,11 @@
   padding: 20rpx 0 0 20rpx;
   border-radius: 10px;
   border-color: rgba(0, 0, 0, 0.65);
-  box-shadow:rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1);
 }
 
 /* 其他垃圾容器*/
-.garbage-view-other-col{
+.garbage-view-other-col {
   display: flex;
   flex-direction: column;
   width: 322rpx;
@@ -121,38 +124,38 @@
   padding: 20rpx 0 0 20rpx;
   border-radius: 20rpx;
   border-color: rgba(0, 0, 0, 0.65);
-  box-shadow:rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1);
 }
 /* 垃圾文字与图标的容器 */
-.garbage-view-row{
+.garbage-view-row {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   width: 100%;
   height: 70rpx;
   margin: 0;
   padding: 0;
 }
 /* 垃圾分类文字 */
-.garbage-text{
+.garbage-text {
   font-size: 28rpx;
   left: 20rpx;
   margin: 0 20rpx 0 0;
   color: white;
 }
 /* 可回收物容器 */
-.garbage-img-view{
+.garbage-img-view {
   width: 70rpx;
   height: 70rpx;
   margin: 0 0 0 20rpx;
 }
 /* 可回收物图标 */
-.garbage-img{
+.garbage-img {
   width: 66rpx;
   height: 66rpx;
   padding-left: 80rpx;
 }
 /* 可回收物文字说明样式 */
-.garbage-view{
+.garbage-view {
   margin: 0 0 0 0;
   font-size: 20rpx;
   color: white;
@@ -160,19 +163,19 @@
 }
 
 /* 轮播容器样式 */
-.carousel-view{
+.carousel-view {
   width: 95%;
   height: 248rpx;
   padding: 0 20rpx 0 20rpx;
 }
 /* 轮播图片样式 */
-.carousel-img{
+.carousel-img {
   border-radius: 20rpx;
   width: 100%;
   height: 248rpx;
 }
 /* 全部搜索容器样式 */
-.btn-view-row{
+.btn-view-row {
   display: flex;
   flex-direction: row;
   width: 95%;
@@ -180,7 +183,7 @@
   margin: 60rpx 0 100rpx 0;
 }
 /* 单个搜索容器样式 */
-.btn-view-col{
+.btn-view-col {
   display: flex;
   flex-direction: column;
   width: 25%;
@@ -188,12 +191,83 @@
   justify-content: center;
 }
 /* 搜索类型图标样式 */
-.btn-img{
+.btn-img {
   width: 70rpx;
   height: 70rpx;
 }
 /* 搜索文字样式 */
-.btn-text{
+.btn-text {
   margin: 20rpx 0 0 0;
   color: #989898;
+}
+
+/* 弹窗样式开始 */
+/* 蒙层样式 */
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  /* 浏览器定位 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  /* 透明度 */
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000; /* 层级关系 */
+  color: #fff;
+}
+.modal-clock {
+  display: flex;
+  position: fixed;
+  width: 95%;
+  margin-top: 50%;
+  margin-bottom: 50%;
+  background-color: white;
+  flex-direction: column;
+  border-radius: 40rpx;
+  z-index: 9999; /* 层级关系 */
+}
+.modal-clock .title-view {
+  height: 30rpx;
+}
+.modal-clock .content-view {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+.modal-clock .content-view .content_title {
+  color: #37b958;
+  font-family: "宋体 常规", 宋体, sans-serif;
+  font-size: 40rpx;
+}
+.modal-clock .content-view .content_desc {
+  color: #8c8c8c;
+  font-family: OPPOSans;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  width: 368rpx;
+  text-align: center;
+}
+.modal-clock .content-view .content_image {
+  width: 368rpx;
+  height: 268rpx;
+}
+.modal-clock .foot-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  padding: 30rpx 0;
+}
+.modal-clock .foot-view .clock_go {
+  background-color: rgba(55, 185, 88, 1);
+  width: 368rpx;
+  height: 100rpx;
+  border-radius: 32rpx;
+  font-size: 32rpx;
+  color: white;
+  line-height: 100rpx;
+  text-align: center;
 }

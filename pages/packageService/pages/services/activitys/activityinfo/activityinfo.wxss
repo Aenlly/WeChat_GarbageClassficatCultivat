@@ -3,7 +3,6 @@
 page {
   background-color: white;
 }
-
 /* 底部按钮样式 */
 .footer-view {
   margin: 50rpx 0 0 0;

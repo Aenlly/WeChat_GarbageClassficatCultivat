@@ -2,7 +2,7 @@
 // 获取应用实例
 const app = getApp()
 const recorderManager = wx.getRecorderManager() //全局录音管理器
-
+var date = new Date()
 const options = {
   duration: 60000,//录音时长10秒
   sampleRate: 44100,
@@ -16,26 +16,34 @@ Page({
   data: {
     video_src: 'https://www.bilibili.com/video/BV1ng411F7tE?share_source=copy_web',
     msgList: [{
-        url: "",
-        title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
-      },
-      {
-        url: "",
-        title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
-      }
+      url: "",
+      title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
+    },
+    {
+      url: "",
+      title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
+    }
     ],
     carousel: [{
-        carousel_id: 1,
-        carousel_img: "https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/17b7427b-46bb-4638-9ec9-34910a42a5a3.png"
-      },
-      {
-        carousel_id: 1,
-        carousel_img: "https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/dc48ef62-288a-4947-958c-35c7279cc952.png"
-      }
+      carousel_id: 1,
+      carousel_img: "https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/17b7427b-46bb-4638-9ec9-34910a42a5a3.png"
+    },
+    {
+      carousel_id: 1,
+      carousel_img: "https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/dc48ef62-288a-4947-958c-35c7279cc952.png"
+    }
     ],
     voicesear: "",
-    pictusear:""
+    pictusear: "",
+    isModal: false
   },
+  // 蒙层单击事件
+  hideModal: function (e) {
+    this.setData({
+      isModal: true
+    })
+  },
+
   // 垃圾分类四个框跳转事件
   bindViewTapGarbage: function (e) {
     var garbage = e.currentTarget.dataset.garbage
@@ -44,16 +52,16 @@ Page({
     })
   },
 
-  ClickPictu(){
-    var that=this
+  ClickPictu() {
+    var that = this
     wx.chooseImage({
       count: 1,
-      success(res){
+      success(res) {
         // 因为是子节点直接使用会报错
         that.setData({
-          pictusear:res.tempFilePaths,
+          pictusear: res.tempFilePaths,
         })
-        
+
       }
     })
     console.log(this.data)
@@ -90,6 +98,24 @@ Page({
   },
   // 页面加载事件
   onLoad() {
+    try {
+
+      var oldDate = wx.getStorageSync('clockTime')
+      console.log("132  " + (date.toLocaleDateString() - oldDate.toLocaleDateString()))
+      // 获得本地时间
+      if (oldDate.getDate()) {
+        if (date.toLocaleDateString() - oldDate > 0) {
+          wx.setStorageSync('clockTime', date.toLocaleDateString())
+        } else {
+          this.setData({
+            isModal: true
+          })
+        }
+      }
+    } catch {
+      wx.setStorageSync('clockTime', date.toLocaleDateString())
+    }
+
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true

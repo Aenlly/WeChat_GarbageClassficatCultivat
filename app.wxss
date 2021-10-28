@@ -147,7 +147,7 @@ page {
   color: #9b9b9b;
 }
 /* 时间样式 */
-.time {
+.desc-view .time {
   font-size: 32rpx;
   color: #9b9b9b;
   width: 100%;
@@ -333,7 +333,7 @@ mp-html {
   margin-top: 100rpx;
 }
 /* 倒计时样式 */
-.time {
+.time-view .time {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
