@@ -35,12 +35,11 @@ Page({
     ],
     voicesear: "",
     pictusear: "",
-    isModal: false
   },
   // 蒙层单击事件
   hideModal: function (e) {
     this.setData({
-      isModal: true
+      isModal: false
     })
   },
   // 打卡跳转事件
@@ -119,20 +118,32 @@ Page({
   // 页面加载事件
   onLoad() {
     try {
-      var oldDate = wx.getStorageSync('clockTime')
-      console.log("132  " + (date.toLocaleDateString() - oldDate.toLocaleDateString()))
-      // 获得本地时间
-      if (oldDate.getDate()) {
-        if (date.toLocaleDateString() - oldDate > 0) {
+      var oldDate = Date.parse(new Date(wx.getStorageSync('clockTime')))
+      var newDate = Date.parse(date.toLocaleDateString())
+      // 旧日期存在则继续判断
+      if (oldDate) {
+        // 获得时间差
+        if (newDate - oldDate > 0) {
           wx.setStorageSync('clockTime', date.toLocaleDateString())
-        } else {
           this.setData({
             isModal: true
           })
+        } else {
+          this.setData({
+            isModal: false
+          })
         }
+      } else {
+        wx.setStorageSync('clockTime', date.toLocaleDateString())
+        this.setData({
+          isModal: true
+        })
       }
     } catch {
       wx.setStorageSync('clockTime', date.toLocaleDateString())
+      this.setData({
+        isModal: true
+      })
     }
 
     if (wx.getUserProfile) {

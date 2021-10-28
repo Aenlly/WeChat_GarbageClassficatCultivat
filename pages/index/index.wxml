@@ -133,10 +133,10 @@
     <!-- 识别按钮容器结束 -->
   </view>
   <!-- 弹窗与蒙层开始 -->
-  <view class="modal-mask" hidden="{{isModal}}" bind:tap="hideModal"></view>
+  <view class="modal-mask" wx:if="{{isModal}}" bind:tap="hideModal"></view>
   <!-- 蒙层结束 -->
   <!-- 弹窗开始 -->
-  <view class="modal-clock" hidden="{{isModal}}">
+  <view class="modal-clock" wx:if="{{isModal}}">
     <view class="title-view"></view>
     <view class="content-view">
       <view class="content_title">环保小主，欢迎回来</view>
