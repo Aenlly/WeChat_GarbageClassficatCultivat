@@ -39,7 +39,7 @@
     "showES6CompileOption": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.1",
+  "libVersion": "2.20.1",
   "appid": "wx3985a7db49aca5c0",
   "projectname": "GarbageClassficatCultivat",
   "debugOptions": {

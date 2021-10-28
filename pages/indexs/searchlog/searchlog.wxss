@@ -1,0 +1,47 @@
+/* pages/indexs/searchlog/searchlog.wxss */
+/* 滚动外部容器 */
+.content-view {
+  height: 1370rpx;
+  margin: 20rpx 20rpx 0 20rpx;
+}
+/* 滚动容器 */
+.content-view .scroll-view {
+  background-color: white;
+  height: 100%;
+  border-radius: 20rpx;
+}
+/* 滚动内部容器 */
+.scroll-content-view {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 单个面板卡片样式 */
+.panel-view {
+  display: flex;
+  flex-direction: row;
+  margin: 20rpx;
+  height: 50rpx;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 8px 20rpx rgba(240, 240, 240, 0.6);
+  background-color: white;
+}
+/* 搜索文本样式 */
+.name_view {
+  width: 100%;
+  line-height: 50rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* 搜索类型样式 */
+.type_view {
+  width: 30%;
+  line-height: 50rpx;
+  text-align: right;
+  background-color: #57be6a;
+  text-align: center;
+  border-radius: 20rpx;
+  color: white;
+}

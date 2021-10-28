@@ -6,6 +6,8 @@
     "pages/test/test",
     "pages/logs/logs",
     "pages/indexs/garbage/garbage",
+    "pages/indexs/search/search",
+    "pages/indexs/searchlog/searchlog",
     "pages/mines/integlevels/integlevel/integlevel",
     "pages/mines/integranks/integrank/integrank",
     "pages/mines/integdescs/integdesc/integdesc",

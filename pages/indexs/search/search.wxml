@@ -1,0 +1,25 @@
+<!-- pages/indexs/search/search.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <view class="search-view">
+            <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+        </view>
+        <view class="weui-cells">
+            <view class="weui-cell" wx:for="{{searList}}" wx:key="*this">
+                <view class="weui-cell__bd">{{item.garbageName}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access desc_tag" style="background-color: #52a1dc;" wx:if="{{item.type=='可回收垃圾'}}">
+                    可回收垃圾
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access desc_tag" style="background-color: #36ba57;" wx:elif="{{item.type=='厨余垃圾'}}">
+                    有害垃圾
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access desc_tag" style="background-color: #da504e;" wx:elif="{{item.type=='有害垃圾'}}">
+                    有害垃圾
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access desc_tag" style="background-color: #eea424;" wx:elif="{{item.type=='其他垃圾'}}">
+                    其他垃圾
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

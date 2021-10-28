@@ -43,7 +43,12 @@ Page({
       isModal: true
     })
   },
-
+  // 打卡跳转事件
+  clockGo: function (e) {
+    wx.navigateTo({
+      url: '/pages/packageService/pages/services/pictuclocks/pictuclockadd/pictuclockadd'
+    })
+  },
   // 垃圾分类四个框跳转事件
   bindViewTapGarbage: function (e) {
     var garbage = e.currentTarget.dataset.garbage
@@ -52,7 +57,8 @@ Page({
     })
   },
 
-  ClickPictu() {
+  // 打开用户图库操作
+  clickPictu() {
     var that = this
     wx.chooseImage({
       count: 1,
@@ -61,10 +67,20 @@ Page({
         that.setData({
           pictusear: res.tempFilePaths,
         })
-
+        // 跳转至搜索结果页
+        wx.navigateTo({
+          url: '/pages/indexs/search/search'
+        })
       }
     })
     console.log(this.data)
+  },
+
+  // 文字搜索跳转事件
+  textIdentify: function (e) {
+    wx.navigateTo({
+      url: '/pages/indexs/search/search'
+    })
   },
 
   // 录音长按事件
@@ -91,6 +107,10 @@ Page({
     })
     // 录音开始
     recorderManager.start(options)
+    // 跳转至搜索结果页
+    wx.navigateTo({
+      url: '/pages/indexs/search/search'
+    })
   },
   // 长按结束事件
   stopRecord() {
@@ -99,7 +119,6 @@ Page({
   // 页面加载事件
   onLoad() {
     try {
-
       var oldDate = wx.getStorageSync('clockTime')
       console.log("132  " + (date.toLocaleDateString() - oldDate.toLocaleDateString()))
       // 获得本地时间

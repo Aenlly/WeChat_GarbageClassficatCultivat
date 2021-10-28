@@ -217,6 +217,7 @@ page {
   z-index: 9000; /* 层级关系 */
   color: #fff;
 }
+/* 弹窗容器样式 */
 .modal-clock {
   display: flex;
   position: fixed;
@@ -228,20 +229,29 @@ page {
   border-radius: 40rpx;
   z-index: 9999; /* 层级关系 */
 }
+/* 标题部位样式 */
 .modal-clock .title-view {
   height: 30rpx;
 }
+/* 内容容器样式 */
 .modal-clock .content-view {
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;
 }
+/* 内容标题样式 */
 .modal-clock .content-view .content_title {
   color: #37b958;
   font-family: "宋体 常规", 宋体, sans-serif;
   font-size: 40rpx;
 }
+/* 内容图片样式 */
+.modal-clock .content-view .content_image {
+  width: 368rpx;
+  height: 268rpx;
+}
+/* 内容图片样式 */
 .modal-clock .content-view .content_desc {
   color: #8c8c8c;
   font-family: OPPOSans;
@@ -250,10 +260,7 @@ page {
   width: 368rpx;
   text-align: center;
 }
-.modal-clock .content-view .content_image {
-  width: 368rpx;
-  height: 268rpx;
-}
+/* 弹窗底部容器样式 */
 .modal-clock .foot-view {
   display: flex;
   flex-direction: column;
@@ -261,6 +268,7 @@ page {
   justify-self: center;
   padding: 30rpx 0;
 }
+/* 弹窗底部跳转控件样式 */
 .modal-clock .foot-view .clock_go {
   background-color: rgba(55, 185, 88, 1);
   width: 368rpx;

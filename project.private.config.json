@@ -341,6 +341,36 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "垃圾搜索",
+          "pathName": "pages/indexs/search/search",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "搜索记录",
+          "pathName": "pages/indexs/searchlog/searchlog",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "志愿通知",
+          "pathName": "pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }

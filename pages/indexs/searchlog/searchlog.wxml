@@ -1,0 +1,20 @@
+<!-- pages/indexs/searchlog/searchlog.wxml -->
+<view class="container">
+    <view class="flex-wrp-col">
+        <!-- 搜索容器 -->
+        <view class="search-view">
+            <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+        </view>
+        <view class="content-view">
+            <!-- 滚动容器 -->
+            <scroll-view scroll-y="{{true}}" class="scroll-view">
+                <view class="scroll-content-view">
+                    <view class="panel-view" wx:for="{{searchs}}" wx:key="*this">
+                        <view class="name_view">{{item.searchName}}</view>
+                        <view class="type_view">{{item.searchType}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

@@ -105,17 +105,17 @@
     <!-- 轮播容器结束 -->
     <!-- 识别按钮容器开始 -->
     <view class="btn-view-row">
-      <view class="btn-view-col" bindtap="ClickPictu">
+      <view class="btn-view-col" bindtap="clickPictu">
         <view class="btn-img">
           <image class="btn-img" src="/images/index/pictusear.png"></image>
         </view>
         <view class="btn-text">拍照识别</view>
       </view>
-      <view class="btn-view-col">
+      <view class="btn-view-col" bind:tap="textIdentify">
         <view class="btn-img">
           <image class="btn-img" src="/images/index/textsear.png"></image>
         </view>
-        <view class="btn-text">文字识别</view>
+        <view class="btn-text">文字搜索</view>
       </view>
       <view class="btn-view-col" bindtouchstart="startRecord" bindtouchend="stopRecord">
         <view class="btn-img">
@@ -130,8 +130,12 @@
         <view class="btn-text">搜索记录</view>
       </view>
     </view>
+    <!-- 识别按钮容器结束 -->
   </view>
+  <!-- 弹窗与蒙层开始 -->
   <view class="modal-mask" hidden="{{isModal}}" bind:tap="hideModal"></view>
+  <!-- 蒙层结束 -->
+  <!-- 弹窗开始 -->
   <view class="modal-clock" hidden="{{isModal}}">
     <view class="title-view"></view>
     <view class="content-view">
@@ -140,7 +144,8 @@
       <view class="content_desc">今天还没垃圾分类分享打卡哦，快点去打卡吧！</view>
     </view>
     <view class="foot-view">
-      <view class="clock_go">去打卡</view>
+      <view class="clock_go" bind:tap="clockGo">去打卡</view>
     </view>
   </view>
+  <!-- 弹窗结束 -->
 </view>

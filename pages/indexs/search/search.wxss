@@ -1,0 +1,12 @@
+/* pages/indexs/search/search.wxss */
+/* 结果容器样式 */
+.weui-cells {
+  margin: 0 20rpx;
+  border-radius: 20rpx;
+}
+/* 结果标签样式 */
+.desc_tag {
+  padding: 10rpx;
+  border-radius: 20rpx;
+  color: white;
+}

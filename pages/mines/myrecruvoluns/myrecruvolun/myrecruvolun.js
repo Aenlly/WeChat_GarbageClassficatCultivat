@@ -5,7 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    recuvoluns: [{
+      title: "石室诗士施氏，嗜狮，",
+      content: "石室诗士施氏，嗜狮，誓食十狮。施氏时时适市视狮。十时，适十狮",
+      insert_time: "2018-08-05",
+      isNotice: true
+    }, {
+      title: "石室诗士施氏，嗜狮，",
+      content: "石室诗士施氏，嗜狮，誓食十狮。施氏时时适市视狮。十时，适十狮",
+      insert_time: "2018-08-05",
+      isNotice: true
+    }, {
+      title: "石室诗士施氏，嗜狮，",
+      content: "石室诗士施氏，嗜狮，誓食十狮。施氏时时适市视狮。十时，适十狮",
+      insert_time: "2018-08-05",
+      isNotice: true
+    }, {
+      title: "石室诗士施氏，嗜狮，",
+      content: "石室诗士施氏，嗜狮，誓食十狮。施氏时时适市视狮。十时，适十狮",
+      insert_time: "2018-08-05",
+      isNotice: false
+    }, {
+      title: "石室诗士施氏，石室诗士施氏，嗜狮，嗜狮，",
+      content: "石室诗士施氏，嗜狮，誓食十狮。施氏时时适市视狮。十时，适十狮",
+      insert_time: "2018-08-05",
+      isNotice: false
+    }]
   },
 
   /**
