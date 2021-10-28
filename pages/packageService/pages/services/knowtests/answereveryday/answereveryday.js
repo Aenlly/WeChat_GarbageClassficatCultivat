@@ -12,6 +12,7 @@ Page({
         {
           topic_id: 0,
           topic_name: "1、以下哪个是可回收垃圾？",
+          analysis: "因为塑料瓶属于可再利用",
           option: [{
             option_id: 1,
             option_name: "A、贝壳",
@@ -54,15 +55,16 @@ Page({
     },
     correct: {
       id: 0,
-      background: "#367bf6",
+      background: "#6ac461",
     },
     nocorrect: {
       id: 0,
-      background: "red",
+      background: "#fa5151",
     },
     topic_index: 0,
     option_selet: 0,
     btninfo: {
+      isanalysis: true,
       isbtn: true,
       next_btn: "下一题",
       ischeck: false,
@@ -84,9 +86,9 @@ Page({
       // 选择了选项后同时清除定时器
       clearInterval(_this.data.interval);
       var option_select = e.target.id
+      btninfo.isanalysis = false
       btninfo.isbtn = false
       btninfo.ischeck = true
-      console.log(e)
       // 每一题的get请求
       wx.request({
         url: '', //api地址
@@ -136,17 +138,18 @@ Page({
       topic_index++
       btninfo.isbtn = true
       btninfo.ischeck = false
+      btninfo.isanalysis = true
       _this.setData({
         countdown: 10,
         topic_index: topic_index,
         btninfo: btninfo,
         correct: {
           id: 0,
-          background: "#367bf6",
+          background: "#6ac461",
         },
         nocorrect: {
           id: 0,
-          background: "red",
+          background: "#fa5151",
         },
       })
       _this.startInterval()

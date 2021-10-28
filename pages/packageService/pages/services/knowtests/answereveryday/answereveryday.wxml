@@ -8,6 +8,10 @@
             </view>
         </view>
         <view class="desc-text">第{{topic_index+1}}题，共{{answerveryday.topic.length}}题</view>
+        <view class="analysis" hidden="{{btninfo.isanalysis}}">
+            <view class="title">答案解析：</view>
+            <view class="content">{{answerveryday.topic[topic_index].analysis}}</view>
+        </view>
         <button form-type="submit" class="next_btn" hidden="{{btninfo.isbtn}}" bind:tap="btnClick">
             {{btninfo.next_btn}}
         </button>

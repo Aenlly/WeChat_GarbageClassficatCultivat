@@ -1,1 +1,4 @@
 /* pages/packageService/pages/services/knowtests/classquiz/classquiz.wxss */
+page {
+  background-color: white;
+}

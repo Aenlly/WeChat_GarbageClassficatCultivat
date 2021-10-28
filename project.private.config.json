@@ -311,6 +311,26 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "答题历史",
+          "pathName": "pages/packageService/pages/services/knowtests/testhistory/testhistory",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        },
+        {
+          "name": "分类小考",
+          "pathName": "pages/packageService/pages/services/knowtests/classquiz/classquiz",
+          "query": "",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
         }
       ]
     }
