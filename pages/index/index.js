@@ -106,14 +106,15 @@ Page({
     })
     // 录音开始
     recorderManager.start(options)
-    // 跳转至搜索结果页
-    wx.navigateTo({
-      url: '/pages/indexs/search/search'
-    })
+    
   },
   // 长按结束事件
   stopRecord() {
     recorderManager.stop()
+    // 跳转至搜索结果页
+    wx.navigateTo({
+      url: '/pages/indexs/search/search'
+    })
   },
   // 页面加载事件
   onLoad() {
