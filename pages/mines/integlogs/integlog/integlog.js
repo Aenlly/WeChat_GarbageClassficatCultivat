@@ -5,12 +5,80 @@ Page({
    * 页面的初始数据
    */
   data: {
-    integlog: [{
-      type: "增加",
-      number: "20",
-      desc: "每日答题",
-      insert_time: "2021-05-06 14:29:44"
-    }]
+    tabs: [
+      {
+        title: "增加",
+        integlog: [{
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }, {
+          type: "增加",
+          number: "20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }]
+      },
+      {
+        title: "减少",
+        integlog: [{
+          type: "减少",
+          number: "-20",
+          desc: "每日答题",
+          insert_time: "2021-05-06 14:29:44"
+        }]
+      }
+    ],
+  },
+
+  // 选项卡单击事件
+  onTabClick(e) {
+    const index = e.detail.index
+    this.setData({
+      activeTab: index
+    })
+    console.log(this.data)
   },
 
   /**

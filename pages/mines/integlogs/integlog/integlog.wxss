@@ -2,6 +2,32 @@
 page {
   background-color: white;
 }
+.flex-wrp-col {
+  padding-top: 20rpx;
+}
+/* 选项卡宽度 */
+mp-tabs {
+  width: 100%;
+}
+/* 头部样式 */
+.tab-class {
+  height: 50rpx;
+  margin: 0 150rpx;
+  text-align: center;
+  border-bottom: rgba(250, 250, 250, 1) 2rpx solid;
+}
+/* 横向滚动容器 */
+.swiper-class {
+  height: 1390rpx;
+}
+/* tab内容容器 */
+.tab-content {
+  height: 1390rpx;
+}
+/* 纵向滚动容器 */
+.scroll-view {
+  height: 100%;
+}
 .text-title .title {
   width: 600rpx;
 }

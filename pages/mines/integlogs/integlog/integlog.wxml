@@ -1,25 +1,37 @@
 <!-- pages/mines/integlog/integlog.wxml -->
 <view class="container">
     <view class="flex-wrp-col">
-        <!-- 内容容器 -->
-        <view class="content-view">
-            <!-- 卡片栏 -->
-            <block wx:for="{{integlog}}">
-                <view class="panel" wx:key="{{index}}" bindtap="onClickUrl" wx:for-index="index" data-index="{{index}}">
-                    <view class="text-title">
-                        <view class="title weui-media-box__title">积分变动：{{item.number}}</view>
-                        <view class="tag">
-                            <text>{{item.type}}</text>
+        <mp-tabs tabs="{{tabs}}" swiper-class="swiper-class" activeTab="{{activeTab}}" tab-class="tab-class" tab-active-text-color="#1e90ff" tab-inactive-text-color="#909399" tab-underline-color="#096dd9" bindtabclick="onTabClick">
+            <block wx:for="{{tabs}}" wx:key="title">
+                <!-- 纵向滚动容器 -->
+                <view class="tab-content" slot="tab-content-{{index}}">
+                    <scroll-view scroll-y="{{true}}" class="scroll-view">
+                        <!-- 内容容器 -->
+                        <view class="content-view">
+                            <!-- 卡片栏 -->
+                            <block wx:for="{{item.integlog}}" wx:key="*this">
+                                <view class="panel" wx:key="{{index}}" wx:for-index="index" data-index="{{index}}">
+                                    <view class="text-title">
+                                        <view class="title weui-media-box__title">
+                                            {{item.desc}}：{{item.number}}
+                                        </view>
+                                        <view class="tag">
+                                            <text>{{item.type}}</text>
+                                        </view>
+                                    </view>
+                                    <view class="text-content weui-media-box__info">
+                                        <view class="weui-media-box__info__meta">
+                                            {{item.insert_time}}
+                                        </view>
+                                    </view>
+                                </view>
+                            </block>
+                            <!-- 卡片结束 -->
                         </view>
-                    </view>
-                    <view class="text-content weui-media-box__desc">{{item.desc}}</view>
-                    <view class="text-content weui-media-box__info">
-                        <view class="weui-media-box__info__meta">{{item.insert_time}}</view>
-                    </view>
+                        <!-- 内容栏结束 -->
+                    </scroll-view>
                 </view>
             </block>
-            <!-- 卡片结束 -->
-        </view>
-        <!-- 内容栏结束 -->
+        </mp-tabs>
     </view>
 </view>
