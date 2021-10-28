@@ -1,4 +1,7 @@
 /* pages/services/pictuclock/pictuclock.wxss */
+page {
+  background-color: white;
+}
 /* 面板样式 */
 .weui-panel__bd {
   border-radius: 10rpx;

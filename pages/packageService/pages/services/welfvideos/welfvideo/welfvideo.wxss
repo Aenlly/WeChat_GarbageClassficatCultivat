@@ -1,5 +1,5 @@
 /* pages/services/welfvideo/welfvideo.wxss */
-.container {
+page {
   background-color: white;
 }
 .weui-media-box__thumb {

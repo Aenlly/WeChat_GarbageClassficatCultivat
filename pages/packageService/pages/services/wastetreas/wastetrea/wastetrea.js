@@ -1,5 +1,5 @@
 // pages/services/wastetrea/wastetrea.js
-Page({ 
+Page({
 
   /**
    * 页面的初始数据
@@ -66,6 +66,24 @@ Page({
   // 选择搜索结果事件
   selectResult: function (e) {
     console.log('select result', e.detail)
+  },
+  // 我的事件跳转
+  clickMy: function () {
+    wx.navigateTo({
+      url: '/pages/packageService/pages/services/wastetreas/wastetreamy/wastetreamy'
+    })
+  },
+  // 发布事件跳转
+  clickPublish: function () {
+    wx.navigateTo({
+      url: '/pages/packageService/pages/services/wastetreas/wastetreapublish/wastetreapublish'
+    })
+  },
+  // 我的收藏事件跳转
+  clickCollect: function () {
+    wx.navigateTo({
+      url: '/pages/packageService/pages/services/wastetreas/wastetreacollect/wastetreacollect'
+    })
   },
   /**
    * 生命周期函数--监听页面加载

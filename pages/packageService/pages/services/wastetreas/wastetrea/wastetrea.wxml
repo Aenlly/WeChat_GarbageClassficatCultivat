@@ -42,18 +42,20 @@
             <!-- 选项卡结束 -->
         </view>
         <!-- 选项卡容器结束 -->
+        <!-- 底部按钮容器开始 -->
         <view class="footer">
             <view class="footer-flex">
-                <view>
+                <view bind:tap="clickMy">
                     <image src="/images/service/waste/wastemy.png" />
                 </view>
-                <view>
+                <view bind:tap="clickPublish">
                     <image src="/images/service/waste/wastepublish.png" />
                 </view>
-                <view>
+                <view bind:tap="clickCollect">
                     <image src="/images/service/waste/wastecollect.png" />
                 </view>
             </view>
         </view>
+        <!-- 底部按钮容器结束 -->
     </view>
 </view>

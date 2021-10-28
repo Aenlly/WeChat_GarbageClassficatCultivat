@@ -1,10 +1,9 @@
 /* pages/services/collect/collect.wxss */
-.container {
+page {
   background-color: white;
 }
 .content-view {
   padding: 0 20rpx;
-  background-color: white;
 }
 .text-title .title {
   width: 600rpx;

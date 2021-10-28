@@ -124,7 +124,7 @@
         },
         {
           "name": "我的收藏",
-          "pathName": "pages/services/collects/collect/collect",
+          "pathName": "pages/packageService/pages/services/collects/collect/collect",
           "query": "",
           "scene": null,
           "partialCompile": {
@@ -174,7 +174,7 @@
         },
         {
           "name": "变废为宝(发布)",
-          "pathName": "pages/services/wastetreas/wastetreapublish/wastetreapublish",
+          "pathName": "pages/packageService/pages/services/wastetreas/wastetreapublish/wastetreapublish",
           "query": "",
           "scene": null,
           "partialCompile": {
