@@ -8,9 +8,9 @@ Page({
     row: {
       0: {
         game: {
-          imgurl: "/images/service/game.png",
-          text: "游戏专区",
-          activity: "/pages/packageService/pages/services/games/game/game"
+          // imgurl: "/images/service/game.png",
+          // text: "游戏专区",
+          // activity: "/pages/packageService/pages/services/games/game/game"
         },
         wiki: {
           imgurl: "/images/service/wiki.png",
@@ -23,7 +23,7 @@ Page({
           activity: "/pages/packageService/pages/services/knowtests/knowtest/knowtest"
         }
       },
-      1: {
+      /*1: {
         game: {
           imgurl: "/images/service/pictuclock.png",
           text: "拍照打卡",
@@ -39,7 +39,7 @@ Page({
           text: "志愿招募",
           activity: "/pages/packageService/pages/services/activitys/activity/activity"
         }
-      },
+      },*/
       2: {
         game: {
           imgurl: "/images/service/wastetrea.png",

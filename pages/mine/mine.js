@@ -28,13 +28,13 @@ Page({
       }
     },
     bottomInfo: {
-      myhome: {
-        imgurl: "/images/mine/myhome.png",
-        text: "我的家",
-        activity: "/pages/mines/myhomes/myhome/myhome",
-        isnotice: false,
-        count: 0
-      },
+      // myhome: {
+      //   imgurl: "/images/mine/myhome.png",
+      //   text: "我的家",
+      //   activity: "/pages/mines/myhomes/myhome/myhome",
+      //   isnotice: false,
+      //   count: 0
+      // },
       myorder: {
         imgurl: "/images/mine/myorder.png",
         text: "我的订单",
@@ -42,13 +42,13 @@ Page({
         isnotice: false,
         count: 0
       },
-      myrecruvolun: {
-        imgurl: "/images/mine/myrecruvolun.png",
-        text: "志愿通知",
-        activity: "/pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun",
-        isnotice: true,
-        count: 5
-      },
+      // myrecruvolun: {
+      //   imgurl: "/images/mine/myrecruvolun.png",
+      //   text: "志愿通知",
+      //   activity: "/pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun",
+      //   isnotice: true,
+      //   count: 5
+      // },
       mycollect: {
         imgurl: "/images/mine/mycollect.png",
         text: "我的收藏",

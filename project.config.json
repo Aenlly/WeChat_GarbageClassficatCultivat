@@ -22,9 +22,9 @@
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": false,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -41,7 +41,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.20.1",
   "appid": "wx3985a7db49aca5c0",
-  "projectname": "GarbageClassficatCultivat",
+  "projectname": "RefuseClassificationCultivate",
   "debugOptions": {
     "hidedInDevtools": []
   },
