@@ -8,14 +8,14 @@
     <scroll-view scroll-y="{{true}}" style="height: 1280rpx;">
       <view class="weui-panel__bd">
         <!-- 数据 -->
-        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{wiki}}"
-          wx:for-index="index" bindtap="onClicktapNav" wx:key="*this" data-id="{{item.wiki_id}}">
+        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{hotInfo}}"
+          wx:for-index="index" bindtap="onClicktapNav" wx:key="*this" data-id="{{item.hotInfoId}}">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="{{item.imgurl}}" />
+            <image class="weui-media-box__thumb" src="{{API_RES_URL}}{{item.imgUrl}}" />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">{{item.wiki_title}}</view>
-            <view class="weui-media-box__desc">{{item.wiki_context}}</view>
+            <view class="weui-media-box__title">{{item.hotInfoTitle}}</view>
+            <view class="weui-media-box__desc">{{item.hotInfoDesc}}</view>
           </view>
         </view>
       </view>

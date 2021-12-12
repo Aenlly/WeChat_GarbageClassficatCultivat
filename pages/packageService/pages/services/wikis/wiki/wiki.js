@@ -1,69 +1,16 @@
 // pages/services/wiki/wiki.js
+const app=getApp()
+//获得请求地址
+const API_URL=app.globalData.API_URL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    wiki: [{
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
-    },
-    {
-      wiki_id: 0,
-      wiki_title: "标题一",
-      wiki_context: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-      imgurl: "/images/index/textsear.png"
+    //资源请求地址
+    API_RES_URL:getApp().globalData.API_RES_URL,
+    hotInfo: [{
     }
     ]
   },
@@ -75,32 +22,65 @@ Page({
   },
   // 搜索事件
   search: function (value) {
+    var that=this
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.setData({
-          is_sear: true
+        wx.request({
+          url: API_URL+'/hot-info-user-view/getByTitle',
+          data:{
+            title: value
+          },
+          success(res){
+            var data=res.data
+            console.log(data)
+            that.setData({
+              is_sear: true,
+            })
+            //增加text字段，用于显示
+            for(let i=0;i<data.data.length;i++){
+              data.data[i].text=data.data[i].hotInfoTitle
+            }
+            //搜索结果显示
+            resolve(data.data)
+          }
         })
-        resolve([{ text: '标题', wiki_id: 1, index: 3 }])
+        
       }, 500)
     })
   },
   // 选择搜索结果事件
   selectResult: function (e) {
-    console.log('select result', e.detail)
+    wx.navigateTo({
+      url: '/pages/packageService/pages/services/wikis/wikiinfo/wikiinfo?id='+e.detail.item.hotInfoId,
+    })
   },
   //跳转详情事件
   onClicktapNav:function(e){
     wx.navigateTo({
-      url: '/pages/packageService/pages/services/wikis/wikiinfo/wikiinfo?wiki_id='+e.currentTarget.dataset.id,
+      url: '/pages/packageService/pages/services/wikis/wikiinfo/wikiinfo?id='+e.currentTarget.dataset.id,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      search: this.search.bind(this),
-      is_sear: false
+    var that=this
+    wx.request({
+      url: API_URL+'/hot-info-user-view/get',
+      success(res){
+        let data=res.data
+        if(data.code==200){
+          that.setData({
+            hotInfo:data.data,
+            search: that.search.bind(this),
+            is_sear: false
+          })
+        }else{
+          wx.showToast({
+            title: '请求数据失败',
+          })
+        }
+      }
     })
   },
 
