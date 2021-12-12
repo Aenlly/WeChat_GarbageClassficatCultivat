@@ -20,7 +20,8 @@
     "pages/mines/mycontributes/mycontributes/mycontributes",
     "pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun",
     "pages/mines/myrecruvoluns/myrecruvoluns/myrecruvoluns",
-    "pages/mines/myabouts/myabout/myabout"
+    "pages/mines/myabouts/myabout/myabout",
+    "pages/webView/webView"
   ],
   "subPackages": [
     {
@@ -84,6 +85,5 @@
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
-
   "sitemapLocation": "sitemap.json"
 }

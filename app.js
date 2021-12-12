@@ -5,6 +5,8 @@ App({
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    const userId=wx.getStorageSync('userId') || []
+    this.globalData.userId=userId
     // 登录
     wx.login({
       success: res => {
@@ -13,6 +15,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    API_URL:"http://localhost:8002",//接口请求地址
+    API_RES_URL:"http://localhost:8004",//资源请求地址
+    userInfo: null,
+    userId: null
   }
 })
