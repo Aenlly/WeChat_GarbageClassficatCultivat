@@ -16,14 +16,14 @@
       <!-- 积分头衔容器 -->
       <view class="body-integ" bind:tap="onClickNavlevel">
         <view class="body-integ-row">
-          <view class="body-integ-title">头衔:{{mine.integ_title}}</view>
+          <view class="body-integ-title">头衔:{{userInfo.points.pointsName}}</view>
           <view class="integarrow-view-img">
             <image class="integarrow-img" src="/images/mine/integarrow.png"></image>
           </view>
         </view>
         <view class="bottom-integ-row">
           <view class="bottom-integ-text">当前积分：</view>
-          <view class="bottom-integ-number">{{mine.integ_number}}积分</view>
+          <view class="bottom-integ-number">{{userInfo.accumulativePoints}}积分</view>
         </view>
       </view>
       <!-- 积分头衔容器结束 -->

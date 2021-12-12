@@ -1,6 +1,7 @@
 // pages/mine/mine.js
+const API_URL=getApp().globalData.API_URL;
 Page({
-
+  
   /**
    * 页面的初始数据
    */
@@ -35,6 +36,13 @@ Page({
       //   isnotice: false,
       //   count: 0
       // },
+      myhome: {
+        imgurl: "/images/mine/myhome.png",
+        text: "每日签到",
+        activity: "/pages/mines/myhomes/myhome/myhome",
+        isnotice: false,
+        count: 0
+      },
       myorder: {
         imgurl: "/images/mine/myorder.png",
         text: "我的订单",
@@ -64,13 +72,13 @@ Page({
         count: 0
       }
     },
-    mine: {
-      integ_title: "无",
-      integ_number: 0,
-    },
     userInfo: {
       avatarUrl: "/images/mine/headprictu.png",
-      nickName: "未登录，点击头像授权"
+      nickName: "未登录，点击头像授权",
+      accumulativePoints:0,
+      points:{
+        pointsName: "无"
+      }
     },
     hasUserInfo: false
   },
@@ -94,7 +102,11 @@ Page({
         this.setData({
           userInfo: {
             avatarUrl: "/images/mine/headprictu.png",
-            nickName: "未登录，点击头像授权"
+            nickName: "未登录，点击头像授权",
+            accumulativePoints:0,
+            points:{
+              pointsName: "无"
+            }
           },
           hasUserInfo: false
         })
@@ -104,6 +116,8 @@ Page({
       }
     })
   },
+
+  //登录事件
   onClickLogin(e) {
     var that = this
     if (!that.data.hasUserInfo) {
@@ -113,34 +127,59 @@ Page({
       wx.getUserProfile({
         desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
         success: (res) => {
-          that.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-          wx.setStorage({
-            key: "userInfo",
-            data: res.userInfo
-          })
-          wx.setStorage({
-            key: "hasUserInfo",
-            data: true
-          })
+          let info=res.userInfo
           wx.login({
             success(res) {
               if (res.code) {
                 //发起网络请求
                 wx.request({
-                  url: '', //服务器地址
+                  url: API_URL+'/login', //服务器地址
                   data: {
-                    code: res.code
+                    code: res.code,
+                    nickName: info.nickName,
+                    avatarUrl: info.avatarUrl
+                  },success(res){
+                    //判断是否登录成功
+                    if(res.data.code==200){
+                    that.setData({
+                      userInfo: res.data.data,
+                      hasUserInfo: true
+                    })
+                    //存储用户信息
+                    wx.setStorage({
+                      key: "userInfo",
+                      data: res.data.data
+                    })
+                    //存储用户标识
+                    wx.setStorage({
+                      key: "userId",
+                      data: res.data.data.userId
+                    })
+                    //登录状态
+                    wx.setStorage({
+                      key: "hasUserInfo",
+                      data: true
+                    })
+                    wx.showToast({
+                      title: '登录成功！',
+                      duration: 1000
+                    })
+                  }else{
+                    wx.showToast({
+                      title: '登录失败！',
+                      duration: 1000
+                    })
+                  }
                   }
                 })
               } else {
-                console.log('登录失败！' + res.errMsg)
+                wx.showToast({
+                  title: '登录失败！',
+                  duration: 1000
+                })
               }
             }
           })
-          console.log(res)
         }
       })
     }
