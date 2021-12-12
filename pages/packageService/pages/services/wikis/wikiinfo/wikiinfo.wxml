@@ -1,14 +1,36 @@
 <!-- pages/services/wikis/wikis/wikis.wxml -->
 <view class="container">
     <view class="flex-wrp-col">
-        <view class="flex-col">
-            <view class="text_title">{{wiki.wiki_title}}</view>
-            <view class="text_time">发布时间：{{wiki.time}}</view>
-            <scroll-view class="scroll-view-context" scroll-y="{{true}}">
-                <view class="text_content">
-                    <mp-html content="{{wiki.wiki_context}}"></mp-html>
+        <view class="top-view">
+            <view class="title-view">{{hotInfo.hotInfoTitle}}</view>
+            <view class="desc-view">
+                <view class="left-view">
+                    <!-- 点赞容器开始 -->
+                    <view bindtap="onClickGiveCollectShare" id="isLike" class="give-view">
+                        <image hidden="{{isLike}}" src="/images/service/give_off.png" />
+                        <image hidden="{{!isLike}}" src="/images/service/give_on.png" />
+                        <text>{{likeCount}}</text>
+                    </view>
+                    <!-- 点赞容器结束 -->
+                    <!-- 收藏容器开始 -->
+                    <view bindtap="onClickGiveCollectShare" id="isCollect" class="collect-view">
+                        <image hidden="{{collect.iscollect}}" src="/images/service/collect_off.png" />
+                        <image hidden="{{!collect.iscollect}}" src="/images/service/collect_on.png" />
+                        <text>{{collect.count}}</text>
+                    </view>
+                    <!-- 收藏容器开始 -->
+                </view>
+                <view class="time">{{hotInfo.releaseTime}}</view>
+            </view>
+        </view>
+        <!-- 内容容器开始 -->
+        <view class="content-view">
+            <scroll-view class="scroll-view" scroll-y="{{true}}">
+                <view>
+                    <mp-html content="{{hotInfo.hotInfoText}}"></mp-html>
                 </view>
             </scroll-view>
         </view>
+        <!-- 内容容器结束 -->
     </view>
 </view>

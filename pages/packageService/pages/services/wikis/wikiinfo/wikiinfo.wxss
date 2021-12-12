@@ -1,5 +1,8 @@
 /* pages/services/wikis/wikis/wikis.wxss */
 /* 容器 */
+page {
+  background-color: white;
+}
 .flex-col {
   margin: 32rpx 32rpx 120rpx 32rpx;
   background-color: white;
