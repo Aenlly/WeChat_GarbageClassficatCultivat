@@ -1,55 +1,62 @@
 // pages/indexs/garbage/garbage.js
+const app=getApp()
+//获得请求地址
+const API_URL=app.globalData.API_URL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    garbage:{
-      garbage_id:0,
-      video_url:"",
-      title_cn:"可回收物",
-      title_en:"Recycloble",
-      ico_img:"/images/index/recyclable.png",
-      text_desc:"事宜回收可循环利用的生活废弃物。",
-      text_context:"可回收物：投放可回收物时，应尽量保持清洁干燥，避免污染;立体包装应清空内容物，情节后压扁投放;易破损或有尖锐边角的应包后投放。",
-      background_color:"#50a2de",
-      garbage_list:{
-        0:[{img_url:"/images/index/garbage/newspaper.png",text:"报纸"},
-        {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-        {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-        {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-        {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      ],
-      1:[{img_url:"/images/index/garbage/newspaper.png",text:"报纸"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},],
-      2:[{img_url:"/images/index/garbage/newspaper.png",text:"报纸"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},],
-      3:[{img_url:"/images/index/garbage/newspaper.png",text:"报纸"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},],
-      4:[{img_url:"/images/index/garbage/newspaper.png",text:"报纸"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},
-      {img_url:"/images/index/garbage/papertape.png",text:"纸盒"},]
-    }
-    }
+    //资源请求地址
+    API_RES_URL:getApp().globalData.API_RES_URL,
+    garbage:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this
+    wx.request({
+      url: API_URL+'/garbage/getByType',
+      data:{
+        garbageType: options.garbageType
+      },
+      success(res){
+        let data=res.data
+        //判断请求是否成功
+        if(data.code==200){
+          //转换垃圾信息列表数据，变为4个一集合
+          var garbageList=data.data.garbageLists
+          let list=[]
+          let list2=[]
+          for(let i=0,j=0;i<garbageList.length;i++){
+            list2[j]=garbageList[i]
+            if(j==3){
+              list[i/4]=list2
+              continue
+            }else if(i==garbageList.length-1){
+              list[i%4]=list2
+              console.log(list2)
+            }
+            j++
+          }
+          //重新赋值
+          data.data.garbageLists=list
+          //设置数据
+          that.setData({
+            garbage:data.data
+          })
 
+        }else{
+          //错误提示
+          wx.showToast({
+            title: '数据请求失败',
+          })
+        }
+      }
+    })
   },
 
   /**

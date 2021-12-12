@@ -1,20 +1,20 @@
 <!--pages/indexs/garbage/garbage.wxml-->
 <view class="container">
   <view class="flex-wrp-col">
-    <view class="top-garbage" style="background-color: {{garbage.background_color}};">
-      <video class="flex-wrp-video" model:src="{{garbage.video_url}}"></video>
+    <view class="top-garbage" style="background-color: {{garbage.bgColor}};">
+      <video class="flex-wrp-video" model:src="{{API_RES_URL}}{{garbage.videoUrl}}"></video>
       <view>
-        <view class="top-middle-text-title_cn">{{garbage.title_cn}}</view>
-        <view class="top-middle-text-title_en">{{garbage.title_en}}</view>
-        <image class="top-middle-img" model:src="{{garbage.ico_img}}"></image>
-        <view class="top-middle-text-desc">{{garbage.text_desc}}</view>
-        <view class="top-middle-text-context">{{garbage.text_context}}</view>
+        <view class="top-middle-text-title_cn">{{garbage.nameCn}}</view>
+        <view class="top-middle-text-title_en">{{garbage.nameEn}}</view>
+        <image class="top-middle-img" model:src="{{API_RES_URL}}{{garbage.imgUrl}}"></image>
+        <view class="top-middle-text-desc">{{garbage.textTitle}}</view>
+        <view class="top-middle-text-context">{{garbage.textDesc}}</view>
       </view>
       <view class="bottom-garbage-col" >
-        <view class="bottom-garbage-row"wx:for="{{garbage.garbage_list}}" wx:key="*this">
+        <view class="bottom-garbage-row"wx:for="{{garbage.garbageLists}}" wx:key="*this">
           <view class="garbage-col" wx:for="{{item}}" wx:key="*this">
-            <image class="garbage-img" model:src="{{item.img_url}}"></image>
-            <view class="garbage-text">{{item.text}}</view>
+            <image class="garbage-img" model:src="{{API_RES_URL}}{{item.imgUrl}}"></image>
+            <view class="garbage-text">{{item.garbageName}}</view>
           </view>
         </view>
       </view>
