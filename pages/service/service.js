@@ -6,11 +6,12 @@ Page({
    */
   data: {
     row: {
+      /*
       0: {
         game: {
-          // imgurl: "/images/service/game.png",
-          // text: "游戏专区",
-          // activity: "/pages/packageService/pages/services/games/game/game"
+          imgurl: "/images/service/game.png",
+          text: "游戏专区",
+          activity: "/pages/packageService/pages/services/games/game/game"
         },
         wiki: {
           imgurl: "/images/service/wiki.png",
@@ -23,7 +24,7 @@ Page({
           activity: "/pages/packageService/pages/services/knowtests/knowtest/knowtest"
         }
       },
-      /*1: {
+      1: {
         game: {
           imgurl: "/images/service/pictuclock.png",
           text: "拍照打卡",
@@ -56,7 +57,24 @@ Page({
           text: "我的收藏",
           activity: "/pages/packageService/pages/services/collects/collect/collect"
         }
-      }
+      },
+      3: {
+        wiki: {
+          imgurl: "/images/service/wiki.png",
+          text: "热门资讯",
+          activity: "/pages/packageService/pages/services/wikis/wiki/wiki"
+        },
+        knowtest: {
+          imgurl: "/images/service/knowtest.png",
+          text: "知识测验",
+          activity: "/pages/packageService/pages/services/knowtests/knowtest/knowtest"
+        },
+        game: {
+          // imgurl: "/images/service/game.png",
+          // text: "游戏专区",
+          // activity: "/pages/packageService/pages/services/games/game/game"
+        },
+      },
     },
   },
 

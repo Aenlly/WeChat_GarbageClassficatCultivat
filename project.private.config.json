@@ -54,18 +54,14 @@
         },
         {
           "name": "热门资讯",
-          "pathName": "pages/services/wikis/wiki/wiki",
+          "pathName": "pages/packageService/pages/services/wikis/wiki/wiki",
           "query": "",
-          "scene": null,
-          "partialCompile": {
-            "enabled": true,
-            "pages": []
-          }
+          "scene": null
         },
         {
-          "name": "热门资讯详情页",
-          "pathName": "pages/services/wikis/wikiinfo/wikiinfo",
-          "query": "",
+          "name": "资讯详情",
+          "pathName": "pages/packageService/pages/services/wikis/wikiinfo/wikiinfo",
+          "query": "id=2",
           "scene": null,
           "partialCompile": {
             "enabled": true,
@@ -184,7 +180,7 @@
         },
         {
           "name": "政策宣传",
-          "pathName": "pages/services/policydocs/policydoc/policydoc",
+          "pathName": "pages/packageService/pages/services/policydocs/policydoc/policydoc",
           "query": "",
           "scene": null,
           "partialCompile": {
