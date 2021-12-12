@@ -11,10 +11,13 @@ const options = {
   format: 'mp3',//格式
   frameSize: 500 //帧大小，单位kb
 }
-
+//获得请求地址
+const API_URL=app.globalData.API_URL;
 Page({
   data: {
-    video_src: 'https://www.bilibili.com/video/BV1ng411F7tE?share_source=copy_web',
+    //资源请求地址
+    API_RES_URL:getApp().globalData.API_RES_URL,
+    video_url: '',
     msgList: [{
       url: "",
       title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
@@ -24,15 +27,7 @@ Page({
       title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
     }
     ],
-    carousel: [{
-      carousel_id: 1,
-      carousel_img: "https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/17b7427b-46bb-4638-9ec9-34910a42a5a3.png"
-    },
-    {
-      carousel_id: 1,
-      carousel_img: "https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/dc48ef62-288a-4947-958c-35c7279cc952.png"
-    }
-    ],
+    carousel: [],
     voicesear: "",
     pictusear: "",
   },
@@ -52,7 +47,7 @@ Page({
   bindViewTapGarbage: function (e) {
     var garbage = e.currentTarget.dataset.garbage
     wx.navigateTo({
-      url: '/pages/indexs/garbage/garbage?garbage=' + garbage
+      url: '/pages/indexs/garbage/garbage?garbageType=' + garbage
     })
   },
 
@@ -116,8 +111,56 @@ Page({
       url: '/pages/indexs/search/search'
     })
   },
+  /**
+   * 外部链接跳转
+   * @param {*} e  
+   */
+  clickToWeb:function(e){
+    var url = e.currentTarget.dataset.url
+    wx.navigateTo({
+      url: '/pages/webView/webView?url=' + url
+    })
+  },
+
+  /**
+   * 请求轮播图列表信息
+   */
+  getCarouselList:function(){
+    var that=this
+    wx.request({
+      url: API_URL+'/carousel-user-view/get',
+      success(res){
+        let data=res.data
+        if(data.code==200){
+          that.setData({
+            carousel:data.data
+          })
+        }
+      }
+    })
+  },
+  /**
+   * 获得首页视频
+   */
+  getByChekTop:function(){
+    var that=this
+    wx.request({
+      url: API_URL+'/video/getByChekTop',
+      success(res){
+        let data=res.data
+        if(data.code==200){
+          console.log(data)
+          that.setData({
+            video_url:data.data.videoUrl
+          })
+        }
+      }
+    }) 
+  },
   // 页面加载事件
   onLoad() {
+    this.getCarouselList()
+    this.getByChekTop()
     try {
       var oldDate = Date.parse(new Date(wx.getStorageSync('clockTime')))
       var newDate = Date.parse(date.toLocaleDateString())
@@ -153,6 +196,7 @@ Page({
       })
     }
   }
+
   // getUserProfile(e) {
   //   // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
   //   wx.getUserProfile({
