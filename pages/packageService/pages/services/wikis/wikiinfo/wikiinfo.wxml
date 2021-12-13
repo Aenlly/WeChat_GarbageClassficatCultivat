@@ -14,9 +14,9 @@
                     <!-- 点赞容器结束 -->
                     <!-- 收藏容器开始 -->
                     <view bindtap="onClickGiveCollectShare" id="isCollect" class="collect-view">
-                        <image hidden="{{collect.iscollect}}" src="/images/service/collect_off.png" />
-                        <image hidden="{{!collect.iscollect}}" src="/images/service/collect_on.png" />
-                        <text>{{collect.count}}</text>
+                        <image hidden="{{isCollect}}" src="/images/service/collect_off.png" />
+                        <image hidden="{{!isCollect}}" src="/images/service/collect_on.png" />
+                        <text>{{collectCount}}</text>
                     </view>
                     <!-- 收藏容器开始 -->
                 </view>
