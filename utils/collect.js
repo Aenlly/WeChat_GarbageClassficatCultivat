@@ -1,28 +1,21 @@
 const app = getApp()
 //获得请求地址
 const API_URL = app.globalData.API_URL;
-let isResult = false
-let result = 0
-/**异步方法函数需要进行回调 */
+var isResult = false
+var result = 0
+
 /**
- * 执行收藏
- * @param {传递参数} hotInfo 
+ * 进行收藏
+ * @param {*传递数据} dataInfo 
  */
-function collectClick(hotInfo) {
+function collectClick(dataInfo) {
   return new Promise((resolve) => {
     wx.request({
       url: API_URL + '/collect-entity/createCollect',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      data: {
-        userId: app.globalData.userId,
-        entityName: "热门资讯",
-        dataId: hotInfo.hotInfoId,
-        imgUrl: hotInfo.imgUrl,
-        dataTitle: hotInfo.hotInfoTitle,
-        dataDesc: hotInfo.hotInfoDesc
-      },
+      data: dataInfo,
       method: "POST",
       success(res) {
         let data = res.data
@@ -37,12 +30,13 @@ function collectClick(hotInfo) {
 
 /**
  * 取消点赞
- * @param {*传递参数} hotInfo 
+ * @param {*实体名称} entityName 
+ * @param {*数据id} id 
  */
-function collectCancel(hotInfo) {
+function collectCancel(entityName,id) {
   return new Promise((resolve) => {
     wx.request({
-      url: API_URL + '/collect-entity/collectCancel/' + app.globalData.userId + '/热门资讯/' + hotInfo.hotInfoId,
+      url: API_URL + '/collect-entity/collectCancel/' + app.globalData.userId + '/'+entityName+'/' + id,
       method: "DELETE",
       success(res) {
         let data = res.data
@@ -57,14 +51,15 @@ function collectCancel(hotInfo) {
 
 /**
  * 获得收藏数据量
- * @param {*} id 数据id
+ * @param {*实体名称} entityName 
+ * @param {*数据id} id 
  */
-function getCollectCountByDataId(id) {
+async function getCollectCountByDataId(entityName,id) {
   return new Promise((resolve) => {
     wx.request({
       url: API_URL + '/collect-entity/getCountByDataId',
       data: {
-        entityName: "热门资讯",
+        entityName: entityName,
         dataId: id
       },
       success(res) {
@@ -74,19 +69,22 @@ function getCollectCountByDataId(id) {
         }
         resolve(result)
       }
-
     })
   })
 }
 
-//判断当前用户是否收藏
-function getIsCollectByUserId(id) {
+/**
+ * 判断当前用户是否收藏
+ * @param {*实体名称} entityName 
+ * @param {*数据id} id 
+ */
+async function getIsCollectByUserId(entityName,id) {
   return new Promise((resolve) => {
-    wx.request({
+  wx.request({
       url: API_URL + '/collect-entity/getIsByUserId',
       data: {
         userId: app.globalData.userId,
-        entityName: "热门资讯",
+        entityName: entityName,
         dataId: id
       },
       success(res) {
@@ -100,53 +98,9 @@ function getIsCollectByUserId(id) {
   })
 }
 
-/**
- * 收藏
- * @param {*数据信息} hotInfo 
- */
-function Click(hotInfo){
-  collectClick(hotInfo).then((value)=>{
-    isResult=value
-  })
-  return isResult
-}
-
-/**
- * 取消收藏
- * @param {*数据信息} hotInfo 
- */
-function Cancel(hotInfo){
-  collectCancel(hotInfo).then((value)=>{
-    isResult=value
-  })
-  return isResult
-}
-
-/**
- * 判断是否收藏过
- * @param {*数据id} id 
- */
-function getByUserId(id){
-  getIsCollectByUserId(id).then((value)=>{
-    isResult=value
-  })
-  return isResult
-}
-
-/**
- * 获得收藏量
- * @param {*数据id} id 
- */
-function getCountByDataId(id){
-  getCollectCountByDataId(id).then((value)=>{
-    result=value
-  })
-  return result
-}
-
 module.exports = {
-  collectClick: Click,
-  collectCancel: Cancel,
-  getCollectCountByDataId: getCountByDataId,
-  getIsCollectByUserId: getByUserId
+  collectClick: collectClick,
+  collectCancel: collectCancel,
+  getCollectCountByDataId: getCollectCountByDataId,
+  getIsCollectByUserId: getIsCollectByUserId
 }

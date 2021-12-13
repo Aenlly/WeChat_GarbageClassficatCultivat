@@ -100,7 +100,7 @@
         },
         {
           "name": "公益视频",
-          "pathName": "pages/services/welfvideos/welfvideo/welfvideo",
+          "pathName": "pages/packageService/pages/services/welfvideos/welfvideo/welfvideo",
           "query": "",
           "scene": null,
           "partialCompile": {
@@ -110,13 +110,14 @@
         },
         {
           "name": "视频详情",
-          "pathName": "pages/services/welfvideos/welfvideoinfo/welfvideoinfo",
-          "query": "",
-          "scene": null,
+          "pathName": "pages/packageService/pages/services/welfvideos/welfvideoinfo/welfvideoinfo",
+          "query": "id=112",
+          "scene": 1036,
           "partialCompile": {
             "enabled": true,
             "pages": []
-          }
+          },
+          "referrerInfo": {}
         },
         {
           "name": "我的收藏",

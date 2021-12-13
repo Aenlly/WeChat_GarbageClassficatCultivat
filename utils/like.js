@@ -4,26 +4,19 @@ const API_URL = app.globalData.API_URL;
 
 let isResult = false
 let result = 0
-/**异步方法函数需要进行回调 */
+
 /**
- * 执行点赞
- * @param {传递参数} hotInfo 
+ * 进行点赞
+ * @param {*传输数据} dataInfo 
  */
-function likeClick(hotInfo) {
+function likeClick(dataInfo) {
   return new Promise((resolve) => {
     wx.request({
       url: API_URL + '/like-entity/createLike',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      data: {
-        userId: app.globalData.userId,
-        entityName: "热门资讯",
-        dataId: hotInfo.hotInfoId,
-        imgUrl: hotInfo.imgUrl,
-        dataTitle: hotInfo.hotInfoTitle,
-        dataDesc: hotInfo.hotInfoDesc
-      },
+      data: dataInfo,
       method: "POST",
       success(res) {
         let data = res.data
@@ -38,12 +31,13 @@ function likeClick(hotInfo) {
 
 /**
  * 取消点赞
- * @param {*传递参数} hotInfo 
+ * @param {*实体名称} entityName 
+ * @param {*数据id} id 
  */
-function likeCancel(hotInfo) {
+function likeCancel(entityName,id) {
   return new Promise((resolve) => {
     wx.request({
-      url: API_URL + '/like-entity/likeCancel/' + app.globalData.userId + '/热门资讯/' + hotInfo.hotInfoId,
+      url: API_URL + '/like-entity/likeCancel/' + app.globalData.userId + '/'+entityName+'/' + id,
       method: "DELETE",
       success(res) {
         let data = res.data
@@ -58,14 +52,15 @@ function likeCancel(hotInfo) {
 
 /**
  * 获得点赞数据量
- * @param {*} id 数据id
+ * @param {*实体名称} entityName 
+ * @param {*数据id} id 
  */
-function getLikeCountByDataId(id) {
+function getLikeCountByDataId(entityName,id) {
   return new Promise((resolve) => {
     wx.request({
       url: API_URL + '/like-entity/getCountByDataId',
       data: {
-        entityName: "热门资讯",
+        entityName: entityName,
         dataId: id
       },
       success(res) {
@@ -79,14 +74,18 @@ function getLikeCountByDataId(id) {
   })
 }
 
-//判断当前用户是否点赞
-function getIsLikeByUserId(id) {
+/**
+ * 判断当前用户是否点赞
+ * @param {*实体名称} entityName 
+ * @param {*数据id} id 
+ */
+function getIsLikeByUserId(entityName,id) {
   return new Promise((resolve) => {
     wx.request({
       url: API_URL + '/like-entity/getIsByUserId',
       data: {
         userId: app.globalData.userId,
-        entityName: "热门资讯",
+        entityName: entityName,
         dataId: id
       },
       success(res) {
@@ -100,52 +99,9 @@ function getIsLikeByUserId(id) {
   })
 }
 
-/**
- * 点赞
- * @param {*} hotInfo 
- */
-function Click(hotInfo){
-  likeClick(hotInfo).then((value)=>{
-    isResult=value
-  })
-  return isResult
-}
-
-/**
- * 取消点赞
- * @param {*} hotInfo 
- */
-function Cancel(hotInfo) {
-  likeCancel(hotInfo).then((value)=>{
-    isResult=value
-  })
-  return isResult
-}
-/**
- * 判断是否点赞过
- * @param {*} id 
- */
-function getByUserId(id){
-  getIsLikeByUserId(id).then((value)=>{
-    isResult=value
-  })
-  return isResult
-}
-
-/**
- * 获得点赞量
- * @param {*} id 
- */
-function getCountByDataId(id){
-  getLikeCountByDataId(id).then((value)=>{
-    result=value
-  })
-  return result
-}
-
 module.exports = {
-  likeClick: Click,
-  likeCancel: Cancel,
-  getLikeCountByDataId: getCountByDataId,
-  getIsLikeByUserId: getByUserId
+  likeClick: likeClick,
+  likeCancel: likeCancel,
+  getLikeCountByDataId: getLikeCountByDataId,
+  getIsLikeByUserId: getIsLikeByUserId
 }

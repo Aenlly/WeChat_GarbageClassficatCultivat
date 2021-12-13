@@ -1,26 +1,17 @@
 // pages/services/welfvideo/welfvideo.js
+const app = getApp()
+//获得请求地址
+const API_URL = app.globalData.API_URL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    welfvideolist: [
-      {
-        welfvideo_id: 0,
-        title: "标题一",
-        content: "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。",
-        imgurl: "/images/index/textsear.png",
-        time: "2021-05-06 12:37:35"
-      }
-    ]
+    //资源请求地址
+    API_RES_URL: getApp().globalData.API_RES_URL,
   },
 
-  onClicktap(e) {
-    wx.navigateTo({
-      url: '/pages/packageService/pages/services/welfvideos/welfvideoinfo/welfvideoinfo?id=',
-    })
-  },
   // 取消搜索函数
   bindclearSear: function (e) {
     this.setData({
@@ -29,29 +20,69 @@ Page({
   },
   // 搜索事件
   search: function (value) {
+    var _this=this
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.setData({
-          is_sear: true
+        wx.request({
+          url: API_URL+'/video-user-view/getByTitle',
+          data:{
+            title: value
+          },
+          success(res){
+            var data=res.data
+            console.log(data)
+            _this.setData({
+              is_sear: true,
+            })
+            //增加text字段，用于显示
+            for(let i=0;i<data.data.length;i++){
+              data.data[i].text=data.data[i].videoTitle
+            }
+            //搜索结果显示
+            resolve(data.data)
+          }
         })
-        /* json数据在组件文件中更改，miniprogram_npm\weui-miniprogram\searchbar\searchbar.wxml
-        17行修改
-         */
-        resolve([{ text: '标题', value: 1, index: 3 }])
       }, 500)
     })
   },
   // 选择搜索结果事件
   selectResult: function (e) {
     console.log('select result', e.detail)
+    wx.navigateTo({
+      url: '/pages/packageService/pages/services/welfvideos/welfvideoinfo/welfvideoinfo?id='+e.detail.item.videoId,
+    })
+  },
+  /**
+   * 跳转详情页
+   * @param {*} e 
+   */
+  onClicktap(e) {
+    wx.navigateTo({
+      url: '/pages/packageService/pages/services/welfvideos/welfvideoinfo/welfvideoinfo?id='+e.currentTarget.dataset.id,
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      search: this.search.bind(this),
-      is_sear: false
+    var _this = this
+    wx.request({
+      url: API_URL + '/video-user-view/get',
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
+          _this.setData({
+            videoList: data.data,
+            search: _this.search.bind(this),
+            is_sear: false
+          })
+          console.log(data.data)
+        } else {
+          wx.showToast({
+            title: '请求数据失败',
+          })
+        }
+      }
     })
   },
 

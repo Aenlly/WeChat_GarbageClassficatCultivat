@@ -2,6 +2,7 @@
 const collect = require('../../../../../../utils/collect')
 const like = require("../../../../../../utils/like.js")
 const app = getApp()
+const entityName='热门资讯'
 //获得请求地址
 const API_URL = app.globalData.API_URL;
 Page({
@@ -9,36 +10,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    give: {
-      isgive: false,
-      count: 2023,
-    },
-    collect: {
-      iscollect: false,
-      count: 2023,
-    },
-    wiki: {
-      wiki_id: 0,
-      wiki_title: "为什么要垃圾分类",
-      wiki_context: ``,
-      time: '2017-8-9' //发布时间，不是插入时间
-    }
   },
-
-
-
-
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this
-    let likeCount=like.getLikeCountByDataId(options.id)
-    let isLike=like.getIsLikeByUserId(options.id)
+    
+    that.init(options.id)
 
-    let collectCount = collect.getCollectCountByDataId(options.id)
-    let isCollect = collect.getIsCollectByUserId(options.id)
     //请求展示数据
     wx.request({
       url: API_URL + '/hot-info-user-view/getById',
@@ -52,10 +33,6 @@ Page({
           data.data.releaseTime = new Date(data.data.releaseTime).toLocaleDateString()
           that.setData({
             hotInfo: data.data,
-            likeCount: likeCount,
-            isLike: isLike,
-            collectCount: collectCount,
-            isCollect: isCollect
           })
           console.log(that.data)
         } else {
@@ -67,83 +44,152 @@ Page({
     })
   },
 
-  // 收藏、点赞事件
+  /**
+   * 初始化收藏点赞数据
+   * @param {*} id 
+   */
+  init:function(id){
+    var _this = this
+    like.getLikeCountByDataId(entityName,id).then((value)=>{
+      _this.setData({
+        likeCount: value
+      })
+    })
+
+    like.getIsLikeByUserId(entityName,id).then((value)=>{
+      _this.setData({
+        isLike: value
+      })
+    })
+    
+    collect.getCollectCountByDataId(entityName,id).then((value)=>{
+      _this.setData({
+        collectCount: value
+      })
+    })
+
+    collect.getIsCollectByUserId(entityName,id).then((value)=>{
+      _this.setData({
+        isCollect: value
+      })
+    })
+  },
+
+  /**
+   * 收藏、点赞事件
+   * @param {*} e 
+   */
   onClickGiveCollectShare(e) {
     var _this = this
     let hotInfo = _this.data.hotInfo
-    let is_b=false
-    console.log(e.currentTarget.id)
+    let id=hotInfo.hotInfoId
+    let data={
+      userId:app.globalData.userId,
+      entityName:entityName,
+      dataId:hotInfo.hotInfoId,
+      imgUrl:hotInfo.imgUrl,
+      dataTitle:hotInfo.hotInfoTitle,
+      dataDesc:hotInfo.hotInfoDesc
+    }
     switch (e.currentTarget.id) {
       case "isLike":
-        let count = _this.data.likeCount
-        if (!_this.data.isLike) {
-          is_b = like.likeClick(hotInfo)
-          if (is_b) {
-            wx.showToast({
-              title: '点赞成功！',
-            })
-            count++
-          } else {
-            wx.showToast({
-              title: '点赞失败！',
-            })
-          }
-        } else {
-          is_b = like.likeCancel(hotInfo)
-          if (is_b) {
-            count--
-            wx.showToast({
-              title: '取消成功！',
-            })
-          } else {
-            wx.showToast({
-              title: '取消失败！',
-            })
-          }
-        }
-        if(is_b){
-          _this.setData({
-            isLike: !_this.data.isLike,
-            likeCount: count
-          })
-        }
+        _this.likeClick(data,id)
         break
       case "isCollect":
-        let collectCount=_this.data.collectCount
-        if (!_this.data.isCollect) {
-          is_b = collect.collectClick(hotInfo)
-          if (is_b) {
-            wx.showToast({
-              title: '收藏成功！',
-            })
-            collectCount++
-          } else {
-            wx.showToast({
-              title: '收藏失败！',
-            })
-          }
-        } else {
-          is_b = collect.collectCancel(hotInfo)
-          if (is_b) {
-            collectCount--
-            wx.showToast({
-              title: '取消成功！',
-            })
-          } else {
-            wx.showToast({
-              title: '取消失败！',
-            })
-          }
-        }
-        if(is_b){
-          _this.setData({
-            isCollect: !_this.data.isCollect,
-            collectCount: collectCount
-          })
-        }
+        _this.collectClick(data,id)
         break
       default:
         break
+    }
+  },
+
+  /**
+   * 点赞事件
+   * @param {*} data 
+   * @param {*} id 
+   */
+  likeClick(data,id){
+    var _this=this
+    var count = _this.data.likeCount
+        if (!_this.data.isLike) {
+          like.likeClick(data).then((value)=>{
+            if (value) {
+              count++
+              _this.setData({
+                isLike: !_this.data.isLike,
+                likeCount: count
+              })
+              wx.showToast({
+                title: '点赞成功！',
+              })
+            } else {
+              wx.showToast({
+                title: '点赞失败！',
+              })
+            }
+          })
+        } else {
+          like.likeCancel(entityName,id).then((value)=>{
+            if (value) {
+              count--
+              _this.setData({
+                isLike: !_this.data.isLike,
+                likeCount: count
+              })
+              wx.showToast({
+                title: '取消成功！',
+              })
+            } else {
+              wx.showToast({
+                title: '取消失败！',
+              })
+            }
+          })
+        }
+  },
+
+  /**
+   * 收藏事件
+   * @param {*} data 
+   * @param {*} id 
+   */
+  collectClick(data,id){
+    var _this=this
+    var count=_this.data.collectCount
+    if (!_this.data.isCollect) {
+      collect.collectClick(data).then((value)=>{
+        if (value) {
+          count++
+          wx.showToast({
+            title: '收藏成功！',
+          })
+          _this.setData({
+            isCollect: !_this.data.isCollect,
+            collectCount: count
+          })
+        } else {
+          wx.showToast({
+            title: '收藏失败！',
+          })
+        }
+      })
+    } else {
+      collect.collectCancel(entityName,id).then((value)=>{
+        if (value) {
+          count--
+          _this.setData({
+            isCollect: !_this.data.isCollect,
+            collectCount: count
+          })
+          wx.showToast({
+            title: '取消成功！',
+          })
+        } else {
+          wx.showToast({
+            title: '取消失败！',
+          })
+        }
+      })
     }
   },
 

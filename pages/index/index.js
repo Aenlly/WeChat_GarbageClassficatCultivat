@@ -145,7 +145,7 @@ Page({
   getByChekTop:function(){
     var that=this
     wx.request({
-      url: API_URL+'/video/getByChekTop',
+      url: API_URL+'/video-user-view/getByChekTop',
       success(res){
         let data=res.data
         if(data.code==200){
