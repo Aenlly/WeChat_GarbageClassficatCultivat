@@ -2,7 +2,7 @@
 <view class="container">
     <view class="flex-wrp-col">
         <view class="search-view">
-            <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
+            <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult" value="{{value}}"></mp-searchbar>
         </view>
         <view class="weui-cells">
             <view class="weui-cell" wx:for="{{searchList}}" wx:key="*this">

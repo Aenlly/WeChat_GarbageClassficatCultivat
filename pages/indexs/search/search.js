@@ -9,19 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searList: [{
-      garbageName: "苹果",
-      type: "厨余垃圾"
-    }, {
-      garbageName: "苹果",
-      type: "可回收垃圾"
-    }, {
-      garbageName: "苹果",
-      type: "有害垃圾"
-    }, {
-      garbageName: "苹果",
-      type: "其他垃圾"
-    }]
+    
+    placeholder:'搜索'
   },
 
   // 搜索取消事件
@@ -58,7 +47,7 @@ Page({
             }
           }
         })
-      }, 1000)
+      }, 500)
     })
   },
   // 选择搜索结果事件
@@ -70,8 +59,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.name!=null){
+      this.setData({
+        value:options.name,
+      })
+      this.search(options.name)
+    }
     this.setData({
-      search: this.search.bind(this)
+      search: this.search.bind(this),
+      
     })
   },
 
@@ -79,7 +75,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      cancel: {
+        type: Boolean,
+        value: !0
+      },
+      searchState:!0
+    })
   },
 
   /**

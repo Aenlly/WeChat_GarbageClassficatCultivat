@@ -111,7 +111,7 @@
         </view>
         <view class="btn-text">拍照识别</view>
       </view>
-      <view class="btn-view-col" bind:tap="textIdentify">
+      <view class="btn-view-col" bindtap="textIdentify">
         <view class="btn-img">
           <image class="btn-img" src="/images/index/textsear.png"></image>
         </view>
@@ -124,7 +124,7 @@
         <view class="btn-text">语音搜索</view>
       </view>
       <view class="btn-view-col">
-        <view class="btn-img">
+        <view class="btn-img" bindtap="clickToSearchLog">
           <image class="btn-img" src="/images/index/searlog.png"></image>
         </view>
         <view class="btn-text">搜索记录</view>

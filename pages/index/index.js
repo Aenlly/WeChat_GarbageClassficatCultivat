@@ -112,6 +112,14 @@ Page({
     })
   },
   /**
+   * 跳转搜索记录事件
+   */
+  clickToSearchLog:function(){
+    wx.navigateTo({
+      url: '/pages/indexs/searchlog/searchlog',
+    })
+  },
+  /**
    * 外部链接跳转
    * @param {*} e  
    */

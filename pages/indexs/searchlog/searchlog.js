@@ -1,46 +1,78 @@
 // pages/indexs/searchlog/searchlog.js
+// 获取应用实例
+const app = getApp()
+//获得请求地址
+const API_URL = app.globalData.API_URL;
+const userId = app.globalData.userId
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-    searchs: [{
-      searchName: "苹果",
-      searchType: "文本搜索"
-    }, {
-      searchName: "苹果",
-      searchType: "语音搜索"
-    }, {
-      searchName: "苹果",
-      searchType: "图片识别"
-    }, {
-      searchName: "苹果",
-      searchType: "图片识别"
-    }, {
-      searchName: "苹果",
-      searchType: "文本搜索"
-    }, {
-      searchName: "苹果",
-      searchType: "语音搜索"
-    }]
-  },
+  data: {},
   // 搜索事件
   search: function (value) {
-    return new Promise((resolve, reject) => {
+    var _this=this
+    return new Promise(() => {
       setTimeout(() => {
-        this.setData({
-          searchs: []
+        wx.request({
+          url: API_URL+'/search/getSearchByName',
+          data:{
+            name:value,
+            userId:userId
+          },
+          success(res){
+            let data=res.data
+            if(data.code==200){
+            _this.setData({
+              searchs:data.data
+            })
+          }else{
+            wx.showToast({
+              title: '搜索失败！',
+            })
+          }
+          }
         })
       }, 500)
     })
   },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      search: this.search.bind(this)
+    var _this=this
+    if (userId == null) {
+      wx.showToast({
+        title: '请先登录！',
+      })
+    } else {
+      wx.request({
+        url: API_URL + '/search/get',
+        data: {
+          userId: userId
+        },
+        success(res){
+          let data=res.data
+          if(data.code){
+            _this.setData({
+              searchs:data.data,
+              search: _this.search.bind(this)
+            })
+          }else{
+            wx.showToast({
+              title: '请求数据失败！',
+            })
+          }
+        }
+      })
+    }
+  },
+
+  onClickSearch:function(e){
+    wx.navigateTo({
+      url: '/pages/indexs/search/search?name='+e.currentTarget.dataset.name,  
     })
   },
 

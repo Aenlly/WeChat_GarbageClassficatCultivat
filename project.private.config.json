@@ -353,11 +353,7 @@
           "name": "搜索记录",
           "pathName": "pages/indexs/searchlog/searchlog",
           "query": "",
-          "scene": null,
-          "partialCompile": {
-            "enabled": true,
-            "pages": []
-          }
+          "scene": null
         },
         {
           "name": "志愿通知",

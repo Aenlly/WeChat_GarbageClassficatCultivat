@@ -9,9 +9,9 @@
             <!-- 滚动容器 -->
             <scroll-view scroll-y="{{true}}" class="scroll-view">
                 <view class="scroll-content-view">
-                    <view class="panel-view" wx:for="{{searchs}}" wx:key="*this">
-                        <view class="name_view">{{item.searchName}}</view>
-                        <view class="type_view">{{item.searchType}}</view>
+                    <view class="panel-view" wx:for="{{searchs}}" wx:key="*this" data-name="{{item.name}}" bindtap="onClickSearch">
+                        <view class="name_view">{{item.name}}</view>
+                        <view class="type_view">{{item.type}}</view>
                     </view>
                 </view>
             </scroll-view>
