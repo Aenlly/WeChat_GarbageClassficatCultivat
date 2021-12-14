@@ -1,6 +1,10 @@
 // pages/indexs/search/search.js
-Page({
+// 获取应用实例
+const app = getApp()
+//获得请求地址
+const API_URL=app.globalData.API_URL;
 
+Page({
   /**
    * 页面的初始数据
    */
@@ -28,26 +32,33 @@ Page({
   },
   // 搜索事件
   search: function (value) {
+    var _this=this
+    if(value==null||value==''){
+      return null
+    }
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        var list = [{
-          garbageName: "垃圾袋",
-          type: "厨余垃圾"
-        }, {
-          garbageName: "垃圾袋",
-          type: "可回收垃圾"
-        }, {
-          garbageName: "垃圾袋",
-          type: "有害垃圾"
-        }, {
-          garbageName: "垃圾袋",
-          type: "其他垃圾"
-        }]
-        this.setData({
-          searList: list
+        wx.request({
+          url: API_URL+'/search/getSearchText',
+          data:{
+            name:value,
+            userId:app.globalData.userId
+          },
+          success(res){
+            let data=res.data
+            if(data.code==200){
+              _this.setData({
+                searchList:data.data
+              })
+              console.log(data.data)
+            }else{
+              wx.showToast({
+                title: '请求数据错误！',
+              })
+            }
+          }
         })
-        console.log(this.data)
-      }, 500)
+      }, 1000)
     })
   },
   // 选择搜索结果事件

@@ -5,8 +5,8 @@
             <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
         </view>
         <view class="weui-cells">
-            <view class="weui-cell" wx:for="{{searList}}" wx:key="*this">
-                <view class="weui-cell__bd">{{item.garbageName}}</view>
+            <view class="weui-cell" wx:for="{{searchList}}" wx:key="*this">
+                <view class="weui-cell__bd">{{item.name}}</view>
                 <view class="weui-cell__ft weui-cell__ft_in-access desc_tag" style="background-color: #52a1dc;" wx:if="{{item.type=='可回收垃圾'}}">
                     可回收垃圾
                 </view>
