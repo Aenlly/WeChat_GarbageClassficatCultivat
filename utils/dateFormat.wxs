@@ -3,6 +3,10 @@ var formatNumber = function (n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+/**
+ * 时间转换格式 年-月-日
+ * @param datetime 时间
+ */
 var formatDate = function (datetime) {
   var date = getDate(datetime);
   var year = date.getFullYear();
@@ -11,7 +15,23 @@ var formatDate = function (datetime) {
   //年-月-日
   return [ year,month, day].map(formatNumber).join('-');
 }
+/**
+ * 时间转换格式 年-月-日 时-分-秒
+ * @param datetime 时间
+ */
+var formatDateTime = function (datetime) {
+  var date = getDate(datetime);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var hours=date.getHours()
+  var minute=date.getMinutes()
+  var sec=date.getSeconds()
+  //年-月-日 事-分-秒
+  return [ year,month, day].map(formatNumber).join('-')+' '+[ hours,minute, sec].map(formatNumber).join(':');
+}
 
 module.exports = {
-  formatDate: formatDate
+  formatDate: formatDate,
+  formatDateTime:formatDateTime
 }

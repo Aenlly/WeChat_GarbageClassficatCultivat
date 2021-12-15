@@ -50,10 +50,6 @@ Page({
       }, 500)
     })
   },
-  // 选择搜索结果事件
-  selectResult: function (e) {
-    console.log('select result', e.detail)
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -67,7 +63,6 @@ Page({
     }
     this.setData({
       search: this.search.bind(this),
-      
     })
   },
 

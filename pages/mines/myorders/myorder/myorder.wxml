@@ -1,4 +1,5 @@
 <!-- pages/mines/myorder/myorder.wxml -->
+<wxs src="../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <mp-tabs tabs="{{tabs}}" swiper-class="swiper-class" activeTab="{{activeTab}}" tab-class="tab-class" tab-active-text-color="#1e90ff" tab-inactive-text-color="#909399" tab-underline-color="#096dd9" bindtabclick="onTabClick">
@@ -13,20 +14,20 @@
                                 <view class="panel" wx:key="{{index}}" wx:for-index="index" data-index="{{index}}">
                                     <view class="text-title">
                                         <view class="title weui-media-box__title">
-                                            {{item.order_name}}
+                                            {{item.name}}
                                         </view>
                                         <view class="tag">
-                                            <text>{{item.order_tag}}</text>
+                                            <text>{{item.state}}</text>
                                         </view>
                                     </view>
                                     <view class="text-content weui-media-box__info">
-                                        <view class="text_desc weui-media-box__desc">
-                                            订单号：{{item.order_code}}
+                                        <view class="text_desc weui-media-box__desc" >
+                                            兑换码：<text style="color: red;">{{item.code}}</text>
                                         </view>
                                     </view>
                                     <view class="text-content weui-media-box__info">
                                         <view class="weui-media-box__info__meta">
-                                            {{item.insert_time}}
+                                            {{dateFormat.formatDateTime(item.createTime)}}
                                         </view>
                                     </view>
                                 </view>

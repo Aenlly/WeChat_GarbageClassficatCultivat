@@ -61,7 +61,7 @@ Page({
         imgurl: "/images/mine/mycollect.png",
         text: "我的收藏",
         activity: "/pages/packageService/pages/services/collects/collect/collect",
-        isnotice: true,
+        isnotice: false,
         count: 6
       },
       myabout: {

@@ -1,101 +1,96 @@
 // pages/mines/integexcuhs/integexcuh/integexcuh.js
+// 获取应用实例
+const app = getApp()
+//获得请求地址
+const API_URL = app.globalData.API_URL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    presentwhere: [{
-      imageUrl: "https://placeimg.com/640/480/any",
-      text: "垃圾桶"
-    }, {
-      imageUrl: "https://placeimg.com/640/480/any",
-      text: "垃圾桶"
-    }, {
-      imageUrl: "https://placeimg.com/640/480/any",
-      text: "垃圾桶"
-    }, {
-      imageUrl: "https://placeimg.com/640/480/any",
-      text: "垃圾桶"
-    }],
-    present: [{
-      present_id: 1,
-      name: "垃圾桶",
-      imageUrl: "",
-      integr: 300,
-      price: 36.5,
-      number: 30
-    }, {
-      present_id: 1,
-      name: "垃圾桶",
-      imageUrl: "",
-      integr: 300,
-      price: 36.5,
-      number: 30
-    }, {
-      present_id: 1,
-      name: "垃圾桶",
-      imageUrl: "",
-      integr: 300,
-      price: 36.5,
-      number: 30
-    }, {
-      present_id: 1,
-      name: "垃圾桶",
-      imageUrl: "",
-      integr: 300,
-      price: 36.5,
-      number: 30
-    }, {
-      present_id: 1,
-      name: "垃圾桶",
-      imageUrl: "",
-      integr: 300,
-      price: 36.5,
-      number: 30
-    }, {
-      present_id: 1,
-      name: "垃圾桶",
-      imageUrl: "",
-      integr: 300,
-      price: 36.5,
-      number: 30
-    }]
+    //资源请求地址
+    API_RES_URL: getApp().globalData.API_RES_URL,
+    banner: '/gift/banner/87bcbcde-8694-4fc7-8f36-7a5f1f2218e9.jpg',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getGiftView('', -1)
 
+    var _this = this
+    wx.request({
+      url: API_URL + '/gift-type/getUserGiftTypeList',
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
+          console.log(data)
+          _this.setData({
+            giftTypes: data.data
+          })
+        } else {
+          wx.showToast({
+            title: '数据获取异常！',
+          })
+        }
+      }
+    })
+  },
+
+  // 搜索取消事件
+  bindclearSear: function (e) {
+    this.getGiftView('', -1)
+  },
+  // 搜索事件
+  search: function (value) {
+    var _this = this
+    if (value == null || value == '') {
+      return
+    }
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        _this.getGiftView(value, -1)
+      }, 500)
+    })
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 根据名称与类型查询礼品信息，为空则查询全部
+   * @param {礼品名称} name 
+   * @param {礼品类型} type 
    */
-  onReady: function () {
-
+  getGiftView(name, type) {
+    var _this = this
+    wx.request({
+      url: API_URL + '/gift-list-view/getUserGiftView',
+      data: {
+        name: name,
+        type: type
+      },
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
+          _this.setData({
+            gifts: data.data,
+            search: _this.search.bind(this),
+          })
+        } else {
+          wx.showToast({
+            title: '获取数据异常！',
+          })
+        }
+      }
+    })
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 根据垃圾类型查询礼品列表
+   * @param {参数} e 
    */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  onClickType(e) {
+    this.getGiftView('', e.currentTarget.dataset.id)
   },
 
   /**
