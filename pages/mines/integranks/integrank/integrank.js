@@ -1,57 +1,39 @@
 // pages/mines/integrank/integrank.js
+// 获取应用实例
+const app = getApp()
+//获得请求地址
+const API_URL=app.globalData.API_URL;
+const userInfo=app.globalData.userInfo
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userrank: [{
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      integcount: "151541",
-    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _this=this
+    wx.request({
+      url: API_URL+'/user/getByPoint',
+      success(res){
+        let data=res.data
+        if(data.code==200){
+          console.log(data.data)
+          _this.setData({
+            userrank:data.data,
+            userInfo:userInfo
+          })
+        }else{
+          wx.showToast({
+            title: '请求数据失败！',
+          })
+        }
+      }
+    })
   },
 
   /**

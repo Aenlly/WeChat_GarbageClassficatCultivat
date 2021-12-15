@@ -1,4 +1,9 @@
 // pages/services/collect/collect.js
+// 获取应用实例
+const app = getApp()
+//获得请求地址
+const API_URL=app.globalData.API_URL;
+const userId=app.globalData.userId
 Page({
 
   /**
@@ -17,18 +22,13 @@ Page({
   },
   // 搜索取消事件
   bindclearSear: function (e) {
-    this.setData({
-      is_sear: false
-    })
+    this.searchBy(userId,'')
   },
   // 搜索事件
   search: function (value) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
-        this.setData({
-          is_sear: true
-        })
-        resolve([{ text: '标题', wiki_id: 1, index: 3 }])
+        this.searchBy(userId,value)
       }, 500)
     })
   },
@@ -39,15 +39,60 @@ Page({
   onClickUrl(e) {
     var _this = this
     // 获取点击的值
-    _this.data.collect[e.currentTarget.dataset.index]
+    let data=_this.data.collects[e.currentTarget.dataset.index]
+    let url=''
+    if(data.entityName=='热门资讯'){
+      url='/pages/packageService/pages/services/wikis/wikiinfo/wikiinfo?id='
+    }
+    if(data.entityName=='公益视频'){
+      url='/pages/packageService/pages/services/welfvideos/welfvideoinfo/welfvideoinfo?id='
+    }
+    wx.navigateTo({
+      url: url+data.dataId,
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(userId==null){
+      wx.showToast({
+        title: '请先登录！',
+      })
+    }else{
+      this.searchBy(userId,'')
+    }
     this.setData({
       search: this.search.bind(this),
-      is_sear: false
+    })
+  },
+
+  /**
+   * 根据条件进行搜索，name参数不加则查询全部
+   * @param {用户编号}} userId 
+   * @param {搜索条件} name 
+   */
+  searchBy:function(userId,name){
+    var _this=this
+    wx.request({
+      url: API_URL+'/collect-entity/getByUserId',
+      data:{
+        userId:userId,
+        name:name
+      },
+      success(res){
+        let data=res.data
+        if(data.code==200){
+          console.log(data)
+          _this.setData({
+            collects:data.data,
+          })
+        }else{
+          wx.showToast({
+            title: '请求数据错误！',
+          })
+        }
+      }
     })
   },
 

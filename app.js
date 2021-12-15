@@ -7,6 +7,8 @@ App({
     wx.setStorageSync('logs', logs)
     const userId=wx.getStorageSync('userId') || []
     this.globalData.userId=userId
+    const userInfo=wx.getStorageSync('userInfo')||[]
+    this.globalData.userInfo=userInfo
     // 登录
     wx.login({
       success: res => {
