@@ -1,10 +1,18 @@
 // pages/mines/integlevels/integlevel/integlevel.js
+// 获取应用实例
+var app = getApp()
+//获得请求地址
+const API_URL = app.globalData.API_URL;
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    //资源请求地址
+    API_RES_URL: getApp().globalData.API_RES_URL,
     middleInfo: {
       integrank: {
         imgurl: "/images/mine/integrank.png",
@@ -27,31 +35,6 @@ Page({
         activity: "/pages/mines/integlogs/integlog/integlog"
       }
     },
-    integlevel: [{
-      title: "分类小白",
-      number: 100,
-    }, {
-      title: "分类小将",
-      number: 1000,
-    }, {
-      title: "分类小将",
-      number: 1000,
-    }, {
-      title: "分类小将",
-      number: 1000,
-    }, {
-      title: "分类小将",
-      number: 1000,
-    }, {
-      title: "分类小将",
-      number: 1000,
-    }
-    ],
-    user: {
-      count: 200,
-      new_level: 1000,
-      level: 800,
-    }
   },
   onClickUrl: function (e) {
     wx.navigateTo({
@@ -62,7 +45,60 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var userInfo = app.globalData.userInfo
+    if (userInfo.userId == null || userInfo.userId == '') {
+      wx.showToast({
+        title: '请先登录！',
+      })
+    } else {
+      var _this = this
+      _this.setData({
+        userInfo: userInfo
+      })
+      //请求下一头衔
+      wx.request({
+        url: API_URL + '/points/getNextLevel/' + userInfo.accumulativePoints,
+        success(res) {
+          let data = res.data
+          if (data.code == 200) {
+            console.log(data.data)
+            //计算差值
+            let number = data.data.pointsRequire - userInfo.accumulativePoints
+            //设置显示内容
+            _this.setData({
+              user: {
+                //当前累积积分
+                count: userInfo.accumulativePoints,
+                //下一等级所需积分
+                new_level: data.data.pointsRequire,
+                //下一等级差值
+                points: number,
+                //下一等级名称
+                pointsName: data.data.pointsName
+              }
+            })
+          } else {
+            wx.showToast({
+              title: '数据异常！',
+            })
+          }
+        }
+      })
+      console.log(userInfo)
+      //请求头衔列表
+      wx.request({
+        url: API_URL + '/points/get',
+        success(res) {
+          let data = res.data
+          if (data.code == 200) {
+            console.log(data)
+            _this.setData({
+              points: data.data
+            })
+          }
+        }
+      })
+    }
   },
 
   /**

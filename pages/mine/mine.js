@@ -1,5 +1,6 @@
 // pages/mine/mine.js
-const API_URL=getApp().globalData.API_URL;
+var app=getApp()
+const API_URL=app.globalData.API_URL;
 Page({
   
   /**
@@ -164,6 +165,11 @@ Page({
                       title: '登录成功！',
                       duration: 1000
                     })
+                    app.globalData.userInfo=res.data.data,
+                    app.globalData.userId=res.data.data.userId
+
+                    console.log(app.globalData.userInfo)
+   
                   }else{
                     wx.showToast({
                       title: '登录失败！',
