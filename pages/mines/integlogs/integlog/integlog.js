@@ -43,6 +43,11 @@ Page({
     }
   },
 
+  /**
+   * 查询用户积分记录
+   * @param {*积分类型} type 
+   * @param {*选项卡索引} index 
+   */
   getByUserIdAndType(type, index) {
     var _this = this
     wx.request({

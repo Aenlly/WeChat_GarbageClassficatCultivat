@@ -1,10 +1,15 @@
 // pages/services/knowtest/knowtest.js
+const app = getApp()
+//获得请求地址
+const API_URL = app.globalData.API_URL;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+        //资源请求地址
+        API_RES_URL: getApp().globalData.API_RES_URL,
     knowtest: [{
       imageUrl: "/images/service/knowtest/dailyquizzes.png",
       text: "每日答题",
@@ -66,7 +71,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _this=this
+    wx.request({
+      url: API_URL+'/user/getByAnswerPoints',
+      success(res){
+        let data=res.data
+        if(data.code==200){
+          console.log(data.data)
+          _this.setData({
+            userrank:data.data
+          })
+        }
+      }
+    })
   },
 
   /**
