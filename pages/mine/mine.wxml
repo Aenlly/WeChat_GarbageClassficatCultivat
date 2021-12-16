@@ -42,7 +42,7 @@
       <view class="body-bottom-col">
         <!-- 列表容器遍历开始 -->
         <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{bottomInfo}}" wx:key="*this"
-          data-activity="{{item.activity}}" bindtap="onClickUrl">
+          data-activity="{{item.activity}}" data-text="{{item.text}}" bindtap="onClickUrl">
           <image class="bottom-img" src="{{item.imgurl}}"></image>
           <view class="weui-cell__bd weui-cell_primary margin-left-icon">
             <view class='text-size-09 init-wordspace'>{{item.text}}</view>

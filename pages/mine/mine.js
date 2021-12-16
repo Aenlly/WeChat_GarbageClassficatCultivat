@@ -1,6 +1,8 @@
 // pages/mine/mine.js
+const user = require("../../utils/user.js")
 var app=getApp()
 const API_URL=app.globalData.API_URL;
+var userId=app.globalData.userId
 Page({
   
   /**
@@ -40,7 +42,7 @@ Page({
       myhome: {
         imgurl: "/images/mine/myhome.png",
         text: "每日签到",
-        activity: "/pages/mines/myhomes/myhome/myhome",
+        activity: "",
         isnotice: false,
         count: 0
       },
@@ -91,6 +93,48 @@ Page({
   },
   // 导航栏列表单击事件
   onClickUrl(e) {
+    var _this=this
+    if(e.currentTarget.dataset.text=='每日签到'){
+      if(userId==null||userId==''){
+        wx.showToast({
+          title: '请先登录！',
+        })
+      }else{
+      wx.request({
+        url: API_URL+'/points-log/dailyCheck',
+        method:"PUT",
+        header:{
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data:{
+          userId:userId
+        },success(res){
+          var data=res.data
+          console.log(data)
+          if(data.code==200){
+            user.getUserById().then((value)=>{
+              _this.setData({
+                userInfo: value,
+                hasUserInfo: true
+              })
+            })
+            wx.showToast({
+              title: '签到成功！',
+            })
+          }else if(data.code==300){
+            wx.showToast({
+              title: '今日已签到！',
+            })
+          }else{
+            wx.showToast({
+              title: '签到失败！',
+            })
+          }
+        }
+      })
+    }
+    }
+    
     // 退出登录事件
     wx.navigateTo({
       url: e.currentTarget.dataset.activity,
@@ -118,7 +162,10 @@ Page({
     })
   },
 
-  //登录事件
+  /**
+   * 登录事件
+   * @param {*} e 
+   */
   onClickLogin(e) {
     var that = this
     if (!that.data.hasUserInfo) {
@@ -167,9 +214,7 @@ Page({
                     })
                     app.globalData.userInfo=res.data.data,
                     app.globalData.userId=res.data.data.userId
-
-                    console.log(app.globalData.userInfo)
-   
+                    userId=res.data.data.userId
                   }else{
                     wx.showToast({
                       title: '登录失败！',

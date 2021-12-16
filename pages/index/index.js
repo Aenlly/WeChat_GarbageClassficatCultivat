@@ -139,9 +139,14 @@ Page({
       url: API_URL+'/carousel-user-view/get',
       success(res){
         let data=res.data
+        console.log(data)
         if(data.code==200){
           that.setData({
             carousel:data.data
+          })
+        }else{
+          wx.showToast({
+            title: '轮播数据异常！',
           })
         }
       }
