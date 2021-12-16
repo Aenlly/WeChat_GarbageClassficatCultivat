@@ -1,4 +1,5 @@
 <!-- pages/mines/integlog/integlog.wxml -->
+<wxs src="../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <mp-tabs tabs="{{tabs}}" swiper-class="swiper-class" activeTab="{{activeTab}}" tab-class="tab-class" tab-active-text-color="#1e90ff" tab-inactive-text-color="#909399" tab-underline-color="#096dd9" bindtabclick="onTabClick">
@@ -9,11 +10,11 @@
                         <!-- 内容容器 -->
                         <view class="content-view">
                             <!-- 卡片栏 -->
-                            <block wx:for="{{item.integlog}}" wx:key="*this">
+                            <block wx:for="{{item.pointsLog}}" wx:key="*this">
                                 <view class="panel" wx:key="{{index}}" wx:for-index="index" data-index="{{index}}">
                                     <view class="text-title">
                                         <view class="title weui-media-box__title">
-                                            {{item.desc}}：{{item.number}}
+                                            {{item.logDesc}}：{{item.number}}
                                         </view>
                                         <view class="tag">
                                             <text>{{item.type}}</text>
@@ -21,7 +22,7 @@
                                     </view>
                                     <view class="text-content weui-media-box__info">
                                         <view class="weui-media-box__info__meta">
-                                            {{item.insert_time}}
+                                            {{dateFormat.formatDateTime(item.createTime)}}
                                         </view>
                                     </view>
                                 </view>

@@ -3,8 +3,6 @@
 var app = getApp()
 //获得请求地址
 const API_URL = app.globalData.API_URL;
-
-
 Page({
 
   /**
@@ -55,15 +53,30 @@ Page({
       _this.setData({
         userInfo: userInfo
       })
-      //请求下一头衔
+      //请求下一头衔等级
       wx.request({
         url: API_URL + '/points/getNextLevel/' + userInfo.accumulativePoints,
         success(res) {
           let data = res.data
           if (data.code == 200) {
-            console.log(data.data)
+            if (data.data == null || data.data == '') {
+              //如果等级达到最大，则显示以下内容
+              _this.setData({
+                user: {
+                  //当前累积积分
+                  count: userInfo.accumulativePoints,
+                  //下一等级所需积分
+                  new_level: 0,
+                  //下一等级差值
+                  points: 0,
+                  //下一等级名称
+                  pointsName: '无'
+                }
+              })
+              return
+            }
             //计算差值
-            let number = data.data.pointsRequire - userInfo.accumulativePoints
+            let points = data.data.pointsRequire - userInfo.accumulativePoints
             //设置显示内容
             _this.setData({
               user: {
@@ -72,7 +85,7 @@ Page({
                 //下一等级所需积分
                 new_level: data.data.pointsRequire,
                 //下一等级差值
-                points: number,
+                points: points,
                 //下一等级名称
                 pointsName: data.data.pointsName
               }

@@ -1,73 +1,19 @@
 // pages/mines/integlog/integlog.js
+// 获取应用实例
+var app = getApp()
+//获得请求地址
+const API_URL = app.globalData.API_URL;
+var userId = '';
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    tabs: [
-      {
+    tabs: [{
         title: "增加",
-        integlog: [{
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }, {
-          type: "增加",
-          number: "20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }]
       },
       {
         title: "减少",
-        integlog: [{
-          type: "减少",
-          number: "-20",
-          desc: "每日答题",
-          insert_time: "2021-05-06 14:29:44"
-        }]
       }
     ],
     activeTab: 0,
@@ -86,7 +32,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    userId = app.globalData.userId
+    if (userId == null || userId == '') {
+      wx.showToast({
+        title: '请先登录',
+      })
+    } else {
+      this.getByUserIdAndType(1, 0)
+      this.getByUserIdAndType(-1, 1)
+    }
+  },
 
+  getByUserIdAndType(type, index) {
+    var _this = this
+    wx.request({
+      url: API_URL + '/points-log/getByUserIdAndType',
+      data: {
+        userId: userId,
+        type: type
+      },
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
+          console.log(data.data)
+          _this.setData({
+            ["tabs[" + index + "].pointsLog"]: data.data
+          })
+        } else {
+          wx.showToast({
+            title: '数据请求异常！',
+          })
+        }
+      }
+    })
   },
 
   /**

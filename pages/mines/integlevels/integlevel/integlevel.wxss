@@ -69,7 +69,7 @@
 /* 当前积分文本样式 */
 .left_text {
   width: 100%;
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #4e2424;
   text-align: left;
   line-height: 64rpx;
@@ -80,7 +80,7 @@
 /* 还需积分样式 */
 .right_text {
   margin-top: 10rpx;
-  width: 100%;
+  width: 80%;
   font-size: 28rpx;
   color: #4e2424;
   text-align: right;
