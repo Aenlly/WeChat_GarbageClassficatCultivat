@@ -1,58 +1,56 @@
 // pages/packageService/pages/services/knowtests/answereveryday/Answereveryday.js
+const app = getApp()
+//获得请求地址
+const API_URL = app.globalData.API_URL
+var userId = ''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    answerveryday: {
-      question_id: 1,
-      question_type: 1,
-      topic: [
-        {
-          topic_id: 0,
-          topic_name: "1、以下哪个是可回收垃圾？",
-          analysis: "因为塑料瓶属于可再利用",
-          option: [{
-            option_id: 1,
-            option_name: "A、贝壳",
-            iscorrect: false,
-          }, {
-            option_id: 2,
-            option_name: "B、电池",
-            iscorrect: false,
-          }, {
-            option_id: 3,
-            option_name: "C、菜叶",
-            iscorrect: false,
-          }, {
-            option_id: 4,
-            option_name: "D、塑料瓶",
-            iscorrect: true,
-          }]
+    type:'每日答题',
+      topics: [{
+        topic_id: 0,
+        topic_name: "1、以下哪个是可回收垃圾？",
+        analysis: "因为塑料瓶属于可再利用",
+        option: [{
+          option_id: 1,
+          option_name: "A、贝壳",
+          iscorrect: false,
         }, {
-          topic_id: 2,
-          topic_name: "2、以下哪个是可回收垃圾？",
-          option: [{
-            option_id: 1,
-            option_name: "A、贝壳",
-            iscorrect: false,
-          }, {
-            option_id: 2,
-            option_name: "B、电池",
-            iscorrect: false,
-          }, {
-            option_id: 3,
-            option_name: "C、菜叶",
-            iscorrect: false,
-          }, {
-            option_id: 4,
-            option_name: "D、塑料瓶",
-            iscorrect: true,
-          }]
-        }
-      ]
-    },
+          option_id: 2,
+          option_name: "B、电池",
+          iscorrect: false,
+        }, {
+          option_id: 3,
+          option_name: "C、菜叶",
+          iscorrect: false,
+        }, {
+          option_id: 4,
+          option_name: "D、塑料瓶",
+          iscorrect: true,
+        }]
+      }, {
+        topic_id: 2,
+        topic_name: "2、以下哪个是可回收垃圾？",
+        option: [{
+          option_id: 1,
+          option_name: "A、贝壳",
+          iscorrect: false,
+        }, {
+          option_id: 2,
+          option_name: "B、电池",
+          iscorrect: false,
+        }, {
+          option_id: 3,
+          option_name: "C、菜叶",
+          iscorrect: false,
+        }, {
+          option_id: 4,
+          option_name: "D、塑料瓶",
+          iscorrect: true,
+        }]}],
     correct: {
       id: 0,
       background: "#6ac461",
@@ -79,7 +77,7 @@ Page({
     var _this = this
     var btninfo = _this.data.btninfo
     if (!btninfo.ischeck) {
-      var topiclength = _this.data.answerveryday.topic.length
+      var topiclength = _this.data.topics.length
       var topic_index = _this.data.topic_index
       var correct = _this.data.correct
       var nocorrect = _this.data.nocorrect
@@ -106,7 +104,7 @@ Page({
       if (e.target.dataset.iscorrect) {
         correct.id = option_select
       } else {
-        var optionlist = _this.data.answerveryday.topic[topic_index].option
+        var optionlist = _this.data.topics[topic_index].optionsTables
         // 匹配正确项
         for (var index in optionlist) {
           if (optionlist[index].iscorrect) {
@@ -175,10 +173,12 @@ Page({
             mask: true
           })
           // 延迟自动返回
-          setTimeout(function (e) { wx.navigateBack() }, 1500)
+          setTimeout(function (e) {
+            wx.navigateBack()
+          }, 1500)
           console.log(res.data)
-        }
-        , fail: function () {
+        },
+        fail: function () {
           wx.showToast({
             title: "交卷失败",
             mask: true
@@ -192,10 +192,10 @@ Page({
   startInterval: function (e) {
     var _this = this
     var countdown = _this.data.countdown
-    var topiclength = _this.data.answerveryday.topic.length
+    var topiclength = _this.data.topics.length
     var topic_index = _this.data.topic_index
     var btninfo = _this.data.btninfo
-    var optionlist = _this.data.answerveryday.topic[topic_index].option
+    var optionlist = _this.data.topics[topic_index].option
     var correct = _this.data.correct
     // 设置定时器/1s执行一次，并且获得返回值用于清除
     var interval = setInterval(function () {
@@ -236,7 +236,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _this=this
+    userId = app.globalData.userId
+    if (userId == null || userId == '') {
+      wx.showToast({
+        title: '请先登录！',
+      })
+      return
+    } else {
+      wx.request({
+        url: API_URL + '/answer-question/getTopics',
+        data: {
+          userId: userId,
+          randomIndex: options.index
+        },
+        success(res) {
+          let data = res.data
+          console.log(data)
+          if (data.code == 200) {
+            _this.setData({
+              topics:data.data
+            })
+          } else {
+            wx.showToast({
+              title: '请求数据异常！',
+            })
+          }
+        }
+      })
+    }
   },
 
   /**
@@ -247,8 +275,8 @@ Page({
   },
 
   /**
-    * 生命周期函数--监听页面显示
-    */
+   * 生命周期函数--监听页面显示
+   */
   onShow: function () {
     this.startInterval()
   },

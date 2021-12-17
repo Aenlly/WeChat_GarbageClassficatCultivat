@@ -2,15 +2,15 @@
 <view class="container">
     <view class="flex-wrp-col">
         <view class="topic-view">
-            <view class="title_text">{{answerveryday.topic[topic_index].topic_name}}</view>
-            <view class="option_text" wx:for="{{answerveryday.topic[topic_index].option}}" id="{{item.option_id}}" style="background-color:{{correct.id==item.option_id?correct.background:''}}{{nocorrect.id==item.option_id?nocorrect.background:''}};color:{{correct.id==item.option_id||nocorrect.id==item.option_id?'white':''}}" data-iscorrect="{{item.iscorrect}}" bind:tap="optionCheck" wx:key="option_id">
-                {{item.option_name}}
+            <view class="title_text">{{topics[topic_index].belongTopic}}</view>
+            <view class="option_text" wx:for="{{topics[topic_index].optionsTables}}" id="{{item.belongTopicId}}" style="background-color:{{correct.id==item.belongTopicId?correct.background:''}}{{nocorrect.id==item.belongTopicId?nocorrect.background:''}};color:{{correct.id==item.belongTopicId||nocorrect.id==item.belongTopicId?'white':''}}" data-iscorrect="{{item.iscorrect}}" bind:tap="optionCheck" wx:key="belongTopicId">
+                {{item.optionName}}
             </view>
         </view>
-        <view class="desc-text">第{{topic_index+1}}题，共{{answerveryday.topic.length}}题</view>
+        <view class="desc-text">第{{topic_index+1}}题，共{{topics.length}}题</view>
         <view class="analysis" hidden="{{btninfo.isanalysis}}">
             <view class="title">答案解析：</view>
-            <view class="content">{{answerveryday.topic[topic_index].analysis}}</view>
+            <view class="content">{{topics[topic_index].analysis}}</view>
         </view>
         <button form-type="submit" class="next_btn" hidden="{{btninfo.isbtn}}" bind:tap="btnClick">
             {{btninfo.next_btn}}
