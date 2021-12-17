@@ -302,7 +302,7 @@
         {
           "name": "每日答题",
           "pathName": "pages/packageService/pages/services/knowtests/answereveryday/answereveryday",
-          "query": "",
+          "query": "index=dc6f1687-36d8-4184-b1ae-9e964b606d12",
           "scene": null,
           "partialCompile": {
             "enabled": true,

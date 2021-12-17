@@ -1,15 +1,14 @@
 // pages/services/knowtest/knowtest.js
 const app = getApp()
 //获得请求地址
-const API_URL = app.globalData.API_URL;
+const API_URL = app.globalData.API_URL
+var userId = ''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-        //资源请求地址
-        API_RES_URL: getApp().globalData.API_RES_URL,
     knowtest: [{
       imageUrl: "/images/service/knowtest/dailyquizzes.png",
       text: "每日答题",
@@ -27,63 +26,77 @@ Page({
       text: "答题规则",
       activity: "/pages/packageService/pages/services/knowtests/testrules/testrules"
     }],
-    testrank: [{
-      nickname: "浮动四大",
-      imageUrl: "https://placeimg.com/640/480/any",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      imageUrl: "https://placeimg.com/640/480/any",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      imageUrl: "https://placeimg.com/640/480/any",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      imageUrl: "https://placeimg.com/640/480/any",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      imageUrl: "https://placeimg.com/640/480/any",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      imageUrl: "https://placeimg.com/640/480/any",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      imageUrl: "https://placeimg.com/640/480/any",
-      integcount: "151541",
-    }, {
-      nickname: "浮动四大",
-      imageUrl: "https://placeimg.com/640/480/any",
-      integcount: "151541",
-    }]
   },
   // 操作栏跳转事件
   onClickNav: function (e) {
-    wx.navigateTo({
-      url: e.currentTarget.dataset.url,
-    })
+    let text = e.currentTarget.dataset.text
+    var _this = this
+    if (_this.isLogin()) {
+      if (text == '每日答题') {
+        wx.request({
+          url: API_URL + '/answer-question/getRandomBatchIndex',
+          data: {
+            userId: userId,
+            naireName: text
+          },
+          success(res) {
+            let data = res.data
+            console.log(data)
+            if (data.code == 200) {
+              wx.navigateTo({
+                url: e.currentTarget.dataset.url+"?index="+data.data,
+              })
+            } else if (data.code == 300) {
+              wx.showToast({
+                title: '今日已答题！',
+              })
+            } else {
+              wx.showToast({
+                title: '服务器异常！',
+              })
+            }
+          }
+        })
+      } else if (text == '分类小考') {} else {
+        wx.navigateTo({
+          url: e.currentTarget.dataset.url,
+        })
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this=this
+    var _this = this
+    userId = app.globalData.userId
+    _this.isLogin()
+    //请求排名
     wx.request({
-      url: API_URL+'/user/getByAnswerPoints',
-      success(res){
-        let data=res.data
-        if(data.code==200){
+      url: API_URL + '/user/getByAnswerPoints',
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
           console.log(data.data)
           _this.setData({
-            userrank:data.data
+            userrank: data.data
           })
         }
       }
     })
+  },
+
+  /**
+   * 判断是否登录用户
+   */
+  isLogin() {
+    if (userId == null || userId == '') {
+      wx.showToast({
+        title: '请先登录！',
+      })
+      return false
+    }
+    return true
   },
 
   /**

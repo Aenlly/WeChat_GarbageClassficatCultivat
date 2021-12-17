@@ -3,7 +3,8 @@
   <view class="flex-wrp-col">
     <!-- 顶部操作栏开始 -->
     <view class="top-view">
-      <view class="top-view-col" wx:for="{{knowtest}}" wx:key="*this" bind:tap="onClickNav" data-url="{{item.activity}}">
+      <view class="top-view-col" wx:for="{{knowtest}}" wx:key="*this" bind:tap="onClickNav" 
+      data-text="{{item.text}}" data-url="{{item.activity}}">
         <view class="image-view">
           <image class="image" src="{{item.imageUrl}}" />
         </view>
