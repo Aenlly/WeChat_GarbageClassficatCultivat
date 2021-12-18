@@ -4,14 +4,14 @@
     <!-- 每日答题规则开始 -->
     <view class="top-view">
       <view class="title_text">每日答题</view>
-      <view class="content_text">每天可进行一次答题获得积分，题目数量为10，每道题10分，满分100分，每道题倒计时10秒钟，超过答题时间视为错。</view>
+      <view class="content_text">每天可进行一次答题获得积分，题目数量为10，每道题10分，满分100分，未交卷，成绩视为无效。</view>
       <view class="bottom_text">积分=得分*10%</view>
     </view>
     <!-- 每日答题规则结束 -->
     <!-- 分类小考规则结束 -->
     <view class="bottom-view">
       <view class="title_text">分类小考</view>
-      <view class="content_text">每周只能答题一次获得积分，题目数量为10，每道题10分，满分100分，每道题倒计时10秒钟，超过答题时间视为错。</view>
+      <view class="content_text">每周只能答题一次获得积分，题目数量为10，每道题10分，满分100分，未交卷，成绩视为无效。</view>
       <view class="bottom_text">积分=得分*50%</view>
     </view>
     <!-- 分类小考规则结束 -->
