@@ -1,4 +1,5 @@
 <!-- pages/packageService/pages/services/knowtests/testhistory/testhistory.wxml -->
+<wxs src="../../../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <view class="tabs-view">
@@ -10,9 +11,9 @@
                         <!-- 横向滚动容器 -->
                         <scroll-view scroll-y="{{true}}" class="scroll-view">
                             <view class="scroll-content-view">
-                                <view class="panel-view" wx:for="{{item.history}}" wx:key="*this">
-                                    <view class="time_view">{{item.insert_time}}</view>
-                                    <view class="score_view">{{item.score}}分</view>
+                                <view class="panel-view" wx:for="{{item.PaperTables}}" wx:key="*this">
+                                    <view class="time_view">{{dateFormat.formatDateTime(item.submitTime)}}</view>
+                                    <view class="score_view">{{item.totalScore}}分</view>
                                 </view>
                             </view>
                         </scroll-view>
