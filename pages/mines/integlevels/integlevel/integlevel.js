@@ -47,6 +47,7 @@ Page({
     if (userInfo.userId == null || userInfo.userId == '') {
       wx.showToast({
         title: '请先登录！',
+        icon:'error'
       })
     } else {
       var _this = this
@@ -92,7 +93,8 @@ Page({
             })
           } else {
             wx.showToast({
-              title: '数据异常！',
+              title: '请求数据异常！',
+              icon:'error'
             })
           }
         }

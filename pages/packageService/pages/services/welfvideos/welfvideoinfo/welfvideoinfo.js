@@ -14,16 +14,20 @@ Page({
     //资源请求地址
     API_RES_URL: getApp().globalData.API_RES_URL,
     icon: true,
-    video_title: "video_title_unell",
-    des_view: true
+    video_title: "video_title_unell",//默认展开简介
+    des_view: true,
+    likeCount:0, //点赞量
+    isLike:false,//是否显示已点赞
+    collectCount:0,//收藏量
+    isCollect:false,//是否显示已收藏
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    that.init(options.id)
+    var _this = this
+    _this.init(options.id)
 
     // 获得场景值来进行增加分享数
     var obj = wx.getLaunchOptionsSync()
@@ -34,10 +38,9 @@ Page({
         success(res) {
           let data = res.data
           if (data.code == 200) {
-            that.setData({
+            _this.setData({
               ["video.shareCount"]: data.data
             })
-            console.log(data.data)
           }
         }
       })
@@ -51,10 +54,9 @@ Page({
       success(res) {
         let data = res.data
         if (data.code == 200) {
-          that.setData({
+          _this.setData({
             video: data.data,
           })
-          console.log(data.data)
         } else {
           wx.showToast({
             title: '请求数据失败！',
@@ -102,6 +104,14 @@ Page({
    * @param {*} e 
    */
   onClickGiveCollectShare(e) {
+    if(app.globalData.userId==null||app.globalData.userId==''){
+      wx.showToast({
+        title: '请先登录！',
+        icon:'error'
+      })
+      return
+    }
+    
     var _this = this
     let video = _this.data.video
     let id = video.videoId

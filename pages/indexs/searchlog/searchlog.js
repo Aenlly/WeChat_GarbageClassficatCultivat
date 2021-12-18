@@ -30,6 +30,7 @@ Page({
           }else{
             wx.showToast({
               title: '搜索失败！',
+              icon:'error'
             })
           }
           }
@@ -46,6 +47,7 @@ Page({
     if (userId == null) {
       wx.showToast({
         title: '请先登录！',
+        icon:'error'
       })
     } else {
       wx.request({
@@ -63,6 +65,7 @@ Page({
           }else{
             wx.showToast({
               title: '请求数据失败！',
+              icon:'error'
             })
           }
         }

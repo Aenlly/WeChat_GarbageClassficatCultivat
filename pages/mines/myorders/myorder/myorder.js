@@ -9,70 +9,10 @@ Page({
   data: {
     tabs: [{
       title: "未核销",
-      orders: [{
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "未核销",
-        insert_time: "2021-01-02 14:30:58"
-      }, {
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "未核销",
-        insert_time: "2021-01-02 14:30:58"
-      }, {
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "未核销",
-        insert_time: "2021-01-02 14:30:58"
-      }, {
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "未核销",
-        insert_time: "2021-01-02 14:30:58"
-      }, {
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "未核销",
-        insert_time: "2021-01-02 14:30:58"
-      }]
+      orders: [] //未核销订单
     }, {
       title: "已核销",
-      orders: [{
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "已核销",
-        insert_time: "2021-01-02 14:30:58"
-      }, {
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "已核销",
-        insert_time: "2021-01-02 14:30:58"
-      }, {
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "已核销",
-        insert_time: "2021-01-02 14:30:58"
-      }, {
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "已核销",
-        insert_time: "2021-01-02 14:30:58"
-      }, {
-        order_code: "123456789",
-        order_name: "垃圾袋",
-        order_img: "https://placeimg.com/640/480/any",
-        order_tag: "已核销",
-        insert_time: "2021-01-02 14:30:58"
-      }]
+      orders: [] //已核销订单
     }],
     activeTab: 0,
   },
@@ -84,6 +24,7 @@ Page({
     if(userId==null||userId==''){
       wx.showToast({
         title: '请先登录！',
+        icon:'error'
       })
     }else{
       this.getOrderUserList('未核销',0)
@@ -110,6 +51,7 @@ Page({
         }else{
           wx.showToast({
             title: '请求数据异常！',
+            icon:'error'
           })
         }
       }

@@ -1,4 +1,4 @@
-/* pages/services/wastetreas/wastetreainfo/wastetreainfo.wxss */
+/* pages/services/welfvideos/welfvideoinfo/welfvideoinfo.wxss */
 /* 整体容器样式 */
 .video-info {
   padding: 0 30rpx;
@@ -40,7 +40,11 @@ image,
 text {
   width: 30rpx;
   height: 30rpx;
+  line-height: 30rpx;
   vertical-align: middle;
+}
+.give-view image, .collect-view image{
+  margin-top: 0;
 }
 /* 去除分享按钮边框 */
 button::after {
@@ -103,8 +107,8 @@ button::after {
 }
 .bottom_img,
 .top_img {
-  width: 50rpx;
-  height: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
   right: 0;
   border-radius: 50%;
 }

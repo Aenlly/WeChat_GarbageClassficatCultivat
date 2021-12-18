@@ -1,4 +1,5 @@
 <!-- pages/services/welfvideos/welfvideoinfo/welfvideoinfo.wxml -->
+<wxs src="../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <view class="video-info">

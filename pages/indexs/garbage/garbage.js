@@ -53,6 +53,7 @@ Page({
           //错误提示
           wx.showToast({
             title: '数据请求失败',
+            icon:'error'
           })
         }
       }

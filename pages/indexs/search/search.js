@@ -42,7 +42,8 @@ Page({
               console.log(data.data)
             }else{
               wx.showToast({
-                title: '请求数据错误！',
+                title: '服务器异常！',
+                icon:'error'
               })
             }
           }

@@ -140,9 +140,9 @@
           }
         },
         {
-          "name": "变废为宝视频详情",
-          "pathName": "pages/services/wastetreas/wastetreainfo/wastetreainfo",
-          "query": "id=0",
+          "name": "变废为宝详情",
+          "pathName": "pages/packageService/pages/services/wastetreas/wastetreainfo/wastetreainfo",
+          "query": "",
           "scene": null,
           "partialCompile": {
             "enabled": true,

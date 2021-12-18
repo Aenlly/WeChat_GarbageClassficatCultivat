@@ -124,10 +124,14 @@ Page({
           }else if(data.code==300){
             wx.showToast({
               title: '今日已签到！',
+              icon:'error',
+              mask:true
             })
           }else{
             wx.showToast({
               title: '签到失败！',
+              icon:'error',
+              mask:true
             })
           }
         }
@@ -218,7 +222,9 @@ Page({
                   }else{
                     wx.showToast({
                       title: '登录失败！',
-                      duration: 1000
+                      duration: 1000,
+                      icon:'error',
+                      mask:true
                     })
                   }
                   }
@@ -226,6 +232,8 @@ Page({
               } else {
                 wx.showToast({
                   title: '登录失败！',
+                  icon:'error',
+                  mask:true,
                   duration: 1000
                 })
               }

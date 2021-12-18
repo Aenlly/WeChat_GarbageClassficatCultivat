@@ -146,7 +146,8 @@ Page({
           })
         }else{
           wx.showToast({
-            title: '轮播数据异常！',
+            title: '服务器异常！',
+            icon:'error',
           })
         }
       }
@@ -165,6 +166,11 @@ Page({
           console.log(data)
           that.setData({
             video_url:data.data.videoUrl
+          })
+        }else{
+          wx.showToast({
+            title: '服务器异常！',
+            icon:'error',
           })
         }
       }

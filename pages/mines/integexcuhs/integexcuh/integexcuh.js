@@ -32,7 +32,8 @@ Page({
           })
         } else {
           wx.showToast({
-            title: '数据获取异常！',
+            title: '请求数据异常！',
+            icon:'error'
           })
         }
       }
@@ -78,7 +79,8 @@ Page({
           })
         } else {
           wx.showToast({
-            title: '获取数据异常！',
+            title: '请求数据异常！',
+            icon:'error'
           })
         }
       }

@@ -58,6 +58,7 @@ Page({
     if(userId==null){
       wx.showToast({
         title: '请先登录！',
+        icon:'error'
       })
     }else{
       this.searchBy(userId,'')
@@ -90,6 +91,7 @@ Page({
         }else{
           wx.showToast({
             title: '请求数据错误！',
+            icon:'error'
           })
         }
       }
