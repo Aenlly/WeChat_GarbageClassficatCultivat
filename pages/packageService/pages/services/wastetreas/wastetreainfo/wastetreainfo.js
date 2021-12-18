@@ -56,7 +56,7 @@ Page({
           success(res) {
             let data = res.data
             if (data.code == 200) {
-              that.setData({
+              _this.setData({
                 ["waste.shareCount"]: data.data
               })
             }

@@ -138,12 +138,13 @@
         {
           "name": "变废为宝详情",
           "pathName": "pages/packageService/pages/services/wastetreas/wastetreainfo/wastetreainfo",
-          "query": "",
-          "scene": null,
+          "query": "id=1",
+          "scene": 1036,
           "partialCompile": {
             "enabled": true,
             "pages": []
-          }
+          },
+          "referrerInfo": {}
         },
         {
           "name": "变废为宝(我的)",
