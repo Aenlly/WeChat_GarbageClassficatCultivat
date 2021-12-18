@@ -12,22 +12,22 @@
                         <!-- 纵向滚动容器开始 -->
                         <scroll-view scroll-y="true" class="sroll-view">
                             <view class="content-view">
-                                <block wx:for="{{item.wastetrea}}" wx:key="index" wx:for-index="index">
+                                <block wx:for="{{item.WasteTurnTreasures}}" wx:key="index" wx:for-index="index">
                                     <!-- 面板容器 -->
                                     <view class="panel" bind:tap="onClickNav" data-index="{{index}}">
                                         <view class="img-view">
-                                            <image class="imgurl" mode="aspectFill" src="{{item.imgUrl}}" />
+                                            <image class="imgurl" mode="aspectFill" src="{{API_RES_URL}}{{item.imgUrl}}" />
                                         </view>
                                         <view class="panel-col">
                                             <view class="text-title">
-                                                <view class="title">{{item.title}}</view>
+                                                <view class="title">{{item.text}}</view>
                                                 <view class="tag">
                                                     <text>{{tabs[activeTab].title}}</text>
                                                 </view>
                                             </view>
                                             <view class="text-content">
                                                 <text class="weui-media-box__desc">
-                                                    {{item.desc}}
+                                                    {{item.textDesc}}
                                                 </text>
                                             </view>
                                         </view>

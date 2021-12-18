@@ -21,26 +21,20 @@
 }
 /* 横向滚动容器 */
 .swiper-class {
-  height: 1240rpx;
+  height: 1390rpx;
 }
 /* 纵向滚动容器 */
 .sroll-view {
-  height: 1240rpx;
-  display: flex;
+  height: 100%;
 }
 /* 面板样式 */
 .panel {
   display: flex;
   flex-direction: row;
-  width: 710rpx;
-  margin: 0rpx 20rpx 40rpx 20rpx;
 }
-/* 图片\图片容器样式 */
-.img-view,
-.imgurl {
-  width: 150rpx;
-  height: 150rpx;
-  padding-left: 10rpx;
+/* 标题文字样式 */
+.text-title .title {
+  width: 450rpx;
 }
 /* 底部浏览器布局样式 */
 .footer {
