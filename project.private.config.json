@@ -283,11 +283,7 @@
           "name": "知识测试",
           "pathName": "pages/packageService/pages/services/knowtests/knowtest/knowtest",
           "query": "",
-          "scene": null,
-          "partialCompile": {
-            "enabled": true,
-            "pages": []
-          }
+          "scene": null
         },
         {
           "name": "答题规则",
@@ -302,7 +298,7 @@
         {
           "name": "每日答题",
           "pathName": "pages/packageService/pages/services/knowtests/answereveryday/answereveryday",
-          "query": "index=dc6f1687-36d8-4184-b1ae-9e964b606d12",
+          "query": "index=21dd54ed-0b95-4d52-a2e6-e8127e6751fe",
           "scene": null,
           "partialCompile": {
             "enabled": true,

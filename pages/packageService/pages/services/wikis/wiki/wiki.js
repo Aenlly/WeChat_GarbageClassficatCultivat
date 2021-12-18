@@ -78,6 +78,8 @@ Page({
         }else{
           wx.showToast({
             title: '请求数据失败',
+            icon:'error',
+            mask:true
           })
         }
       }

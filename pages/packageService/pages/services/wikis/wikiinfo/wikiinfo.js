@@ -38,6 +38,8 @@ Page({
         } else {
           wx.showToast({
             title: '请求数据失败！',
+            icon:'error',
+            mask:true
           })
         }
       }
@@ -125,6 +127,8 @@ Page({
             } else {
               wx.showToast({
                 title: '点赞失败！',
+                icon:'error',
+                mask:true
               })
             }
           })
@@ -142,6 +146,8 @@ Page({
             } else {
               wx.showToast({
                 title: '取消失败！',
+                icon:'error',
+                mask:true
               })
             }
           })
@@ -170,6 +176,8 @@ Page({
         } else {
           wx.showToast({
             title: '收藏失败！',
+            icon:'error',
+            mask:true
           })
         }
       })
@@ -187,6 +195,8 @@ Page({
         } else {
           wx.showToast({
             title: '取消失败！',
+            icon:'error',
+            mask:true
           })
         }
       })

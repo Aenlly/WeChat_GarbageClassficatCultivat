@@ -58,6 +58,8 @@ Page({
         } else {
           wx.showToast({
             title: '请求数据失败！',
+            icon:'error',
+            mask:true
           })
         }
       }
@@ -142,10 +144,13 @@ Page({
           })
           wx.showToast({
             title: '点赞成功！',
+            mask:true
           })
         } else {
           wx.showToast({
             title: '点赞失败！',
+            icon:'error',
+            mask:true
           })
         }
       })
@@ -159,10 +164,13 @@ Page({
           })
           wx.showToast({
             title: '取消成功！',
+            mask:true
           })
         } else {
           wx.showToast({
             title: '取消失败！',
+            icon:'error',
+            mask:true
           })
         }
       })
@@ -183,6 +191,7 @@ Page({
           count++
           wx.showToast({
             title: '收藏成功！',
+            mask:true
           })
           _this.setData({
             isCollect: !_this.data.isCollect,
@@ -191,6 +200,8 @@ Page({
         } else {
           wx.showToast({
             title: '收藏失败！',
+            icon:'error',
+            mask:true
           })
         }
       })
@@ -204,10 +215,13 @@ Page({
           })
           wx.showToast({
             title: '取消成功！',
+            mask:true
           })
         } else {
           wx.showToast({
             title: '取消失败！',
+            icon:'error',
+            mask:true
           })
         }
       })
