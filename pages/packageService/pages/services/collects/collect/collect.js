@@ -3,7 +3,7 @@
 const app = getApp()
 //获得请求地址
 const API_URL=app.globalData.API_URL;
-const userId=app.globalData.userId
+var userId=''
 Page({
 
   /**
@@ -55,7 +55,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(userId==null){
+    userId=app.globalData.userId
+    if(userId==null||userId==''){
       wx.showToast({
         title: '请先登录！',
         icon:'error'

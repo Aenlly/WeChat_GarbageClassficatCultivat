@@ -2,30 +2,9 @@
 page {
   background-color: white;
 }
-/* 选项卡容器样式 */
-.penal-tabs {
-  background-color: #ededed;
-  display: flex;
-  flex-direction: column;
-}
-/* 选项卡样式 */
-.mp-tabs {
-  align-items: center;
-  padding: 5rpx;
-}
-/* 选项卡头部样式 */
-.tab-class {
-  height: 50rpx;
-  margin: 0 85rpx;
-  border-bottom: rgba(250, 250, 250, 1) 2rpx solid;
-}
-/* 横向滚动容器 */
-.swiper-class {
-  height: 1240rpx;
-}
 /* 纵向滚动容器 */
 .sroll-view {
-  height: 1240rpx;
+  height: 100%;
   display: flex;
 }
 /* 面板样式 */
@@ -38,12 +17,6 @@ page {
 .panel-col {
   display: flex;
   flex-direction: column;
-}
-/* 图片\图片容器样式 */
-.img-view,
-.imgurl {
-  width: 150rpx;
-  height: 150rpx;
 }
 /* 标题文字样式 */
 .text-title .title {

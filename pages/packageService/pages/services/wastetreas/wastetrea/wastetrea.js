@@ -12,7 +12,7 @@ Page({
     //资源请求地址
     API_RES_URL: getApp().globalData.API_RES_URL,
     tabs: [{
-        title: "好用",//与枚举对应
+        title: "好用", //与枚举对应
         WasteTurnTreasures: [] //变废为宝信息
       },
       {
@@ -29,7 +29,7 @@ Page({
     const index = e.detail.index
     this.setData({
       activeTab: index
-    }) 
+    })
     //查询信息
     this.getListByTag(index)
   },
@@ -84,21 +84,27 @@ Page({
   },
   // 我的事件跳转
   clickMy: function () {
-    wx.navigateTo({
-      url: '/pages/packageService/pages/services/wastetreas/wastetreamy/wastetreamy'
-    })
+    if (this.isLogin()) {
+      wx.navigateTo({
+        url: '/pages/packageService/pages/services/wastetreas/wastetreamy/wastetreamy'
+      })
+    }
   },
   // 发布事件跳转
   clickPublish: function () {
-    wx.navigateTo({
-      url: '/pages/packageService/pages/services/wastetreas/wastetreapublish/wastetreapublish'
-    })
+    if (this.isLogin()) {
+      wx.navigateTo({
+        url: '/pages/packageService/pages/services/wastetreas/wastetreapublish/wastetreapublish'
+      })
+    }
   },
   // 我的收藏事件跳转
   clickCollect: function () {
-    wx.navigateTo({
-      url: '/pages/packageService/pages/services/wastetreas/wastetreacollect/wastetreacollect'
-    })
+    if (this.isLogin()) {
+      wx.navigateTo({
+        url: '/pages/packageService/pages/services/wastetreas/wastetreacollect/wastetreacollect'
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -135,6 +141,20 @@ Page({
         }
       }
     })
+  },
+
+  /**
+   * 判断是否登录用户
+   */
+  isLogin() {
+    if (userId == null || userId == '') {
+      wx.showToast({
+        title: '请先登录！',
+        mask: true
+      })
+      return false
+    }
+    return true
   },
 
   /**

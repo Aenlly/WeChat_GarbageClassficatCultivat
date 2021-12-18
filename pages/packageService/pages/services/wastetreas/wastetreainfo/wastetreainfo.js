@@ -13,16 +13,8 @@ Page({
   data: {
     //资源请求地址
     API_RES_URL: getApp().globalData.API_RES_URL,
-    waste: {
-      title: "视频23123123111123122222222222222222221111111111111111111111",
-      videoUrl: "https://www.bilibili.com/video/BV1Kv411G7GR?share_source=copy_web",
-      desc: "参与人员分为若干组，在一定区域内寻找藏在各个地方的垃圾（模型），然后将垃圾（模型）送到相应的四个垃圾桶得分，得分最高的队伍可以获得奖励。在将垃圾（模型）送到垃圾桶的路上，其他队伍可以进行抢夺。（注：禁止在垃圾桶50米范围内发生抢夺，以免队伍被守株待兔，违反此规则的队伍直接取消资格）",
-      insert_time: "2021-05-05"
-    },
+    waste: {},
     icon: true,
-    share: {
-      count: 411414
-    },
     video_title: "video_title_unell", //默认展开简介
     des_view: true,
     likeCount: 0, //点赞量
@@ -36,7 +28,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    if (options.id == '' || options.id==null) {
+    if (options.id == '' || options.id == null) {
       wx.showToast({
         title: '丢失数据！',
         icon: 'error'
@@ -66,7 +58,7 @@ Page({
     }
     //请求展示数据
     wx.request({
-      url: API_URL + '/waste-turn-treasure/getOneById/'+options.id,
+      url: API_URL + '/waste-turn-treasure/getOneById/' + options.id,
       success(res) {
         let data = res.data
         if (data.code == 200) {
@@ -139,6 +131,7 @@ Page({
       imgUrl: waste.imgUrl,
       dataTitle: waste.text,
       dataDesc: waste.textDesc,
+      textTag: waste.textTag,
     }
 
     switch (e.currentTarget.id) {

@@ -7,6 +7,19 @@ Page({
   data: {
 
   },
+    /**
+   * 判断是否登录用户
+   */
+  isLogin() {
+    if (userId == null || userId == '') {
+      wx.showToast({
+        title: '请先登录！',
+        mask: true
+      })
+      return false
+    }
+    return true
+  },
 
   /**
    * 生命周期函数--监听页面加载

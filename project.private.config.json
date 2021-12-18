@@ -160,11 +160,7 @@
           "name": "变废为宝(收藏)",
           "pathName": "pages/packageService/pages/services/wastetreas/wastetreacollect/wastetreacollect",
           "query": "",
-          "scene": null,
-          "partialCompile": {
-            "enabled": true,
-            "pages": []
-          }
+          "scene": null
         },
         {
           "name": "变废为宝(发布)",
