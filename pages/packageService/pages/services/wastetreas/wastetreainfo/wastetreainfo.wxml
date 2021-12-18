@@ -1,4 +1,5 @@
 <!-- pages/services/wastetreas/wastetreainfo/wastetreainfo.wxml -->
+<wxs src="../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <view class="video-info">
@@ -6,27 +7,27 @@
             <mp-cell ext-class="mp-cell">
                 <image class="nick_img" slot="icon" src="/images/index/textsear.png" />
                 <view class="nick_name" sloct="title">4151</view>
-                <view class="video_time" slot="footer">{{wastetrea.insert_time}}</view>
+                <view class="video_time" slot="footer">{{dateFormat.formatDate(wastetrea.insert_time)}}</view>
             </mp-cell>
             <!-- 发布者容器结束 -->
-            <video class="video" src="{{welfvideo.videoUrl}}" />
+            <video class="video" src="{{API_RES_URL}}{{welfvideo.videoUrl}}" />
             <view class="page-view">
                 <mp-cell ex-class="mp-cell-one">
-                    <!-- 点赞容器开始 -->
-                    <view slot="icon" class="icon-view">
-                        <view bindtap="onClickGiveCollectShare" id="isgive">
-                            <image hidden="{{give.isgive}}" src="/images/service/give_off.png" />
-                            <image hidden="{{!give.isgive}}" src="/images/service/give_on.png" />
-                            <text>{{give.count}}</text>
+                   <!-- 点赞容器开始 -->
+                   <view slot="icon" class="icon-view">
+                        <view bindtap="onClickGiveCollectShare" id="isLike">
+                            <image hidden="{{isLike}}" src="/images/service/give_off.png" />
+                            <image hidden="{{!isLike}}" src="/images/service/give_on.png" />
+                            <text>{{likeCount}}</text>
                         </view>
                     </view>
                     <!-- 点赞容器结束 -->
                     <!-- 收藏容器开始 -->
                     <view class="collect-view">
-                        <view bindtap="onClickGiveCollectShare" id="iscollect">
-                            <image hidden="{{collect.iscollect}}" src="/images/service/collect_off.png" />
-                            <image hidden="{{!collect.iscollect}}" src="/images/service/collect_on.png" />
-                            <text>{{collect.count}}</text>
+                        <view bindtap="onClickGiveCollectShare" id="isCollect">
+                            <image hidden="{{isCollect}}" src="/images/service/collect_off.png" />
+                            <image hidden="{{!isCollect}}" src="/images/service/collect_on.png" />
+                            <text>{{collectCount}}</text>
                         </view>
                     </view>
                     <!-- 收藏容器结束 -->
