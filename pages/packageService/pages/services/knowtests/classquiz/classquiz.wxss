@@ -1,4 +1,4 @@
-/* pages/packageService/pages/services/knowtests/classquiz/classquiz.wxss */
+/* pages/packageService/pages/services/knowtests/answereveryday/Answereveryday.wxss */
 page {
   background-color: white;
 }
