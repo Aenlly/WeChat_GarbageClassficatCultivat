@@ -1,5 +1,5 @@
 <!-- pages/services/wastetreas/wastetreainfo/wastetreainfo.wxml -->
-<wxs src="../../../../utils/dateFormat.wxs" module="dateFormat" />
+<wxs src="../../../../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <view class="video-info">
