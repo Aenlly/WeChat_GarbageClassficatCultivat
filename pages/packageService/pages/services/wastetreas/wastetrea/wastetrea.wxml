@@ -14,7 +14,7 @@
                             <view class="content-view">
                                 <block wx:for="{{item.WasteTurnTreasures}}" wx:key="index" wx:for-index="index">
                                     <!-- 面板容器 -->
-                                    <view class="panel" bind:tap="onClickNav" data-index="{{index}}">
+                                    <view class="panel" bind:tap="onClickNav" data-id="{{item.id}}">
                                         <view class="img-view">
                                             <image class="imgurl" mode="aspectFill" src="{{API_RES_URL}}{{item.imgUrl}}" />
                                         </view>

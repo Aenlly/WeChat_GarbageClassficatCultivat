@@ -13,7 +13,7 @@ Page({
   data: {
     //资源请求地址
     API_RES_URL: getApp().globalData.API_RES_URL,
-    wastetrea: {
+    waste: {
       title: "视频23123123111123122222222222222222221111111111111111111111",
       videoUrl: "https://www.bilibili.com/video/BV1Kv411G7GR?share_source=copy_web",
       desc: "参与人员分为若干组，在一定区域内寻找藏在各个地方的垃圾（模型），然后将垃圾（模型）送到相应的四个垃圾桶得分，得分最高的队伍可以获得奖励。在将垃圾（模型）送到垃圾桶的路上，其他队伍可以进行抢夺。（注：禁止在垃圾桶50米范围内发生抢夺，以免队伍被守株待兔，违反此规则的队伍直接取消资格）",
@@ -35,39 +35,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    var _this = this
-    _this.init(options.id)
-
-    // 获得场景值来进行增加分享数
-    var obj = wx.getLaunchOptionsSync()
-    if (obj.scene == 1036) {
-      wx.request({
-        url: API_URL + '/video-user-view/upShareCount/' + options.id,
-        method: 'PUT',
-        success(res) {
-          let data = res.data
-          if (data.code == 200) {
-            that.setData({
-              ["video.shareCount"]: data.data
-            })
-            console.log(data.data)
-          }
-        }
+    console.log(options)
+    if (options.id == '' || options.id==null) {
+      wx.showToast({
+        title: '丢失数据！',
+        icon: 'error'
       })
+      return
+    } else {
+
+      var _this = this
+      _this.init(options.id)
+
+      // 获得场景值来进行增加分享数
+      var obj = wx.getLaunchOptionsSync()
+      if (obj.scene == 1036) {
+        wx.request({
+          url: API_URL + '/waste-turn-treasure/upShareCount/' + options.id,
+          method: 'PUT',
+          success(res) {
+            let data = res.data
+            if (data.code == 200) {
+              that.setData({
+                ["waste.shareCount"]: data.data
+              })
+            }
+          }
+        })
+      }
     }
     //请求展示数据
     wx.request({
-      url: API_URL + '/video-user-view/getById',
-      data: {
-        id: options.id
-      },
+      url: API_URL + '/waste-turn-treasure/getOneById/'+options.id,
       success(res) {
         let data = res.data
         if (data.code == 200) {
           _this.setData({
-            video: data.data,
+            waste: data.data,
           })
+          console.log(data.data)
         } else {
           wx.showToast({
             title: '请求数据失败！',
@@ -124,15 +130,15 @@ Page({
     }
 
     var _this = this
-    let video = _this.data.video
-    let id = video.videoId
+    let waste = _this.data.waste
+    let id = waste.id
     let data = {
       userId: app.globalData.userId,
       entityName: entityName,
-      dataId: video.videoId,
-      imgUrl: video.videoImg,
-      dataTitle: video.videoTitle,
-      dataDesc: video.videoDesc,
+      dataId: waste.id,
+      imgUrl: waste.imgUrl,
+      dataTitle: waste.text,
+      dataDesc: waste.textDesc,
     }
 
     switch (e.currentTarget.id) {
