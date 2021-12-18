@@ -12,7 +12,7 @@ Page({
     knowtest: [{
       imageUrl: "/images/service/knowtest/dailyquizzes.png",
       text: "每日答题",
-      activity: "/pages/packageService/pages/services/knowtests/answereveryday/answereveryday"
+      activity: "/pages/packageService/pages/services/knowtests/classquiz/classquiz"
     }, {
       imageUrl: "/images/service/knowtest/classquiz.png",
       text: "分类小考",
@@ -32,7 +32,7 @@ Page({
     let text = e.currentTarget.dataset.text
     var _this = this
     if (_this.isLogin()) {
-      if (text == '每日答题') {
+      if (text == '每日答题' || text == '分类小考') {
         wx.request({
           url: API_URL + '/answer-question/getRandomBatchIndex',
           data: {
@@ -44,20 +44,22 @@ Page({
             console.log(data)
             if (data.code == 200) {
               wx.navigateTo({
-                url: e.currentTarget.dataset.url+"?index="+data.data,
+                url: e.currentTarget.dataset.url + "?index=" + data.data,
               })
             } else if (data.code == 300) {
               wx.showToast({
                 title: '今日已答题！',
+                mask: true
               })
             } else {
               wx.showToast({
                 title: '服务器异常！',
+                mask: true
               })
             }
           }
         })
-      } else if (text == '分类小考') {} else {
+      } else {
         wx.navigateTo({
           url: e.currentTarget.dataset.url,
         })
@@ -71,6 +73,14 @@ Page({
     var _this = this
     userId = app.globalData.userId
     _this.isLogin()
+    this.getByAnswerPoints()
+  },
+
+  /**
+   * 请求排名信息
+   */
+  getByAnswerPoints() {
+    var _this = this
     //请求排名
     wx.request({
       url: API_URL + '/user/getByAnswerPoints',
@@ -93,6 +103,7 @@ Page({
     if (userId == null || userId == '') {
       wx.showToast({
         title: '请先登录！',
+        mask: true
       })
       return false
     }
@@ -110,7 +121,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getByAnswerPoints()
   },
 
   /**
