@@ -1,11 +1,18 @@
 // pages/test1/test1.js
+// 获取应用实例
+const app = getApp()
+//获得请求地址
+const API_URL=app.globalData.API_URL;
+const entityName = '变废为宝'
+var userId=''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+        //资源请求地址
+        API_RES_URL: getApp().globalData.API_RES_URL,
   },
     /**
    * 判断是否登录用户

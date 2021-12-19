@@ -6,30 +6,43 @@
         <!-- 选项卡容器开始 -->
         <view class="panel-tabs" wx:if="{{!is_sear}}">
             <!-- 选项卡容器开始 -->
-            <mp-tabs tabs="{{tabs}}" class="mp-tabs" swiper-class="swiper-class" activeTab="{{activeTab}}" tab-class="tab-class" tab-active-text-color="#1e90ff" tab-inactive-text-color="#909399" tab-underline-color="#096dd9" bindtabclick="onTabClick">
+            <mp-tabs tabs="{{tabs}}" class="mp-tabs" swiper-class="swiper-class" activeTab="{{activeTab}}"
+                tab-class="tab-class" tab-active-text-color="#1e90ff" tab-inactive-text-color="#909399"
+                tab-underline-color="#096dd9" bindtabclick="onTabClick">
                 <block wx:for="{{tabs}}" wx:key="title">
                     <view class="tab-content" slot="tab-content-{{index}}">
                         <!-- 纵向滚动容器开始 -->
                         <scroll-view scroll-y="true" class="sroll-view">
                             <view class="content-view">
-                                <block wx:for="{{item.wastetrea}}" wx:key="index" wx:for-index="index">
+                                <block wx:for="{{item.WasteTurnTreasures}}" wx:key="index" wx:for-index="index">
                                     <!-- 面板容器 -->
-                                    <view class="panel" bind:tap="onClickNav" data-index="{{index}}">
-                                        <view class="img-view">
-                                            <image class="imgurl" mode="aspectFill" src="{{item.imgUrl}}" />
-                                        </view>
-                                        <view class="panel-col">
-                                            <view class="text-title">
-                                                <view class="title">{{item.title}}</view>
-                                                <view class="tag">
-                                                    <text>{{tabs[activeTab].title}}</text>
+                                    <view class="panel">
+                                        <view class="weui-media-box weui-media-box_appmsg" bind:tap="onClickNav" data-id="{{item.id}}">
+                                            <view class="img-view">
+                                                <image class="imgurl" mode="aspectFill" src="{{API_RES_URL}}{{item.imgUrl}}" />
+                                            </view>
+                                            <view class="panel-col">
+                                                <view class="text-title">
+                                                    <view class="title">{{item.text}}</view>
+                                                    <view class="tag">
+                                                        <text>{{item.textTag}}</text>
+                                                    </view>
+                                                    <view class="tag t">
+                                                        <text>{{item.audit}}</text>
+                                                    </view>
+                                                </view>
+                                                <view class="text-content">
+                                                    <text class="weui-media-box__desc">
+                                                        {{item.textDesc}}
+                                                    </text>
                                                 </view>
                                             </view>
-                                            <view class="text-content">
-                                                <text class="weui-media-box__desc">
-                                                    {{item.desc}}
-                                                </text>
-                                            </view>
+                                        </view>
+                                        <view class="weui-form-preview__ft">
+                                            <view class="weui-form-preview__btn weui-form-preview__btn_primary"
+                                                hover-class="weui-form-preview__btn_active">编辑</view>
+                                            <view class="weui-form-preview__btn weui-form-preview__btn_default"
+                                                hover-class="weui-form-preview__btn_active" bindtap="onClickDelete" data-id="{{item.id}}">删除</view>
                                         </view>
                                     </view>
                                 </block>

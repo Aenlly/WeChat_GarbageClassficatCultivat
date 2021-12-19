@@ -2,9 +2,9 @@
 // 获取应用实例
 const app = getApp()
 //获得请求地址
-const API_URL=app.globalData.API_URL;
+const API_URL = app.globalData.API_URL;
 const entityName = '变废为宝'
-var userId=''
+var userId = ''
 
 Page({
 
@@ -12,8 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-        //资源请求地址
-        API_RES_URL: getApp().globalData.API_RES_URL,
+    //资源请求地址
+    API_RES_URL: getApp().globalData.API_RES_URL,
     collects: [{
       wastetrea_id: 0,
       title: "小程序开发进阶",
@@ -39,13 +39,13 @@ Page({
   },
   // 搜索取消事件
   bindclearSear: function (e) {
-    this.searchBy(userId,'')
+    this.searchBy(userId, '')
   },
   // 搜索事件
   search: function (value) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.searchBy(userId,value)
+        this.searchBy(userId, value)
       }, 500)
     })
   },
@@ -53,14 +53,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    userId=app.globalData.userId
-    if(userId==null||userId==''){
+    userId = app.globalData.userId
+    if (userId == null || userId == '') {
       wx.showToast({
         title: '请先登录！',
-        icon:'error'
+        icon: 'error'
       })
-    }else{
-      this.searchBy(userId,'')
+    } else {
+      this.searchBy(userId, '')
     }
     this.setData({
       search: this.search.bind(this),
@@ -72,26 +72,26 @@ Page({
    * @param {用户编号}} userId 
    * @param {搜索条件} name 
    */
-  searchBy:function(userId,name){
-    var _this=this
+  searchBy: function (userId, name) {
+    var _this = this
     wx.request({
-      url: API_URL+'/collect-entity/getByUserIdAndEntityName',
-      data:{
-        userId:userId,
-        name:name,
-        entityName:entityName
+      url: API_URL + '/collect-entity/getByUserIdAndEntityName',
+      data: {
+        userId: userId,
+        name: name,
+        entityName: entityName
       },
-      success(res){
-        let data=res.data
-        if(data.code==200){
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
           console.log(data)
           _this.setData({
-            collects:data.data,
+            collects: data.data,
           })
-        }else{
+        } else {
           wx.showToast({
             title: '请求数据错误！',
-            icon:'error'
+            icon: 'error'
           })
         }
       }
