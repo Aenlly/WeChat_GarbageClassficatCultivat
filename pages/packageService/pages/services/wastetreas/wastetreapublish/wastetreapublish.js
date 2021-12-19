@@ -1,13 +1,19 @@
 // pages/services/wastetreas/wastetreapublish/wastetreapublish.js
 import Uploader from '../../../../../../miniprogram_npm/miniprogram-file-uploader/index'
 
+// 获取应用实例
+const app = getApp()
+//获得请求地址
+const API_URL=app.globalData.API_URL;
+var userId=''
+
 //官方样例地址：https://github.com/wechat-miniprogram/miniprogram-file-uploader/blob/master/example/client/index/index.js
 //本地下载样例文件地址：D:\应用数据\Google下载文件\压缩文件\miniprogram-file-uploader-master.zip
 //后台分块用node.js写api
-const HOST_IP = '192.168.100.24'//上传地址
-const MERGE_URL = `http://${HOST_IP}:3000/merge`//验证地址
-const VERIFY_URL = `http://${HOST_IP}:3000/verify`//合并地址
-const UPLOAD_URL = `http://${HOST_IP}:3000/upload`//上传地址
+const HOST_IP = '192.168.100.24' //上传地址
+const MERGE_URL = `http://${HOST_IP}:3000/merge` //验证地址
+const VERIFY_URL = `http://${HOST_IP}:3000/verify` //合并地址
+const UPLOAD_URL = `http://${HOST_IP}:3000/upload` //上传地址
 
 const MB = 1024 * 1024 //视频大小
 
@@ -16,17 +22,19 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //资源请求地址
+    API_RES_URL: getApp().globalData.API_RES_URL,
+    image: {
+      title: '封面上传',
+      tips: '最多上传一张',
+      files: [],
+      maxSize: 15 * 1024 * 1024. //最大15m
+    },
     progress: 0,
     uploadedSize: 0,
     averageSpeed: 0,
     timeRemaining: Number.POSITIVE_INFINITY,
     testChunks: false
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.chunkSize = 5 * MB
   },
 
   onTestChunksChange(e) {
@@ -101,6 +109,7 @@ Page({
       timeRemaining: Number.POSITIVE_INFINITY,
     })
   },
+
   // 重新上传，未写控件
   handleUpload() {
     this.uploader && this.uploader.upload()
@@ -116,6 +125,68 @@ Page({
   // 取消上传
   handleCancel() {
     this.uploader && this.uploader.cancel()
+  },
+
+  selectImage(e) {
+
+  },
+
+  //图片上传
+  uploadImage(files) {
+    console.log(files)
+    // 图片上传的函数，必须返回Promise
+    //Promise的callback里面必须resolve({urls})表示成功，否则表示失败
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: API_URL+'/waste-turn-treasure/uploadImage',
+        filePath: files.tempFilePath,
+        name: 'files',
+        formData:{
+          userId:userId
+        },
+        header: {
+          'content-type': 'multipart/form-data'
+        },
+        success: (res) => {
+          // res.data 是由你们后端返回的相关数据
+          const data = JSON.parse(res.data)
+          let urls = [data.data[0].url]
+          // 格式： {urls: ["后端返回的图片地址"]}
+          resolve({urls: urls})
+        },
+        fial: () => {
+          reject('error')
+        }
+      })
+    })
+  },
+
+
+  //图片上传失败
+  uploadImageError(e) {
+    console.log('upload error', e.detail)
+    wx.hideLoading()
+    this.setData({
+      error: "上传失败,可能有些照片过大"
+    })
+  },
+
+  uploadImageSuccess(e) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    userId=app.globalData.userId
+    this.chunkSize = 5 * MB
+    this.setData({
+      //通过bind(this)将函数绑定到this上,以后函数内的this就是指全局页面
+      //setdata以后,这两个函数就可以传递给mp-uploader了
+      selectImage: this.selectImage.bind(this),
+      uploadImage: this.uploadImage.bind(this),
+    })
   },
 
   /**

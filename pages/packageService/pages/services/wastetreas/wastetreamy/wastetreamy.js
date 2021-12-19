@@ -82,7 +82,6 @@ Page({
     }
     this.setData({
       search: this.search.bind(this),
-      is_sear: false
     })
   },
 

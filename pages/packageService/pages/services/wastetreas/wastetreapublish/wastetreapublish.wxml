@@ -11,6 +11,11 @@
                     <mp-cell title="简介">
                         <textarea placeholder="请输入简介" class="form_textarea" maxlength="200" required></textarea>
                     </mp-cell>
+                <mp-cell>
+                <mp-uploader files="{{image.files}}" title="{{image.title}}" tips="{{image.tips}}" max-size="{{image.maxSize}}" delete="{{true}}" select="{{selectImage}}" upload="{{uploadImage}}"
+                bindfail="uploadImageError" bindsuccess="uploadImageSuccess" ></mp-uploader>
+                </mp-cell>
+
                     <mp-cell>
                         <view class="up_title">上传视频</view>
                         <view class="weui-uploader__input-box">
