@@ -9,11 +9,11 @@ var userId = ''
 
 //官方样例地址：https://github.com/wechat-miniprogram/miniprogram-file-uploader/blob/master/example/client/index/index.js
 //本地下载样例文件地址：D:\应用数据\Google下载文件\压缩文件\miniprogram-file-uploader-master.zip
-//后台分块用node.js写api
+//后台分块用node.js写api  
 const HOST_IP = '192.168.100.24' //上传地址
 const MERGE_URL = `http://${HOST_IP}:3000/merge` //验证地址
 const VERIFY_URL = `http://${HOST_IP}:3000/verify` //合并地址
-const UPLOAD_URL = `http://${HOST_IP}:3000/upload` //上传地址
+const UPLOAD_URL = API_URL+"/waste-turn-treasure/uploadTmpVideo" //上传地址
 
 const MB = 1024 * 1024 //视频大小
 
@@ -30,7 +30,7 @@ Page({
       title: '封面上传',
       tips: '最多上传一张',
       files: [],
-      maxSize: 15 * 1024 * 1024. //最大15m
+      maxSize: 10 * 1024 * 1024. //最大15m
     },
     progress: 0,
     uploadedSize: 0,
@@ -68,7 +68,8 @@ Page({
       sourceType: ['album'],
       compressed: false
     })
-
+    var obj = tempFilePath.lastIndexOf("/");
+    const fileName=tempFilePath.substr(obj + 1)
     if (!Uploader.isSupport()) {
       wx.showToast({
         title: '分片上传在 2.10.0 版本以上支持',
@@ -78,14 +79,18 @@ Page({
       return
     }
     const uploader = new Uploader({
-      tempFilePath,
-      totalSize: size,
-      fileName: 'demo',
+      tempFilePath,//文件
+      totalSize: size, //长度
+      fileName: fileName, //文件名
       verifyUrl: VERIFY_URL, //验证地址
       uploadUrl: UPLOAD_URL, //上传地址
       mergeUrl: MERGE_URL, //合并地址
       testChunks: this.data.testChunks,
-      verbose: true
+      verbose: true,//是否输出开始日志，默认 false
+      //上传分块时可添加自定义的参数query
+      query:{
+        userId:userId
+      }
     })
     uploader.on('retry', (res) => {
       console.log('retry', res.url)
