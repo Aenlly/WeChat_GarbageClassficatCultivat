@@ -5,3 +5,7 @@
 .up_title {
   padding-bottom: 30rpx;
 }
+/*显示提示*/
+.weui-toptips{
+-webkit-transform:translateZ(0);
+}

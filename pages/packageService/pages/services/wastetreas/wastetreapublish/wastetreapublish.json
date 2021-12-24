@@ -3,6 +3,7 @@
     "mp-form":"/miniprogram_npm/weui-miniprogram/form/form",
     "mp-cell":"/miniprogram_npm/weui-miniprogram/cell/cell",
     "mp-cells":"/miniprogram_npm/weui-miniprogram/cells/cells",
-    "mp-uploader": "/miniprogram_npm/weui-miniprogram/uploader/uploader"
+    "mp-uploader": "/miniprogram_npm/weui-miniprogram/uploader/uploader",
+    "mp-toptips":"/miniprogram_npm/weui-miniprogram/toptips/toptips"
   }
 }

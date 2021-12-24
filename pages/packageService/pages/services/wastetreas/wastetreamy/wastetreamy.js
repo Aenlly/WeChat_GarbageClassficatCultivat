@@ -107,13 +107,12 @@ Page({
             'content-type': 'application/x-www-form-urlencoded' 
            },
           success(res){
-            console.log(userId)
             let data=res.data
             if(data.code==200){
               wx.showToast({
                 title: '删除成功！',
               })
-              _this.getByUserIdAndAudit(this.data.activeTab)
+              _this.getByUserIdAndAudit(_this.data.activeTab)
             }else{
               wx.showToast({
                 title: '删除失败！',
