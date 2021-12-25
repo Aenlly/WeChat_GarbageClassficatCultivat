@@ -44,6 +44,7 @@
         "pages/services/activitys/activityinfo/activityinfo",
         "pages/services/wastetreas/wastetrea/wastetrea",
         "pages/services/wastetreas/wastetreainfo/wastetreainfo",
+        "pages/services/wastetreas/wastetreaedit/wastereaedit",
         "pages/services/wastetreas/wastetreamy/wastetreamy",
         "pages/services/wastetreas/wastetreapublish/wastetreapublish",
         "pages/services/wastetreas/wastetreacollect/wastetreacollect",

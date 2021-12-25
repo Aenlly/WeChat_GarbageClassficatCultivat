@@ -1,3 +1,4 @@
+// pages/packageService/pages/services/wastetreas/wastetreaedit/wastereaedit.js
 // pages/services/wastetreas/wastetreapublish/wastetreapublish.js
 import Uploader from '../../../../../../miniprogram_npm/miniprogram-file-uploader/index'
 
@@ -6,13 +7,15 @@ const app = getApp()
 //获得请求地址
 const API_URL = app.globalData.API_URL;
 var userId = ''
+//编辑的信息id
+var id=''
 
 //官方样例地址：https://github.com/wechat-miniprogram/miniprogram-file-uploader/blob/master/example/client/index/index.js
 //本地下载样例文件地址：D:\应用数据\Google下载文件\压缩文件\miniprogram-file-uploader-master.zip
 const MERGE_URL = API_URL + "/waste-turn-treasure/mergeTmpFile" //合并地址
 const UPLOAD_URL = API_URL + "/waste-turn-treasure/uploadTmpVideo" //上传地址
 
-const MB = 1024 * 1024 //视频大小
+const MB = 1024 * 1024 //视频大小单位
 
 let uploadArr = []
 
@@ -42,7 +45,7 @@ Page({
       title: '封面上传',
       tips: '最多上传一张',
       files: [],
-      maxSize: 10 * 1024 * 1024. //最大10m
+      maxSize: 10 * MB //最大10m
     },
     progress: 0,
     uploadedSize: 0,
@@ -50,7 +53,7 @@ Page({
     timeRemaining: Number.POSITIVE_INFINITY,
     testChunks: false,
     //视频上传状态
-    videoState: -1,
+    videoState: 1,
     errorMsg: ''
   },
   //输入验证
@@ -105,45 +108,58 @@ Page({
       })
       return
     }
-    console.log(textTag)
-    wx.request({
-      url: API_URL+'/waste-turn-treasure/postUserWasteInfo',
-      data:{
-        userId:userId,
-        text:text,
-        textDesc:textDesc,
-        textTag:textTag,
-        imgUrl:imgUrl,
-        videoUrl:videoUrl
-      },
-      method:"POST",
-
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title:'警告',
+      content:'保存后会重新审核！',
       success(res){
-        let data=res.data
-        console.log(data)
-        if(data.code==200){
-          wx.showToast({
-            title: '提交成功！',
-          })
-          wx.navigateBack({
-            delta: 1,
-          })
-        }else{
-          wx.showToast({
-            title: '提交失败！',
-            icon:'error'
+        if (res.confirm) {
+          wx.request({
+            url: API_URL+'/waste-turn-treasure/putUserWasteInfo',
+            data:{
+              userId:userId,
+              id:id,
+              text:text,
+              textDesc:textDesc,
+              textTag:textTag,
+              imgUrl:imgUrl,
+              videoUrl:videoUrl
+            },
+            method:"PUT",
+      
+            success(res){
+              let data=res.data
+              console.log(data)
+              if(data.code==200){
+                wx.showToast({
+                  title: '保存成功！',
+                })
+                wx.navigateBack({
+                  delta: 1,
+                })
+              }else{
+                wx.showToast({
+                  title: '保存失败！',
+                  icon:'error'
+                })
+              }
+            },fial(){
+              console.log(text)
+            }
           })
         }
-      },fial(){
-        console.log(text)
       }
     })
+   
   },
 
 /**
  * 生命周期函数--监听页面加载
  */
 onLoad: function (options) {
+  if(options.id==''||options==null){
+    return
+  }
   userId = app.globalData.userId
   if(userId==''||userId==null){
     wx.showToast({
@@ -154,12 +170,49 @@ onLoad: function (options) {
       delta: 1,
     })
   }
+  id=options.id
+  this.getById()
+
   this.chunkSize = 10 * MB
   this.setData({
     //通过bind(this)将函数绑定到this上,以后函数内的this就是指全局页面
     //setdata以后,这两个函数就可以传递给mp-uploader了
     selectImage: this.selectImage.bind(this),
     uploadImage: this.uploadImage.bind(this),
+  })
+},
+//请求数据
+getById(){
+  var _this=this
+  wx.request({
+    url: API_URL+'/waste-turn-treasure/getById',
+    data:{
+      id:id,
+      userId:userId
+    },
+    success(res){
+      let data=res.data
+      console.log(data)
+      if(data.code==200){
+        _this.setData({
+          form: {
+            text: data.data.text,
+            textDesc: data.data.textDesc,
+            textTag: data.data.textTag,
+            imgUrl: data.data.imgUrl,
+            videoUrl: data.data.videoUrl
+          },
+          files:[{url:_this.data.API_RES_URL+data.data.imgUrl}],
+          msg:'上传成功',
+          progress:100
+        })
+      }else{
+        wx.showToast({
+          title: '请求数据错误！',
+          icon:'error'
+        })
+      }
+    }
   })
 },
 
@@ -255,8 +308,8 @@ async chooseVideo() {
     uploader.on('progress', (res) => {
       _this.setData({
         progress: res.progress,
-        uploadedSize: parseInt(res.uploadedSize / 1024),
-        averageSpeed: parseInt(res.averageSpeed / 1024),
+        uploadedSize: parseInt(res.uploadedSize /MB),
+        averageSpeed: parseInt(res.averageSpeed /MB),
         timeRemaining: res.timeRemaining
       })
     })

@@ -1,47 +1,48 @@
-<!-- pages/services/wastetreas/wastetreapublish/wastetreapublish.wxml -->
+<!--pages/packageService/pages/services/wastetreas/wastetreaedit/wastereaedit.wxml-->
 <view class="container">
     <view class="flex-wrp-col">
         <!-- 表单容器开始 -->
         <view class="form-view">
             <mp-toptips msg="{{errorMsg}}" type="error" show="{{errorMsg}}" delay="1500"></mp-toptips>
             <mp-form id="form" rules="{{rules}}" model="{{form}}">
-         
                 <mp-cells>
                     <mp-cell title="标题" prop="text">
-                        <input bindinput="formInputChange" data-value="text" maxlength="20" name="text" placeholder="请输入标题" required />
+                        <input bindinput="formInputChange" data-value="text" maxlength="20" name="text" placeholder="请输入标题" required value="{{form.text}}"/>
                     </mp-cell>
                     <mp-cell title="简介">
-                        <textarea placeholder="请输入简介" bindinput="formInputChange" data-value="textDesc" name="textDesc" class="form_textarea" maxlength="200"
+                        <textarea placeholder="请输入简介" bindinput="formInputChange" data-value="textDesc" name="textDesc" class="form_textarea" maxlength="200" value="{{form.textDesc}}"
                             required></textarea>
                     </mp-cell>
 
                     ,<radio-group bindchange="ridioChage">
                         <mp-cell title="标签" required porp="textTag">
-                            <radio value="好用" name="textTag" />好用
-                            <radio value="好看" name="textTag" />好看
-                            <radio value="好玩" name="textTag" />好玩
+                            <radio value="好用" name="textTag" checked="{{form.textTag=='好用'}}"/>好用
+                            <radio value="好看" name="textTag" checked="{{form.textTag=='好看'}}"/>好看
+                            <radio value="好玩" name="textTag" checked="{{form.textTag=='好玩'}}"/>好玩
                         </mp-cell>
                     </radio-group>
 
                     <mp-cell>
+                    
                         <mp-uploader files="{{image.files}}" title="{{image.title}}" tips="{{image.tips}}"
                             max-size="{{image.maxSize}}" delete="{{true}}" select="{{selectImage}}"
-                            upload="{{uploadImage}}" bindfail="uploadImageError"
+                            upload="{{uploadImage}}" bindfail="uploadImageError" files="{{files}}"
                             binddelete="binddelete"></mp-uploader>
+
                     </mp-cell>
                     <mp-cell>
                         <view class="up_title">上传视频</view>
                         <view class="weui-uploader__input-box">
-                            <view class="weui-uploader__input" bindtap="chooseVideo">
+                            <view class="weui-uploader__input" bindtap="chooseVideo" >
                             </view>
                         </view>
                         上传进度：{{msg}}
-                        <progress percent="{{progress}}" show-info border-radius="5" duration="20"
+                        <progress percent="{{progress}}" show-info border-radius="5" duration="{{averageSpeed}}"
                             active-mode="forwards" active></progress>
                         <button bindtap="handleCancel">删除视频</button>
                     </mp-cell>
                     <mp-cell>
-                        <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+                        <button class="weui-btn" type="primary" bindtap="submitForm">保存</button>
                     </mp-cell>
                 </mp-cells>
             </mp-form>

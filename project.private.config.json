@@ -353,6 +353,12 @@
             "enabled": true,
             "pages": []
           }
+        },
+        {
+          "name": "变废为宝编辑",
+          "pathName": "pages/packageService/pages/services/wastetreas/wastetreaedit/wastereaedit",
+          "query": "id=8",
+          "scene": null
         }
       ]
     }

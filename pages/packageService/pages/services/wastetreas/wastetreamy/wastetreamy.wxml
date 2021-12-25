@@ -40,7 +40,8 @@
                                         </view>
                                         <view class="weui-form-preview__ft">
                                             <view class="weui-form-preview__btn weui-form-preview__btn_primary"
-                                                hover-class="weui-form-preview__btn_active">编辑</view>
+                                                hover-class="weui-form-preview__btn_active"
+                                                bindtap="onClickPut" data-id="{{item.id}}">编辑</view>
                                             <view class="weui-form-preview__btn weui-form-preview__btn_default"
                                                 hover-class="weui-form-preview__btn_active" bindtap="onClickDelete" data-id="{{item.id}}">删除</view>
                                         </view>

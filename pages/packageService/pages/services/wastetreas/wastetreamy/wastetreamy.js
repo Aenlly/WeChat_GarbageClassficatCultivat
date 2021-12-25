@@ -84,7 +84,11 @@ Page({
       search: this.search.bind(this),
     })
   },
-
+  onClickPut(e){
+    wx.navigateTo({
+      url: '/pages/packageService/pages/services/wastetreas/wastetreaedit/wastereaedit?id='+e.currentTarget.dataset.id,
+    })
+  },
   //删除信息
   onClickDelete(e){
     var _this=this
