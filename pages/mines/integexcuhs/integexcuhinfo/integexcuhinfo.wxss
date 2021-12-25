@@ -1,0 +1,107 @@
+/* pages/mines/integexcuhs/integexcuhinfo/integexcuhinfo.wxss */
+page{
+  background-color: white;
+}
+/* 广告容器样式 */
+.banner-view {
+  height: 400rpx;
+}
+/* 广告图片样式 */
+.banner-view image {
+  width: 100%;
+  height: 400rpx;
+}
+/*标题容器样式*/
+.title-view{
+  text-align: left;
+  padding: 20rpx;
+  background-color: white;
+}
+.blank-view{
+  height: 20rpx;
+  background-color: #ededed;
+}
+/*价格信息等日期样式*/
+.info-view{
+  margin: 20rpx 0;
+  padding: 20rpx;
+  background-color: white;
+}
+.point{
+  padding-bottom: 20rpx;
+}
+/*所需积分样式*/
+.info_point{
+  font-size: 32rpx;
+  color: #f59123;
+}
+/* 市场价样式 */
+.present_price {
+  font-size: 32rpx;
+  color: tomato;
+  text-decoration: line-through;
+  padding-left: 20rpx;
+}
+.number-view{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+/*库存，已售，浏览量*/
+.number,.sold,.browse{
+  width: 100%;
+  font-size: 24rpx;
+  color: #9b9b9b;
+}
+/*已售样式*/
+.sold{
+  text-align: center;
+}
+/*浏览量布局样式*/
+.browse{
+  text-align: right;
+}
+/*领取方式容器样式*/
+.receive-view{
+  font-size: 24rpx;
+  color: #9b9b9b;
+  margin-top: 20rpx;
+}
+/*礼品描述容器样式*/
+.desc-view{
+  background-color: white;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+/*描述标题样式*/
+.desc_title{
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  color: #f59123;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+  border-bottom: tomato 1rpx solid;
+}
+/*描述文本容器样式*/
+.desc-desc{
+  text-align: left;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+}
+/*描述文本样式*/
+.desc-desc text{
+  text-indent: 56rpx;
+}
+/*按钮容器样式*/
+.btn-view{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/*按钮样式*/
+button{
+  border-radius: 0;
+}

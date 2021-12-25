@@ -112,6 +112,7 @@ Page({
           var data=res.data
           console.log(data)
           if(data.code==200){
+            //更新用户信息
             user.getUserById().then((value)=>{
               _this.setData({
                 userInfo: value,

@@ -22,7 +22,7 @@
                     <view class="present-left">
                         <view class="present-view" wx:for="{{gifts}}" wx:key="*this" wx:for-index="index" wx:if="{{index%2==0}}">
                             <image class="image" src="{{API_RES_URL}}{{item.imgUrl}}" />
-                            <view class="present_name">{{item.name}}</view>
+                            <view class="present_name">{{item.giftName}}</view>
                             <view class="present_integ">积分：{{item.point}}</view>
                             <view class="present_price">市场价：{{item.price}}</view>
                             <button class="btn_nav" type="warn">兑换</button>
@@ -31,7 +31,7 @@
                     <view class="present-right">
                         <view class="present-view" wx:for="{{gifts}}" wx:key="*this" wx:for-index="index" wx:if="{{index%2==1}}">
                             <image class="image" src="{{API_RES_URL}}{{item.imgUrl}}" />
-                            <view class="present_name">{{item.name}}</view>
+                            <view class="present_name">{{item.giftName}}</view>
                             <view class="present_integ">积分：{{item.point}}</view>
                             <view class="present_price">市场价：{{item.price}}</view>
                             <button class="btn_nav" type="warn">兑换</button>

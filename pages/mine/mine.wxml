@@ -22,8 +22,8 @@
           </view>
         </view>
         <view class="bottom-integ-row">
-          <view class="bottom-integ-text">当前积分：</view>
-          <view class="bottom-integ-number">{{userInfo.accumulativePoints}}积分</view>
+          <view class="bottom-integ-text">剩余积分：</view>
+          <view class="bottom-integ-number">{{userInfo.remainingPoints}}积分</view>
         </view>
       </view>
       <!-- 积分头衔容器结束 -->

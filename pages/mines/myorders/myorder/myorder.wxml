@@ -14,7 +14,7 @@
                                 <view class="panel" wx:key="{{index}}" wx:for-index="index" data-index="{{index}}">
                                     <view class="text-title">
                                         <view class="title weui-media-box__title">
-                                            {{item.name}}
+                                            {{item.giftName}}
                                         </view>
                                         <view class="tag">
                                             <text>{{item.state}}</text>
@@ -22,7 +22,7 @@
                                     </view>
                                     <view class="text-content weui-media-box__info">
                                         <view class="text_desc weui-media-box__desc" >
-                                            兑换码：<text style="color: red;">{{item.code}}</text>
+                                            兑换码：<text style="color: red;" user-select="{{true}}">{{item.code}}</text>
                                         </view>
                                     </view>
                                     <view class="text-content weui-media-box__info">

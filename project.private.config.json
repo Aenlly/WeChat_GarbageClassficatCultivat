@@ -359,6 +359,12 @@
           "pathName": "pages/packageService/pages/services/wastetreas/wastetreaedit/wastereaedit",
           "query": "id=8",
           "scene": null
+        },
+        {
+          "name": "礼品详情",
+          "pathName": "pages/mines/integexcuhs/integexcuhinfo/integexcuhinfo",
+          "query": "id=1",
+          "scene": null
         }
       ]
     }
