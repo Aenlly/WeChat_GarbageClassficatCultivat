@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
-    placeholder:'搜索'
+    placeholder:'搜索',
+    type:'文字搜索', //搜索类型，默认文本搜索
   },
 
   // 搜索取消事件
@@ -31,7 +31,8 @@ Page({
           url: API_URL+'/search/getSearchText',
           data:{
             name:value,
-            userId:app.globalData.userId
+            userId:app.globalData.userId,
+            type:this.data.type
           },
           success(res){
             let data=res.data
@@ -59,6 +60,7 @@ Page({
     if(options.name!=null){
       this.setData({
         value:options.name,
+        type:options.type
       })
       this.search(options.name)
     }

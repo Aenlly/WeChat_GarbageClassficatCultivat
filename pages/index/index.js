@@ -4,32 +4,47 @@ const app = getApp()
 const recorderManager = wx.getRecorderManager() //全局录音管理器
 var date = new Date()
 const options = {
-  duration: 60000,//录音时长10秒
-  sampleRate: 44100,
-  numberOfChannels: 1,//通道
-  encodeBitRate: 192000,
-  format: 'mp3',//格式
-  frameSize: 500 //帧大小，单位kb
+  duration: 30000, //录音时长30秒
+  numberOfChannels: 1, //单通道
+  sampleRate: 16000, //采样率
+  encodeBitRate: 24000, //编码码率
+  numberOfChannels: 1, //通道
+  format: 'wav', //格式
+  frameSize: 3 * 1024 //帧大小，单位kb
 }
 //获得请求地址
-const API_URL=app.globalData.API_URL;
+const API_URL = app.globalData.API_URL;
+var userId = ''
 Page({
   data: {
     //资源请求地址
-    API_RES_URL:getApp().globalData.API_RES_URL,
+    API_RES_URL: getApp().globalData.API_RES_URL,
     video_url: '',
     msgList: [{
-      url: "",
-      title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
-    },
-    {
-      url: "",
-      title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
-    }
+        url: "",
+        title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
+      },
+      {
+        url: "",
+        title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
+      }
     ],
+    startRecord: 0, //长按开始时间
+    stopRecord: 0, //长按结束时间
     carousel: [],
     voicesear: "",
     pictusear: "",
+  },
+  //判断是否登录
+  isLogin() {
+    if (userId == '' || userId == null) {
+      wx.showToast({
+        title: '请先登录！',
+        icon: 'error'
+      })
+      return false
+    }
+    return true
   },
   // 蒙层单击事件
   hideModal: function (e) {
@@ -53,21 +68,64 @@ Page({
 
   // 打开用户图库操作
   clickPictu() {
-    var that = this
+    
+    var _this = this
+    if(!_this.isLogin()){
+      wx.showToast({
+        title: '请先登录！',
+        icon:'error'
+      })
+      return
+    }
     wx.chooseImage({
       count: 1,
       success(res) {
-        // 因为是子节点直接使用会报错
-        that.setData({
-          pictusear: res.tempFilePaths,
+        if (res.tempFiles.size > 1024 * 1024 * 3) {
+          wx.showToast({
+            title: '图片太大了！',
+            icon: 'error'
+          })
+          return
+        }
+        // 显示加载提示框
+        wx.showLoading({
+          title: '正在识别中',
         })
-        // 跳转至搜索结果页
-        wx.navigateTo({
-          url: '/pages/indexs/search/search'
+        wx.uploadFile({
+          filePath: res.tempFilePaths[0], //图片临时路径
+          name: 'picture',
+          url: API_URL + '/search/searchPicture',
+          success(res) {
+            // 去掉加载提示框事件
+            wx.hideLoading()
+            //后端返回的数据需要json转换
+            const data = JSON.parse(res.data)
+            console.log(data)
+            if (data.code == 200) {
+              wx.showToast({
+                title: '识别成功！',
+              })
+              wx.navigateTo({
+                url: '../indexs/search/search?name=' + data.data + "&type=语音搜索",
+              })
+            } else {
+              wx.showToast({
+                title: '识别失败！',
+                icon: 'error'
+              })
+            }
+          },
+          fail() {
+            // 去掉加载提示框事件
+            wx.hideLoading()
+            wx.showToast({
+              title: '服务器异常！',
+              icon: 'error'
+            })
+          }
         })
       }
     })
-    console.log(this.data)
   },
 
   // 文字搜索跳转事件
@@ -79,42 +137,86 @@ Page({
 
   // 录音长按事件
   startRecord: function (e) {
-    // 显示加载提示框
-    wx.showLoading({
-      title: '正在识别中',
-    })
-    // 录音开始事件
-    recorderManager.onStart()
-    // 录音结束事件
-    recorderManager.onStop((res) => {
-      // 保存录音临时路径
-      this.setData({
-        voicesear: res.tempFilePath
+    let login_Flag = this.isLogin()
+    if (login_Flag) {
+      this.data.startRecord = e.timeStamp //开始时间
+      // 显示加载提示框
+      wx.showLoading({
+        title: '正在录音中',
       })
-      // 去掉加载提示框事件
-      wx.hideLoading()
-    })
-    // 完成指定帧大小自动结束
-    recorderManager.onFrameRecorded((res) => {
-      // 去掉加载提示框事件
-      wx.hideLoading()
-    })
-    // 录音开始
-    recorderManager.start(options)
-    
+      // 录音开始事件
+      recorderManager.onStart()
+      // 录音结束事件
+      recorderManager.onStop((res) => {
+
+        wx.showLoading({
+          title: '正在识别中',
+        })
+
+        wx.uploadFile({
+          filePath: res.tempFilePath, //录音临时路径
+          name: 'voice',
+          url: API_URL + '/search/searchVoice',
+          success(res) {
+            // 去掉加载提示框事件
+            wx.hideLoading()
+            //后端返回的数据需要json转换
+            const data = JSON.parse(res.data)
+            console.log(data)
+            if (data.code == 200) {
+              wx.showToast({
+                title: '识别成功！',
+              })
+              wx.navigateTo({
+                url: '../indexs/search/search?name=' + data.data + "&type=语音搜索",
+              })
+            } else {
+              wx.showToast({
+                title: '识别失败！',
+                icon: 'error'
+              })
+            }
+          },
+          fail() {
+            // 去掉加载提示框事件
+            wx.hideLoading()
+            wx.showToast({
+              title: '服务器异常！',
+              icon: 'error'
+            })
+          }
+        })
+        // 跳转至搜索结果页
+        // wx.navigateTo({
+        //   url: '/pages/indexs/search/search'
+        // })
+      })
+      // 完成指定帧大小自动结束
+      recorderManager.onFrameRecorded((res) => {
+        // 去掉加载提示框事件
+        wx.hideLoading()
+      })
+      // 录音开始
+      recorderManager.start(options)
+    }
   },
-  // 长按结束事件
-  stopRecord() {
-    recorderManager.stop()
-    // 跳转至搜索结果页
-    wx.navigateTo({
-      url: '/pages/indexs/search/search'
-    })
+  // 录音长按结束事件
+  stopRecord(e) {
+    this.data.stopRecord = e.timeStamp //结束时间
+    if (this.data.stopRecord - this.data.startRecord < 500) {
+      wx.showToast({
+        title: '时间太短了！',
+        icon: 'error'
+      })
+      return
+    } else {
+      recorderManager.stop()
+    }
   },
   /**
    * 跳转搜索记录事件
    */
-  clickToSearchLog:function(){
+  clickToSearchLog: function () {
     wx.navigateTo({
       url: '/pages/indexs/searchlog/searchlog',
     })
@@ -123,7 +225,7 @@ Page({
    * 外部链接跳转
    * @param {*} e  
    */
-  clickToWeb:function(e){
+  clickToWeb: function (e) {
     var url = e.currentTarget.dataset.url
     wx.navigateTo({
       url: '/pages/webView/webView?url=' + url
@@ -133,21 +235,21 @@ Page({
   /**
    * 请求轮播图列表信息
    */
-  getCarouselList:function(){
-    var that=this
+  getCarouselList: function () {
+    var that = this
     wx.request({
-      url: API_URL+'/carousel-user-view/get',
-      success(res){
-        let data=res.data
+      url: API_URL + '/carousel-user-view/get',
+      success(res) {
+        let data = res.data
         console.log(data)
-        if(data.code==200){
+        if (data.code == 200) {
           that.setData({
-            carousel:data.data
+            carousel: data.data
           })
-        }else{
+        } else {
           wx.showToast({
             title: '服务器异常！',
-            icon:'error',
+            icon: 'error',
           })
         }
       }
@@ -156,28 +258,32 @@ Page({
   /**
    * 获得首页视频
    */
-  getByChekTop:function(){
-    var that=this
+  getByChekTop: function () {
+    var that = this
     wx.request({
-      url: API_URL+'/video-user-view/getByChekTop',
-      success(res){
-        let data=res.data
-        if(data.code==200){
+      url: API_URL + '/video-user-view/getByChekTop',
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
           console.log(data)
           that.setData({
-            video_url:data.data.videoUrl
+            video_url: data.data.videoUrl
           })
-        }else{
+        } else {
           wx.showToast({
             title: '服务器异常！',
-            icon:'error',
+            icon: 'error',
           })
         }
       }
-    }) 
+    })
   },
   // 页面加载事件
   onLoad() {
+
+    userId = app.globalData.userId
+    this.isLogin()
+
     this.getCarouselList()
     this.getByChekTop()
     try {
