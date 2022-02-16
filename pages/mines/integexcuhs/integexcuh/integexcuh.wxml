@@ -20,7 +20,7 @@
             <scroll-view scroll-y="{{true}}">
                 <view class="scroll-content">
                     <view class="present-left">
-                        <view class="present-view" wx:for="{{gifts}}" wx:key="*this" wx:for-index="index" wx:if="{{index%2==0}}">
+                        <view class="present-view" wx:for="{{gifts}}" wx:key="*this" wx:for-index="index" wx:if="{{index%2==0}}" bindtap="onClickTap" data-id="{{item.giftId}}">
                             <image class="image" src="{{API_RES_URL}}{{item.imgUrl}}" />
                             <view class="present_name">{{item.giftName}}</view>
                             <view class="present_integ">积分：{{item.point}}</view>
@@ -29,7 +29,7 @@
                         </view>
                     </view>
                     <view class="present-right">
-                        <view class="present-view" wx:for="{{gifts}}" wx:key="*this" wx:for-index="index" wx:if="{{index%2==1}}">
+                        <view class="present-view" wx:for="{{gifts}}" wx:key="*this" wx:for-index="index" wx:if="{{index%2==1}}" bindtap="onClickTap" data-id="{{item.giftId}}">
                             <image class="image" src="{{API_RES_URL}}{{item.imgUrl}}" />
                             <view class="present_name">{{item.giftName}}</view>
                             <view class="present_integ">积分：{{item.point}}</view>

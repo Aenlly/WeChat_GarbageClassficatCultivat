@@ -94,7 +94,12 @@ Page({
   onClickType(e) {
     this.getGiftView('', e.currentTarget.dataset.id)
   },
-
+  //跳转事件
+  onClickTap(e){
+    wx.navigateTo({
+      url: '/pages/mines/integexcuhs/integexcuhinfo/integexcuhinfo?id='+e.currentTarget.dataset.id,
+    })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

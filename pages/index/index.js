@@ -55,7 +55,7 @@ Page({
   // 打卡跳转事件
   clockGo: function (e) {
     wx.navigateTo({
-      url: '/pages/packageService/pages/services/pictuclocks/pictuclockadd/pictuclockadd'
+      url: '/pages/mine/mine'
     })
   },
   // 垃圾分类四个框跳转事件
@@ -68,7 +68,6 @@ Page({
 
   // 打开用户图库操作
   clickPictu() {
-    
     var _this = this
     if(!_this.isLogin()){
       wx.showToast({
@@ -152,7 +151,7 @@ Page({
         wx.showLoading({
           title: '正在识别中',
         })
-
+        
         wx.uploadFile({
           filePath: res.tempFilePath, //录音临时路径
           name: 'voice',
@@ -320,7 +319,16 @@ Page({
         canIUseGetUserProfile: true
       })
     }
-  }
+  },
+
+  
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+    userId = app.globalData.userId
+  },
 
   // getUserProfile(e) {
   //   // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

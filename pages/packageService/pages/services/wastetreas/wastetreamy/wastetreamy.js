@@ -13,7 +13,7 @@ Page({
     //资源请求地址
     API_RES_URL: getApp().globalData.API_RES_URL,
     tabs: [{
-        title: "已通过",
+        title: "已发布",
         WasteTurnTreasures: [{}]
       },
       {

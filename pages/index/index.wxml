@@ -141,10 +141,10 @@
     <view class="content-view">
       <view class="content_title">环保小主，欢迎回来</view>
       <image class="content_image" src="/images/index/clock.png" />
-      <view class="content_desc">今天还没垃圾分类分享打卡哦，快点去打卡吧！</view>
+      <view class="content_desc">今天还没进行每日签到哦，快点去签到吧！</view>
     </view>
     <view class="foot-view">
-      <view class="clock_go" bind:tap="clockGo">去打卡</view>
+      <view class="clock_go" bind:tap="clockGo">去签到</view>
     </view>
   </view>
   <!-- 弹窗结束 -->

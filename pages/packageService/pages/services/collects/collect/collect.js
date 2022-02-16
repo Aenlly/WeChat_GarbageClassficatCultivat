@@ -46,6 +46,9 @@ Page({
     }
     if(data.entityName=='公益视频'){
       url='/pages/packageService/pages/services/welfvideos/welfvideoinfo/welfvideoinfo?id='
+    } 
+    if(data.entityName=='变废为宝'){
+      url='/pages/packageService/pages/services/wastetreas/wastetreainfo/wastetreainfo?id='
     }
     wx.navigateTo({
       url: url+data.dataId,
