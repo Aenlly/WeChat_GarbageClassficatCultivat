@@ -52,8 +52,8 @@ Page({
     } else {
       wx.request({
         url: API_URL + '/search/get',
-        data: {
-          userId: userId
+        header:{
+          'token': userId
         },
         success(res){
           let data=res.data

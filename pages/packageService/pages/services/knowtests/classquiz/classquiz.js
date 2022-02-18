@@ -31,26 +31,7 @@ Page({
         option_name: "D、塑料瓶",
         iscorrect: true,
       }]
-    }, {
-      topic_id: 2,
-      topic_name: "2、以下哪个是可回收垃圾？",
-      option: [{
-        option_id: 1,
-        option_name: "A、贝壳",
-        iscorrect: false,
-      }, {
-        option_id: 2,
-        option_name: "B、电池",
-        iscorrect: false,
-      }, {
-        option_id: 3,
-        option_name: "C、菜叶",
-        iscorrect: false,
-      }, {
-        option_id: 4,
-        option_name: "D、塑料瓶",
-        iscorrect: true,
-      }]
+    
     }],
     //正确选项的样式
     correct: {
@@ -102,10 +83,10 @@ Page({
         url: API_URL + '/answer-question/isCorrect',
         method: "POST",
         header: {
-          'content-type': 'application/x-www-form-urlencoded'
+          'content-type': 'application/x-www-form-urlencoded',
+          'token': userId
         },
         data: {
-          userId: userId,
           topicId: _this.data.topics[topic_index].belongTopicId,
           optionId: option_select,
           randomIndex: _this.data.randomIndex
@@ -179,12 +160,12 @@ Page({
       wx.request({
         url: API_URL + '/answer-question/submitPaper', //api地址
         data: {
-          userId: userId,
           randomIndex: _this.data.randomIndex
         },
         method: "POST",
         header: {
-          'content-type': 'application/x-www-form-urlencoded'
+          'content-type': 'application/x-www-form-urlencoded',
+          'token': userId
         },
         success(res) {
           let data = res.data
@@ -285,8 +266,10 @@ Page({
     } else {
       wx.request({
         url: API_URL + '/answer-question/getTopics',
+        header:{
+          'token': userId
+        },
         data: {
-          userId: userId,
           randomIndex: options.index
         },
         success(res) {

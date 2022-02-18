@@ -13,7 +13,8 @@ function collectClick(dataInfo) {
     wx.request({
       url: API_URL + '/collect-entity/createCollect',
       header: {
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded',
+        'token': app.globalData.userId
       },
       data: dataInfo,
       method: "POST",
@@ -36,8 +37,11 @@ function collectClick(dataInfo) {
 function collectCancel(entityName,id) {
   return new Promise((resolve) => {
     wx.request({
-      url: API_URL + '/collect-entity/collectCancel/' + app.globalData.userId + '/'+entityName+'/' + id,
+      url: API_URL + '/collect-entity/collectCancel/' +entityName+'/' + id,
       method: "DELETE",
+      header:{
+        'token': app.globalData.userId
+      },
       success(res) {
         let data = res.data
         if (data.code == 200) {
@@ -82,8 +86,10 @@ async function getIsCollectByUserId(entityName,id) {
   return new Promise((resolve) => {
   wx.request({
       url: API_URL + '/collect-entity/getIsByUserId',
+      header:{
+        'token': app.globalData.userId
+      },
       data: {
-        userId: app.globalData.userId,
         entityName: entityName,
         dataId: id
       },

@@ -52,8 +52,10 @@ Page({
     var _this = this
     wx.request({
       url: API_URL + '/points-log/getByUserIdAndType',
+      header:{
+        'token': app.globalData.userId
+      },
       data: {
-        userId: userId,
         type: type
       },
       success(res) {

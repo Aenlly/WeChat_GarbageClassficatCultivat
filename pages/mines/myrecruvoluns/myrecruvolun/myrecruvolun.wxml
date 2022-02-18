@@ -1,15 +1,2 @@
-<!-- pages/mines/myrecruvolun/myrecruvolun.wxml -->
-<view class="container">
-    <view class="flex-wrp-col">
-        <view class="weui-panel">
-            <view class="weui-media-box" wx:for="{{recuvoluns}}" wx:key="*this">
-                <view class="title-view">
-                    <view class="text_title">{{item.title}}</view>
-                    <mp-badge extClass="mp-badge" wx:if="{{item.isNotice}}"></mp-badge>
-                </view>
-                <view class="text_content">{{item.content}}</view>
-                <view class="text_time">{{item.insert_time}}</view>
-            </view>
-        </view>
-    </view>
-</view>
+<!--pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun.wxml-->
+<text>pages/mines/myrecruvoluns/myrecruvolun/myrecruvolun.wxml</text>

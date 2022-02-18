@@ -35,8 +35,10 @@ Page({
       if (text == '每日答题' || text == '分类小考') {
         wx.request({
           url: API_URL + '/answer-question/getRandomBatchIndex',
+          header:{
+            'token':userId,
+          },
           data: {
-            userId: userId,
             naireName: text
           },
           success(res) {

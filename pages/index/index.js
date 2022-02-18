@@ -54,8 +54,8 @@ Page({
   },
   // 打卡跳转事件
   clockGo: function (e) {
-    wx.navigateTo({
-      url: '/pages/mine/mine'
+    wx.switchTab({
+      url: '/pages/mine/mine',
     })
   },
   // 垃圾分类四个框跳转事件

@@ -53,7 +53,10 @@ Page({
     return new Promise(() => {
       setTimeout(() => {
         wx.request({
-          url: API_URL+'/waste-turn-treasure/getListSearchByUserIdAndTitle/'+userId+'/'+value,
+          url: API_URL+'/waste-turn-treasure/getListSearchByUserIdAndTitle/'+value,
+          header:{
+            'token': userId
+          },
           success(res){
             let data=res.data
             console.log(data)
@@ -104,11 +107,11 @@ Page({
           url: API_URL+'/waste-turn-treasure/deleteByUserIdAndId',
           method:'DELETE',
           data:{
-            userId:userId,
             id:e.currentTarget.dataset.id
           },
           header:{
-            'content-type': 'application/x-www-form-urlencoded' 
+            'content-type': 'application/x-www-form-urlencoded' ,
+            'token': userId
            },
           success(res){
             let data=res.data
@@ -145,8 +148,10 @@ Page({
     var _this=this
     wx.request({
       url: API_URL + '/waste-turn-treasure/getListByUserIdAndAudit',
+      header:{
+        'token': userId
+      },
       data:{
-        userId:userId,
         audit:_this.data.tabs[index].title
       },
       success(res){

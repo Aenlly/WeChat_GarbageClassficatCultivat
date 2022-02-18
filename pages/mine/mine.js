@@ -104,11 +104,10 @@ Page({
         url: API_URL+'/points-log/dailyCheck',
         method:"PUT",
         header:{
-          'content-type': 'application/x-www-form-urlencoded'
+          'content-type': 'application/x-www-form-urlencoded',
+          'token':userId
         },
-        data:{
-          userId:userId
-        },success(res){
+        success(res){
           var data=res.data
           console.log(data)
           if(data.code==200){
@@ -174,7 +173,6 @@ Page({
   onClickLogin(e) {
     var that = this
     if (!that.data.hasUserInfo) {
-      console.log(that.data.hasUserInfo)
       // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
       // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
       wx.getUserProfile({
@@ -192,12 +190,14 @@ Page({
                     nickName: info.nickName,
                     avatarUrl: info.avatarUrl
                   },success(res){
+                    console.log(res)
                     //判断是否登录成功
                     if(res.data.code==200){
                     that.setData({
                       userInfo: res.data.data,
                       hasUserInfo: true
                     })
+                    console.log(res.data.data)
                     //存储用户信息
                     wx.setStorage({
                       key: "userInfo",
@@ -206,7 +206,7 @@ Page({
                     //存储用户标识
                     wx.setStorage({
                       key: "userId",
-                      data: res.data.data.userId
+                      data: res.data.data.token
                     })
                     //登录状态
                     wx.setStorage({
@@ -218,8 +218,8 @@ Page({
                       duration: 1000
                     })
                     app.globalData.userInfo=res.data.data,
-                    app.globalData.userId=res.data.data.userId
-                    userId=res.data.data.userId
+                    app.globalData.userId=res.data.data.token
+                    userId=res.data.data.token
                   }else{
                     wx.showToast({
                       title: '登录失败！',
@@ -253,6 +253,7 @@ Page({
     wx.getStorage({
       key: 'userInfo',
       success(res) {
+        console.log(res)
         _this.setData({
           userInfo: res.data
         })

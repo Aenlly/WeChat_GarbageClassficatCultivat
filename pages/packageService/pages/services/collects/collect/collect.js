@@ -81,8 +81,10 @@ Page({
     var _this=this
     wx.request({
       url: API_URL+'/collect-entity/getByUserId',
+      header:{
+        'token': app.globalData.userId
+      },
       data:{
-        userId:userId,
         name:name
       },
       success(res){

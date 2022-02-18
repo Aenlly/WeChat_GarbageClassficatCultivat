@@ -291,7 +291,7 @@
         {
           "name": "每日答题",
           "pathName": "pages/packageService/pages/services/knowtests/answereveryday/answereveryday",
-          "query": "index=21dd54ed-0b95-4d52-a2e6-e8127e6751fe",
+          "query": "index=dc09894e-8bcb-4ad6-a80e-8c2782bd21a9",
           "scene": null,
           "partialCompile": {
             "enabled": true,

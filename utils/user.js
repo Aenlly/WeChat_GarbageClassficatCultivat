@@ -9,8 +9,8 @@ const userId = app.globalData.userId;
   return new Promise((resolve) => {
     wx.request({
       url: API_URL + '/user/getById',
-      data: {
-        userId: userId
+      header:{
+        'token':userId
       },
       success(res) {
         let data = res.data

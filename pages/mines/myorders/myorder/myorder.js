@@ -1,6 +1,8 @@
 // pages/mines/myorder/myorder.js
-const API_URL=getApp().globalData.API_URL;
-const userId=getApp().globalData.userId;
+// 获取应用实例
+const app = getApp()
+const API_URL=app.globalData.API_URL;
+var userId='';
 Page({
 
   /**
@@ -21,6 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    userId=app.globalData.userId;
     if(userId==null||userId==''){
       wx.showToast({
         title: '请先登录！',
@@ -40,7 +43,10 @@ Page({
   getOrderUserList(state,index){
     var _this=this
     wx.request({
-      url: API_URL+'/order-user-view/getOrderUserList/'+userId+'/'+state,
+      url: API_URL+'/order-user-view/getOrderUserList/'+state,
+      header:{
+        'token': userId
+      },
       success(res){
         let data=res.data
         if(data.code==200){

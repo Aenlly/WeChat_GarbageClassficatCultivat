@@ -1,3 +1,0 @@
-<!--pages/test1/test1.wxml-->
-<wxs src="../../utils/dateFormat.wxs" module="dateFormat" />
-<text>pages/test1/test1.wxml</text>

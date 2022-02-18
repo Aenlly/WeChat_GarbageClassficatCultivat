@@ -75,12 +75,16 @@ Page({
         success(res) {
           if (res.confirm) {
             wx.request({
-              url: API_URL + '/gift/convertById/' + userId + "/" + id,
+              url: API_URL + '/gift/convertById/'  + id,
               method: 'PUT',
+              header:{
+                'token': userId
+              },
               success(res) {
                 let data = res.data
                 console.log(data)
                 if (data.code == 200) {
+                  this.info.number=this.info.number-1
                   //更新用户信息
                   user.getUserById()
                   wx.showModal({

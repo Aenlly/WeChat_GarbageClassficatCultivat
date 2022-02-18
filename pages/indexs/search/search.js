@@ -29,9 +29,11 @@ Page({
       setTimeout(() => {
         wx.request({
           url: API_URL+'/search/getSearchText',
+          header:{
+            'token': app.globalData.userId
+          },
           data:{
             name:value,
-            userId:app.globalData.userId,
             type:this.data.type
           },
           success(res){

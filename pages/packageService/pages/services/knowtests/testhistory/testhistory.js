@@ -66,8 +66,10 @@ Page({
     var _this=this
     wx.request({
       url: API_URL+'/answer-question/getPaperTablesLog',
+      header:{
+        'token': userId
+      },
       data:{
-        userId:userId,
         questionnaireName:questionnaireName
       },
       success(res){

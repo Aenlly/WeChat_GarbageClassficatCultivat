@@ -31,10 +31,10 @@ Page({
 
     rules: {
       text: "请输入标题",
-      textDesc:"请输入简介",
-      textTag:"请选择标签",
-      imgUrl:"请上传图片",
-      videoUrl:"请上传视频",
+      textDesc: "请输入简介",
+      textTag: "请选择标签",
+      imgUrl: "请上传图片",
+      videoUrl: "请上传视频",
     },
     //资源请求地址
     API_RES_URL: getApp().globalData.API_RES_URL,
@@ -99,7 +99,7 @@ Page({
         errorMsg: this.data.rules.imgUrl
       })
       return
-    }else if (videoUrl == '' || videoUrl == null) {
+    } else if (videoUrl == '' || videoUrl == null) {
       _this.setData({
         errorMsg: this.data.rules.videoUrl
       })
@@ -107,69 +107,71 @@ Page({
     }
     console.log(textTag)
     wx.request({
-      url: API_URL+'/waste-turn-treasure/postUserWasteInfo',
-      data:{
-        userId:userId,
-        text:text,
-        textDesc:textDesc,
-        textTag:textTag,
-        imgUrl:imgUrl,
-        videoUrl:videoUrl
+      url: API_URL + '/waste-turn-treasure/postUserWasteInfo',
+      header: {
+        'token': userId
       },
-      method:"POST",
-
-      success(res){
-        let data=res.data
+      data: {
+        text: text,
+        textDesc: textDesc,
+        textTag: textTag,
+        imgUrl: imgUrl,
+        videoUrl: videoUrl
+      },
+      method: "POST",
+      success(res) {
+        let data = res.data
         console.log(data)
-        if(data.code==200){
+        if (data.code == 200) {
           wx.showToast({
             title: '提交成功！',
           })
           wx.navigateBack({
             delta: 1,
           })
-        }else{
+        } else {
           wx.showToast({
             title: '提交失败！',
-            icon:'error'
+            icon: 'error'
           })
         }
-      },fial(){
+      },
+      fial() {
         console.log(text)
       }
     })
   },
 
-/**
- * 生命周期函数--监听页面加载
- */
-onLoad: function (options) {
-  userId = app.globalData.userId
-  if(userId==''||userId==null){
-    wx.showToast({
-      title: '请先登录！',
-      icon:'error'
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    userId = app.globalData.userId
+    if (userId == '' || userId == null) {
+      wx.showToast({
+        title: '请先登录！',
+        icon: 'error'
+      })
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
+    this.chunkSize = 10 * MB
+    this.setData({
+      //通过bind(this)将函数绑定到this上,以后函数内的this就是指全局页面
+      //setdata以后,这两个函数就可以传递给mp-uploader了
+      selectImage: this.selectImage.bind(this),
+      uploadImage: this.uploadImage.bind(this),
     })
-    wx.navigateBack({
-      delta: 1,
-    })
-  }
-  this.chunkSize = 10 * MB
-  this.setData({
-    //通过bind(this)将函数绑定到this上,以后函数内的this就是指全局页面
-    //setdata以后,这两个函数就可以传递给mp-uploader了
-    selectImage: this.selectImage.bind(this),
-    uploadImage: this.uploadImage.bind(this),
-  })
-},
+  },
 
-onTestChunksChange(e) {
-  const value = e.detail.value
-  this.data.testChunks = value
-},
+  onTestChunksChange(e) {
+    const value = e.detail.value
+    this.data.testChunks = value
+  },
 
-// 选择视频文件
-async chooseVideo() {
+  // 选择视频文件
+  async chooseVideo() {
     var _this = this
     if (_this.data.videoState == 0) {
       wx.showToast({
@@ -220,9 +222,9 @@ async chooseVideo() {
       testChunks: _this.data.testChunks,
       maxConcurrency: 1, //并发上传数，默认 5，最大不超过 10
       verbose: true, //是否输出开始日志，默认 false
-      //上传分块时可添加自定义的参数query
-      query: {
-        userId: userId
+      //上传分块时可添加自定义的请求头
+      header: {
+        'token': userId
       }
     })
     uploader.on('retry', (res) => {
@@ -250,6 +252,7 @@ async chooseVideo() {
         title: '上传视频失败！',
         icon: 'error'
       })
+      _this.data.videoState = -1
     })
 
     uploader.on('progress', (res) => {
@@ -289,23 +292,23 @@ async chooseVideo() {
   },
   // 取消上传/删除视频
   handleCancel() {
-    var _this=this
+    var _this = this
     wx.showModal({
       cancelColor: 'cancelColor',
-      title:'警告',
-      content:'确认删除？删除后无法找回！',
+      title: '警告',
+      content: '确认删除？删除后无法找回！',
       confirmColor: '#d9534f',
-      success(res){
+      success(res) {
         if (res.confirm) {
           _this.setData({
-            msg:'',
-            ["form.videoUrl"]:''
+            msg: '',
+            ["form.videoUrl"]: ''
           })
           _this.uploader && _this.uploader.cancel()
         }
       }
     })
-   
+
   },
 
   //选择图片
@@ -326,11 +329,9 @@ async chooseVideo() {
         url: API_URL + '/waste-turn-treasure/uploadImage',
         filePath: filePath,
         name: 'files',
-        formData: {
-          userId: userId
-        },
         header: {
-          'content-type': 'multipart/form-data'
+          'content-type': 'multipart/form-data',
+          'token': userId
         },
         success: (res) => {
           // res.data 是由你们后端返回的相关数据，返回的不是json数据，需要进行转换
@@ -364,9 +365,9 @@ async chooseVideo() {
     })
   },
   //删除图片
-  binddelete(e){
+  binddelete(e) {
     this.setData({
-      ["form.imgUrl"]:''
+      ["form.imgUrl"]: ''
     })
   },
 

@@ -14,6 +14,7 @@ function likeClick(dataInfo) {
     wx.request({
       url: API_URL + '/like-entity/createLike',
       header: {
+        'token':app.globalData.userId,
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: dataInfo,
@@ -37,7 +38,10 @@ function likeClick(dataInfo) {
 function likeCancel(entityName,id) {
   return new Promise((resolve) => {
     wx.request({
-      url: API_URL + '/like-entity/likeCancel/' + app.globalData.userId + '/'+entityName+'/' + id,
+      url: API_URL + '/like-entity/likeCancel/'+entityName+'/' + id,
+      header:{
+        'token':app.globalData.userId,
+      },
       method: "DELETE",
       success(res) {
         let data = res.data
@@ -83,8 +87,10 @@ function getIsLikeByUserId(entityName,id) {
   return new Promise((resolve) => {
     wx.request({
       url: API_URL + '/like-entity/getIsByUserId',
+      header:{
+        'token':app.globalData.userId,
+      },
       data: {
-        userId: app.globalData.userId,
         entityName: entityName,
         dataId: id
       },
