@@ -29,8 +29,6 @@ Page({
       success(res) {
         let data = res.data
         if (data.code == 200) {
-          //时间转换
-          data.data.releaseTime = new Date(data.data.releaseTime).toLocaleDateString()
           that.setData({
             hotInfo: data.data,
           })

@@ -44,7 +44,7 @@ Page({
    */
   onLoad: function (options) {
     var userInfo = app.globalData.userInfo
-    if (userInfo.userId == null || userInfo.userId == '') {
+    if (userInfo.token == null || userInfo.token == '') {
       wx.showToast({
         title: '请先登录！',
         icon:'error'

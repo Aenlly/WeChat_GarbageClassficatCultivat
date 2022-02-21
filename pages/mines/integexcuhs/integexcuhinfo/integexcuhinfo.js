@@ -22,7 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this = this
+    
     id = options.id
     if (id == '' || id == null) {
       wx.showToast({
@@ -34,6 +34,7 @@ Page({
       })
     }
     userId = app.globalData.userId
+    console.log("userid:"+userId)
     if (userId == '' || userId == null) {
       wx.showToast({
         title: '请先登录！',
@@ -44,24 +45,30 @@ Page({
       })
       return
     } else {
-      wx.request({
-        url: API_URL + '/gift-list-view/getById/' + id,
-        success(res) {
-          let data = res.data
-          if (data.code == 200) {
-            _this.setData({
-              info: data.data
-            })
-          }
-        }
-      })
+      this.getById();
     }
+  },
+  // 获取礼品信息
+  getById(){
+    var _this = this
+    wx.request({
+      url: API_URL + '/gift-list-view/getById/' + id,
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
+          _this.setData({
+            info: data.data
+          })
+        }
+      }
+    })
   },
 
   /*兑换事件 */
   exchangeClick() {
     var _this = this
     let userInfo = app.globalData.userInfo
+    console.log(userInfo)
     if (userInfo.remainingPoints < _this.data.info.point) {
       wx.showToast({
         title: '积分不足！',
@@ -84,9 +91,11 @@ Page({
                 let data = res.data
                 console.log(data)
                 if (data.code == 200) {
-                  this.info.number=this.info.number-1
+                  console.log(_this.data.info)
+                  _this.data.info.number=_this.data.info.number-1
                   //更新用户信息
                   user.getUserById()
+                  _this.getById()
                   wx.showModal({
                     cancelColor: 'cancelColor',
                     title: "兑换码",

@@ -74,6 +74,7 @@ Page({
   },
 
   onClickSearch:function(e){
+    console.log(e.currentTarget.dataset)
     wx.navigateTo({
       url: '/pages/indexs/search/search?name='+e.currentTarget.dataset.name,  
     })

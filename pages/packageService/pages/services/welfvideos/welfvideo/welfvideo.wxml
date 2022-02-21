@@ -1,5 +1,4 @@
 <!-- pages/services/welfvideo/welfvideo.wxml -->
-<wxs src="../../../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <mp-searchbar bindcancel="bindclearSear" search="{{search}}" bindselectresult="selectResult"></mp-searchbar>
@@ -13,7 +12,7 @@
                     <view class="weui-media-box__title">{{item.videoTitle}}</view>
                     <view class="weui-media-box__desc">{{item.videoDesc}}</view>
                     <view class="weui-media-box__info">
-                        <view class="weui-media-box__info__meta">{{dateFormat.formatDate(item.createTime)}}</view>
+                        <view class="weui-media-box__info__meta">{{item.createTime}}</view>
                     </view>
                 </view>
             </view>

@@ -1,5 +1,4 @@
 <!-- pages/services/wastetreas/wastetreainfo/wastetreainfo.wxml -->
-<wxs src="../../../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <view class="video-info">
@@ -7,7 +6,7 @@
             <mp-cell ext-class="mp-cell">
                 <image class="nick_img" slot="icon" src="{{waste.user.avatarUrl}}" />
                 <view class="nick_name" sloct="title">{{waste.user.nickName}}</view>
-                <view class="video_time" slot="footer">{{dateFormat.formatDate(waste.updateTime)}}</view>
+                <view class="video_time" slot="footer">{{waste.updateTime}}</view>
             </mp-cell>
             <!-- 发布者容器结束 -->
             <video class="video" src="{{API_RES_URL}}{{waste.videoUrl}}" />

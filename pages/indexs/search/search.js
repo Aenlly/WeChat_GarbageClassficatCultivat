@@ -45,7 +45,7 @@ Page({
               console.log(data.data)
             }else{
               wx.showToast({
-                title: '服务器异常！',
+                title: '该识别未收录',
                 icon:'error'
               })
             }
@@ -62,7 +62,7 @@ Page({
     if(options.name!=null){
       this.setData({
         value:options.name,
-        type:options.type
+        type:options.type!=null?options.type:this.data.type
       })
       this.search(options.name)
     }
