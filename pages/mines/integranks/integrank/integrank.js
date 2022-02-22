@@ -3,19 +3,25 @@
 const app = getApp()
 //获得请求地址
 const API_URL=app.globalData.API_URL;
-const userInfo=app.globalData.userInfo
+var userInfo=""
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    rank:1,
+    avatarUrl:"",
+    nickName:"",
+    points:1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    userInfo=app.globalData.userInfo
+    if(userInfo!=null){
     var _this=this
     wx.request({
       url: API_URL+'/user/getByPoint',
@@ -23,6 +29,17 @@ Page({
         let data=res.data
         if(data.code==200){
           console.log(data.data)
+          let length=data.data.length
+          for(let i=0;i<length;i++){
+            if(data.data[i].avatarUrl==userInfo.avatarUrl&&data.data[i].nickName==userInfo.nickName){
+              _this.setData({
+                rank:i+1,
+                avatarUrl:userInfo.avatarUrl,
+                nickName:userInfo.nickName,
+                points:userInfo.accumulativePoints,
+              })
+            }
+          }
           _this.setData({
             userrank:data.data,
             userInfo:userInfo
@@ -35,6 +52,7 @@ Page({
         }
       }
     })
+  }
   },
 
   /**

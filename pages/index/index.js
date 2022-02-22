@@ -24,10 +24,6 @@ Page({
         url: "",
         title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
       },
-      {
-        url: "",
-        title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
-      }
     ],
     startRecord: 0, //长按开始时间
     stopRecord: 0, //长按结束时间
@@ -54,6 +50,9 @@ Page({
   },
   // 打卡跳转事件
   clockGo: function (e) {
+    this.setData({
+      isModal: false
+    })
     wx.switchTab({
       url: '/pages/mine/mine',
     })

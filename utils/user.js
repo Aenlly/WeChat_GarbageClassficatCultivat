@@ -15,6 +15,7 @@ const userId = app.globalData.userId;
       success(res) {
         let data = res.data
         if (data.code == 200) {
+          console.log(data.data)
           //存储用户信息
           wx.setStorage({
             key: "userInfo",

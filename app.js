@@ -12,17 +12,13 @@ App({
     // const API_URL = "https://localhost:8002" //本地接口请求地址
     const API_URL = "https://www.aenlly.top:8002" //远程接口请求地址
     // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
     const userId = wx.getStorageSync('userId') || []
     this.globalData.userId = userId
     const userInfo = wx.getStorageSync('userInfo') || []
     this.globalData.userInfo = userInfo
     const hasUserInfo = wx.getStorageSync('hasUserInfo') || []
 
-
-    if (hasUserInfo) {
+    if (hasUserInfo!=null) {
       // 登录
       wx.login({
           success(res) {
@@ -57,7 +53,7 @@ App({
                     })
                   } else {
                     wx.showToast({
-                      title: '服务器请求异常！',
+                      title: '服务请求异常！',
                       duration: 1000,
                       icon: 'error',
                       mask: true

@@ -3,6 +3,7 @@ const user = require("../../utils/user.js")
 var app=getApp()
 const API_URL=app.globalData.API_URL;
 var userId=app.globalData.userId
+var info=""
 Page({
   
   /**
@@ -178,9 +179,13 @@ Page({
       wx.getUserProfile({
         desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
         success: (res) => {
-          let info=res.userInfo
+          info=res.userInfo
+          console.log("信息")
+          console.log(info)
           wx.login({
             success(res) {
+              console.log("登录信息")
+              console.log(info)
               if (res.code) {
                 //发起网络请求
                 wx.request({
@@ -190,14 +195,15 @@ Page({
                     nickName: info.nickName,
                     avatarUrl: info.avatarUrl
                   },success(res){
-                    console.log(res)
+                    console.log("发送登录请求结束")
+              console.log(info)
+                    console.log("登录信息")
                     //判断是否登录成功
                     if(res.data.code==200){
                     that.setData({
                       userInfo: res.data.data,
                       hasUserInfo: true
                     })
-                    console.log(res.data.data)
                     //存储用户信息
                     wx.setStorage({
                       key: "userInfo",

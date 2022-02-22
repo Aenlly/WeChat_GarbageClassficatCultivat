@@ -2,12 +2,12 @@
 <view class="container">
     <view class="flex-wrp-col">
         <view class="user-view" style="background-image: url('https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/945eab16-f436-4d9b-aa65-063da327a867.png');">
-            <view class="nickrank">16</view>
+            <view class="nickrank">{{rank}}</view>
             <view class="nick-img">
-                <image class="nickurl" src="{{userInfo.avatarUrl}}" mode="aspectFill" />
+                <image class="nickurl" src="{{avatarUrl}}" mode="aspectFill" />
             </view>
-            <view class="nickname">{{userInfo.nickName}}</view>
-            <view class="nickinteg">累计积分：{{userInfo.answerPoints}}</view>
+            <view class="nickname">{{nickName}}</view>
+            <view class="nickinteg">累计积分：{{points}}</view>
         </view>
         <!-- 排名容器开始 -->
         <view class="rank-view">
