@@ -2,15 +2,15 @@
 // 获取应用实例
 const app = getApp()
 //获得请求地址
-const API_URL=app.globalData.API_URL;
+const API_URL = app.globalData.API_URL;
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    placeholder:'搜索',
-    type:'文字搜索', //搜索类型，默认文本搜索
+    placeholder: '搜索',
+    type: '文字搜索', //搜索类型，默认文本搜索
   },
 
   // 搜索取消事件
@@ -21,32 +21,39 @@ Page({
   },
   // 搜索事件
   search: function (value) {
-    var _this=this
-    if(value==null||value==''){
+    var _this = this
+    if (value == null || value == '') {
       return null
     }
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         wx.request({
-          url: API_URL+'/search/getSearchText',
-          header:{
+          url: API_URL + '/search/getSearchText',
+          header: {
             'token': app.globalData.userId
           },
-          data:{
-            name:value,
-            type:this.data.type
+          data: {
+            name: value,
+            type: this.data.type
           },
-          success(res){
-            let data=res.data
-            if(data.code==200){
-              _this.setData({
-                searchList:data.data
-              })
+          success(res) {
+            let data = res.data
+            if (data.code == 200) {
+              if (data.data != null) {
+                _this.setData({
+                  searchList: data.data
+                })
+              } else {
+                wx.showToast({
+                  title: '未搜索到结果',
+                  icon: 'error'
+                })
+              }
               console.log(data.data)
-            }else{
+            } else {
               wx.showToast({
-                title: '该识别未收录',
-                icon:'error'
+                title: '服务器异常',
+                icon: 'error'
               })
             }
           }
@@ -59,10 +66,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.name!=null){
+    if (options.name != null) {
       this.setData({
-        value:options.name,
-        type:options.type!=null?options.type:this.data.type
+        value: options.name,
+        type: options.type != null ? options.type : this.data.type
       })
       this.search(options.name)
     }
@@ -75,7 +82,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
