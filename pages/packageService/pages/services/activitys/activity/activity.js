@@ -36,12 +36,6 @@ Page({
         desc: "大厦附近的奶粉是可能的fund附件为部队番号分红年度计划发给个红包机房的干部和附件发货的给你发几个标点符号改变",
         imgUrl: "https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/17b7427b-46bb-4638-9ec9-34910a42a5a3.png",
         tag: "未开始",
-      }, {
-        activity_id: 1,
-        title: "dasmnfn地方就是那地方纳斯达克浮动浮动",
-        desc: "大厦附近的奶粉是可能的fund附件为部队番号分红年度计划发给个红包机房的干部和附件发货的给你发几个标点符号改变",
-        imgUrl: "https://img.tcs.onein.cn/cldfactory/iasset/2dd0825c-dab8-46fa-b62f-9e73c9ba2748/17b7427b-46bb-4638-9ec9-34910a42a5a3.png",
-        tag: "未开始",
       }
     ]
   },

@@ -1,5 +1,4 @@
 <!-- pages/mines/integlog/integlog.wxml -->
-<wxs src="../../../../utils/dateFormat.wxs" module="dateFormat" />
 <view class="container">
     <view class="flex-wrp-col">
         <mp-tabs tabs="{{tabs}}" swiper-class="swiper-class" activeTab="{{activeTab}}" tab-class="tab-class" tab-active-text-color="#1e90ff" tab-inactive-text-color="#909399" tab-underline-color="#096dd9" bindtabclick="onTabClick">
@@ -22,7 +21,7 @@
                                     </view>
                                     <view class="text-content weui-media-box__info">
                                         <view class="weui-media-box__info__meta">
-                                            {{dateFormat.formatDateTime(item.createTime)}}
+                                            {{item.createTime}}
                                         </view>
                                     </view>
                                 </view>

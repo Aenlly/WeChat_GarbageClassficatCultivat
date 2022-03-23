@@ -2,8 +2,8 @@
 // 获取应用实例
 const app = getApp()
 //获得请求地址
-const API_URL=app.globalData.API_URL;
-var userId=''
+const API_URL = app.globalData.API_URL;
+var userId = ''
 Page({
 
   /**
@@ -22,13 +22,13 @@ Page({
   },
   // 搜索取消事件
   bindclearSear: function (e) {
-    this.searchBy(userId,'')
+    this.searchBy(userId, '')
   },
   // 搜索事件
   search: function (value) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        this.searchBy(userId,value)
+        this.searchBy(userId, value)
       }, 500)
     })
   },
@@ -39,33 +39,33 @@ Page({
   onClickUrl(e) {
     var _this = this
     // 获取点击的值
-    let data=_this.data.collects[e.currentTarget.dataset.index]
-    let url=''
-    if(data.entityName=='热门资讯'){
-      url='/pages/packageService/pages/services/wikis/wikiinfo/wikiinfo?id='
+    let data = _this.data.collects[e.currentTarget.dataset.index]
+    let url = ''
+    if (data.entityName == '热门资讯') {
+      url = '/pages/packageService/pages/services/wikis/wikiinfo/wikiinfo?id='
     }
-    if(data.entityName=='公益视频'){
-      url='/pages/packageService/pages/services/welfvideos/welfvideoinfo/welfvideoinfo?id='
-    } 
-    if(data.entityName=='变废为宝'){
-      url='/pages/packageService/pages/services/wastetreas/wastetreainfo/wastetreainfo?id='
+    if (data.entityName == '公益视频') {
+      url = '/pages/packageService/pages/services/welfvideos/welfvideoinfo/welfvideoinfo?id='
+    }
+    if (data.entityName == '变废为宝') {
+      url = '/pages/packageService/pages/services/wastetreas/wastetreainfo/wastetreainfo?id='
     }
     wx.navigateTo({
-      url: url+data.dataId,
+      url: url + data.dataId,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    userId=app.globalData.userId
-    if(userId==null||userId==''){
+    userId = app.globalData.userId
+    if (userId == null || userId == '') {
       wx.showToast({
         title: '请先登录！',
-        icon:'error'
+        icon: 'error'
       })
-    }else{
-      this.searchBy(userId,'')
+    } else {
+      this.searchBy(userId, '')
     }
     this.setData({
       search: this.search.bind(this),
@@ -77,27 +77,38 @@ Page({
    * @param {用户编号}} userId 
    * @param {搜索条件} name 
    */
-  searchBy:function(userId,name){
-    var _this=this
+  searchBy: function (userId, name) {
+    var _this = this
     wx.request({
-      url: API_URL+'/collect-entity/getByUserId',
-      header:{
+      url: API_URL + '/collect-entity/getByUserId',
+      header: {
         'token': app.globalData.userId
       },
-      data:{
-        name:name
+      data: {
+        name: name
       },
-      success(res){
-        let data=res.data
-        if(data.code==200){
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
           console.log(data)
           _this.setData({
-            collects:data.data,
+            collects: data.data,
           })
-        }else{
+        } else if (data.code == 403) {
+          wx.showToast({
+            title: '请重新登录授权！',
+            icon: 'error'
+          })
+          wx.clearStorage()
+          //登录状态
+          wx.setStorage({
+            key: "hasUserInfo",
+            data: false
+          })
+        } else {
           wx.showToast({
             title: '请求数据错误！',
-            icon:'error'
+            icon: 'error'
           })
         }
       }

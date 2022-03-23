@@ -22,7 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
     id = options.id
     if (id == '' || id == null) {
       wx.showToast({
@@ -34,7 +34,7 @@ Page({
       })
     }
     userId = app.globalData.userId
-    console.log("userid:"+userId)
+    console.log("userid:" + userId)
     if (userId == '' || userId == null) {
       wx.showToast({
         title: '请先登录！',
@@ -49,13 +49,14 @@ Page({
     }
   },
   // 获取礼品信息
-  getById(){
+  getById() {
     var _this = this
     wx.request({
       url: API_URL + '/gift-list-view/getById/' + id,
       success(res) {
         let data = res.data
         if (data.code == 200) {
+          console.log(data.data)
           _this.setData({
             info: data.data
           })
@@ -74,6 +75,11 @@ Page({
         title: '积分不足！',
         icon: 'error'
       })
+    } else if (_this.data.info.number == 0) {
+      wx.showToast({
+        title: '库存不足！',
+        icon: 'error'
+      })
     } else {
       wx.showModal({
         cancelColor: 'cancelColor',
@@ -82,9 +88,9 @@ Page({
         success(res) {
           if (res.confirm) {
             wx.request({
-              url: API_URL + '/gift/convertById/'  + id,
+              url: API_URL + '/gift/convertById/' + id,
               method: 'PUT',
-              header:{
+              header: {
                 'token': userId
               },
               success(res) {
@@ -92,7 +98,7 @@ Page({
                 console.log(data)
                 if (data.code == 200) {
                   console.log(_this.data.info)
-                  _this.data.info.number=_this.data.info.number-1
+                  _this.data.info.number = _this.data.info.number - 1
                   //更新用户信息
                   user.getUserById()
                   _this.getById()
@@ -106,6 +112,17 @@ Page({
                   wx.showToast({
                     title: '积分不足！',
                     icon: 'error'
+                  })
+                } else if (data.code == 403) {
+                  wx.showToast({
+                    title: '请重新登录授权！',
+                    icon: 'error'
+                  })
+                  wx.clearStorage()
+                  //登录状态
+                  wx.setStorage({
+                    key: "hasUserInfo",
+                    data: false
                   })
                 } else {
                   wx.showToast({

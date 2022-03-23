@@ -1,11 +1,11 @@
 // pages/mine/mine.js
 const user = require("../../utils/user.js")
-var app=getApp()
-const API_URL=app.globalData.API_URL;
-var userId=app.globalData.userId
-var info=""
+var app = getApp()
+const API_URL = app.globalData.API_URL;
+var userId = app.globalData.userId
+var info = ""
 Page({
-  
+
   /**
    * 页面的初始数据
    */
@@ -79,8 +79,8 @@ Page({
     userInfo: {
       avatarUrl: "/images/mine/headprictu.png",
       nickName: "未登录，点击头像授权",
-      accumulativePoints:0,
-      points:{
+      accumulativePoints: 0,
+      points: {
         pointsName: "无"
       }
     },
@@ -94,53 +94,64 @@ Page({
   },
   // 导航栏列表单击事件
   onClickUrl(e) {
-    var _this=this
-    if(e.currentTarget.dataset.text=='每日签到'){
-      if(userId==null||userId==''){
+    var _this = this
+    if (e.currentTarget.dataset.text == '每日签到') {
+      if (userId == null || userId == '') {
         wx.showToast({
           title: '请先登录！',
         })
-      }else{
-      wx.request({
-        url: API_URL+'/points-log/dailyCheck',
-        method:"PUT",
-        header:{
-          'content-type': 'application/x-www-form-urlencoded',
-          'token':userId
-        },
-        success(res){
-          var data=res.data
-          console.log(data)
-          if(data.code==200){
-            //更新用户信息
-            user.getUserById().then((value)=>{
-              _this.setData({
-                userInfo: value,
-                hasUserInfo: true
+      } else {
+        wx.request({
+          url: API_URL + '/points-log/dailyCheck',
+          method: "PUT",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'token': userId
+          },
+          success(res) {
+            var data = res.data
+            console.log(data)
+            if (data.code == 200) {
+              //更新用户信息
+              user.getUserById().then((value) => {
+                _this.setData({
+                  userInfo: value,
+                  hasUserInfo: true
+                })
               })
-            })
-            wx.showToast({
-              title: '签到成功！',
-            })
-          }else if(data.code==300){
-            wx.showToast({
-              title: '今日已签到！',
-              icon:'error',
-              mask:true
-            })
-          }else{
-            wx.showToast({
-              title: '签到失败！',
-              icon:'error',
-              mask:true
-            })
+              wx.showToast({
+                title: '签到成功！',
+              })
+            } else if (data.code == 300) {
+              wx.showToast({
+                title: '今日已签到！',
+                icon: 'error',
+                mask: true
+              })
+            } else if (data.code == 403) {
+              wx.showToast({
+                title: '请重新登录授权！',
+                icon: 'error'
+              })
+              wx.clearStorage()
+              //登录状态
+              wx.setStorage({
+                key: "hasUserInfo",
+                data: false
+              })
+            } else {
+              wx.showToast({
+                title: '签到失败！',
+                icon: 'error',
+                mask: true
+              })
+            }
           }
-        }
-      })
+        })
+      }
     }
-    }
-    
-    // 退出登录事件
+
+    // 跳转事件
     wx.navigateTo({
       url: e.currentTarget.dataset.activity,
     })
@@ -153,8 +164,8 @@ Page({
           userInfo: {
             avatarUrl: "/images/mine/headprictu.png",
             nickName: "未登录，点击头像授权",
-            accumulativePoints:0,
-            points:{
+            accumulativePoints: 0,
+            points: {
               pointsName: "无"
             }
           },
@@ -179,7 +190,7 @@ Page({
       wx.getUserProfile({
         desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
         success: (res) => {
-          info=res.userInfo
+          info = res.userInfo
           console.log("信息")
           console.log(info)
           wx.login({
@@ -189,58 +200,59 @@ Page({
               if (res.code) {
                 //发起网络请求
                 wx.request({
-                  url: API_URL+'/login', //服务器地址
+                  url: API_URL + '/login', //服务器地址
                   data: {
                     code: res.code,
                     nickName: info.nickName,
                     avatarUrl: info.avatarUrl
-                  },success(res){
+                  },
+                  success(res) {
                     console.log("发送登录请求结束")
-              console.log(info)
+                    console.log(info)
                     console.log("登录信息")
                     //判断是否登录成功
-                    if(res.data.code==200){
-                    that.setData({
-                      userInfo: res.data.data,
-                      hasUserInfo: true
-                    })
-                    //存储用户信息
-                    wx.setStorage({
-                      key: "userInfo",
-                      data: res.data.data
-                    })
-                    //存储用户标识
-                    wx.setStorage({
-                      key: "userId",
-                      data: res.data.data.token
-                    })
-                    //登录状态
-                    wx.setStorage({
-                      key: "hasUserInfo",
-                      data: true
-                    })
-                    wx.showToast({
-                      title: '登录成功！',
-                      duration: 1000
-                    })
-                    app.globalData.userInfo=res.data.data,
-                    app.globalData.userId=res.data.data.token
-                    userId=res.data.data.token
-                  }else{
-                    wx.showToast({
-                      title: '登录失败！',
-                      duration: 1000,
-                      icon:'error',
-                      mask:true
-                    })
-                  }
+                    if (res.data.code == 200) {
+                      that.setData({
+                        userInfo: res.data.data,
+                        hasUserInfo: true
+                      })
+                      //存储用户信息
+                      wx.setStorage({
+                        key: "userInfo",
+                        data: res.data.data
+                      })
+                      //存储用户标识
+                      wx.setStorage({
+                        key: "userId",
+                        data: res.data.data.token
+                      })
+                      //登录状态
+                      wx.setStorage({
+                        key: "hasUserInfo",
+                        data: true
+                      })
+                      wx.showToast({
+                        title: '登录成功！',
+                        duration: 1000
+                      })
+                      app.globalData.userInfo = res.data.data,
+                        app.globalData.userId = res.data.data.token
+                      userId = res.data.data.token
+                    } else {
+                      wx.showToast({
+                        title: '登录失败！',
+                        duration: 1000,
+                        icon: 'error',
+                        mask: true
+                      })
+                    }
                   }
                 })
               } else {
                 wx.showToast({
                   title: '登录失败！',
-                  icon:'error',
-                  mask:true,
+                  icon: 'error',
+                  mask: true,
                   duration: 1000
                 })
               }
@@ -287,7 +299,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad()
   },
 
   /**

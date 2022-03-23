@@ -48,26 +48,39 @@ Page({
   },
   // 搜索事件
   search: function (value) {
-    var _this=this
-    if(this.isLogin()){return}
+    var _this = this
+    if (this.isLogin()) {
+      return
+    }
     return new Promise(() => {
       setTimeout(() => {
         wx.request({
-          url: API_URL+'/waste-turn-treasure/getListSearchByUserIdAndTitle/'+value,
-          header:{
+          url: API_URL + '/waste-turn-treasure/getListSearchByUserIdAndTitle/' + value,
+          header: {
             'token': userId
           },
-          success(res){
-            let data=res.data
+          success(res) {
+            let data = res.data
             console.log(data)
-            if(data.code==200){
+            if (data.code == 200) {
               _this.setData({
                 ["tabs[" + _this.data.activeTab + "].WasteTurnTreasures"]: data.data
               })
-            }else{
+            } else if (data.code == 403) {
+              wx.showToast({
+                title: '请重新登录授权！',
+                icon: 'error'
+              })
+              wx.clearStorage()
+              //登录状态
+              wx.setStorage({
+                key: "hasUserInfo",
+                data: false
+              })
+            } else {
               wx.showToast({
                 title: '请求数据异常！',
-                icon:'error'
+                icon: 'error'
               })
             }
           }
@@ -79,63 +92,74 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    userId=app.globalData.userId
-    if(this.isLogin()){
+    userId = app.globalData.userId
+    if (this.isLogin()) {
       this.getByUserIdAndAudit(this.data.activeTab)
     }
     this.setData({
       search: this.search.bind(this),
     })
   },
-  onClickPut(e){
+  onClickPut(e) {
     wx.navigateTo({
-      url: '/pages/packageService/pages/services/wastetreas/wastetreaedit/wastereaedit?id='+e.currentTarget.dataset.id,
+      url: '/pages/packageService/pages/services/wastetreas/wastetreaedit/wastereaedit?id=' + e.currentTarget.dataset.id,
     })
   },
   //删除信息
-  onClickDelete(e){
-    var _this=this
+  onClickDelete(e) {
+    var _this = this
     wx.showModal({
       cancelColor: 'cancelColor',
-      title:'警告',
-      content:'确认删除？删除后无法找回！',
+      title: '警告',
+      content: '确认删除？删除后无法找回！',
       confirmColor: '#d9534f',
-      success(res){
+      success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
-        wx.request({
-          url: API_URL+'/waste-turn-treasure/deleteByUserIdAndId',
-          method:'DELETE',
-          data:{
-            id:e.currentTarget.dataset.id
-          },
-          header:{
-            'content-type': 'application/x-www-form-urlencoded' ,
-            'token': userId
-           },
-          success(res){
-            let data=res.data
-            if(data.code==200){
-              wx.showToast({
-                title: '删除成功！',
-              })
-              _this.getByUserIdAndAudit(_this.data.activeTab)
-            }else{
-              wx.showToast({
-                title: '删除失败！',
-                icon:'error'
-              })
+          wx.request({
+            url: API_URL + '/waste-turn-treasure/deleteByUserIdAndId',
+            method: 'DELETE',
+            data: {
+              id: e.currentTarget.dataset.id
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'token': userId
+            },
+            success(res) {
+              let data = res.data
+              if (data.code == 200) {
+                wx.showToast({
+                  title: '删除成功！',
+                })
+                _this.getByUserIdAndAudit(_this.data.activeTab)
+              } else if (data.code == 403) {
+                wx.showToast({
+                  title: '请重新登录授权！',
+                  icon: 'error'
+                })
+                wx.clearStorage()
+                //登录状态
+                wx.setStorage({
+                  key: "hasUserInfo",
+                  data: false
+                })
+              } else {
+                wx.showToast({
+                  title: '删除失败！',
+                  icon: 'error'
+                })
+              }
             }
-          }
-        })
-      }
+          })
+        }
       }
     })
   },
 
   //判断用户是否登录
-  isLogin(){
-    if(userId==null||userId==''){
+  isLogin() {
+    if (userId == null || userId == '') {
       return false
     }
     return true
@@ -145,26 +169,37 @@ Page({
    * @param {选项卡索引*} index 
    */
   getByUserIdAndAudit(index) {
-    var _this=this
+    var _this = this
     wx.request({
       url: API_URL + '/waste-turn-treasure/getListByUserIdAndAudit',
-      header:{
+      header: {
         'token': userId
       },
-      data:{
-        audit:_this.data.tabs[index].title
+      data: {
+        audit: _this.data.tabs[index].title
       },
-      success(res){
-        let data=res.data
+      success(res) {
+        let data = res.data
         console.log(data)
-        if(data.code==200){
+        if (data.code == 200) {
           _this.setData({
             ["tabs[" + index + "].WasteTurnTreasures"]: data.data
           })
-        }else{
+        } else if (data.code == 403) {
+          wx.showToast({
+            title: '请重新登录授权！',
+            icon: 'error'
+          })
+          wx.clearStorage()
+          //登录状态
+          wx.setStorage({
+            key: "hasUserInfo",
+            data: false
+          })
+        } else {
           wx.showToast({
             title: '请求数据异常！',
-            icon:'error'
+            icon: 'error'
           })
         }
       }

@@ -38,12 +38,20 @@ Page({
               continue
             }else if(i==garbageList.length-1){
               list[i%4]=list2
-              console.log(list2)
             }
             j++
           }
           //重新赋值
           data.data.garbageLists=list
+          //设置标题
+          wx.setNavigationBarTitle({
+            title: data.data.garbageType,
+          })
+          //设置背景色
+          wx.setNavigationBarColor({
+            backgroundColor: data.data.bgColor,
+            frontColor: '#ffffff',//必须小写
+          })
           //设置数据
           that.setData({
             garbage:data.data

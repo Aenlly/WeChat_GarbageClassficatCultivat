@@ -9,8 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: [
-      {
+    tabs: [{
         title: "每日答题",
         PaperTables: [{
           insert_time: "2021-05-22 14:22:36",
@@ -27,7 +26,8 @@ Page({
           score: "60"
         }, {
           insert_time: "2021-05-22 14:22:36",
-          score: "60"}]
+          score: "60"
+        }]
       }
     ],
     activeTab: 0
@@ -44,16 +44,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    userId=app.globalData.userId
-    if(userId==null||userId==''){
+    userId = app.globalData.userId
+    if (userId == null || userId == '') {
       wx.showToast({
         title: '请先登录！',
-        icon:"error",
-        mask:true
+        icon: "error",
+        mask: true
       })
-    }else{
-      this.getPaperTablesLog(this.data.tabs[0].title,0)
-      this.getPaperTablesLog(this.data.tabs[1].title,1)
+    } else {
+      this.getPaperTablesLog(this.data.tabs[0].title, 0)
+      this.getPaperTablesLog(this.data.tabs[1].title, 1)
     }
   },
 
@@ -62,28 +62,39 @@ Page({
    * @param {*问卷名称} questionnaireName 
    * @param {*tabs索引} index 
    */
-  getPaperTablesLog(questionnaireName,index){
-    var _this=this
+  getPaperTablesLog(questionnaireName, index) {
+    var _this = this
     wx.request({
-      url: API_URL+'/answer-question/getPaperTablesLog',
-      header:{
+      url: API_URL + '/answer-question/getPaperTablesLog',
+      header: {
         'token': userId
       },
-      data:{
-        questionnaireName:questionnaireName
+      data: {
+        questionnaireName: questionnaireName
       },
-      success(res){
-        let data=res.data
+      success(res) {
+        let data = res.data
         console.log(data.data)
-        if(data.code==200){
+        if (data.code == 200) {
           _this.setData({
-            ["tabs["+index+"].PaperTables"]:data.data
+            ["tabs[" + index + "].PaperTables"]: data.data
           })
-        }else{
+        } else if (data.code == 403) {
+          wx.showToast({
+            title: '请重新登录授权！',
+            icon: 'error'
+          })
+          wx.clearStorage()
+          //登录状态
+          wx.setStorage({
+            key: "hasUserInfo",
+            data: false
+          })
+        } else {
           wx.showToast({
             title: '服务器异常！',
-            icon:"error",
-            mask:true
+            icon: "error",
+            mask: true
           })
         }
       }

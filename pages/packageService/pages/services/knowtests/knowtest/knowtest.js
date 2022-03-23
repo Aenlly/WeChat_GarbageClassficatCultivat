@@ -35,8 +35,8 @@ Page({
       if (text == '每日答题' || text == '分类小考') {
         wx.request({
           url: API_URL + '/answer-question/getRandomBatchIndex',
-          header:{
-            'token':userId,
+          header: {
+            'token': userId,
           },
           data: {
             naireName: text
@@ -52,6 +52,17 @@ Page({
               wx.showToast({
                 title: '今日已答题！',
                 mask: true
+              })
+            } else if (data.code == 403) {
+              wx.showToast({
+                title: '请重新登录授权！',
+                icon: 'error'
+              })
+              wx.clearStorage()
+              //登录状态
+              wx.setStorage({
+                key: "hasUserInfo",
+                data: false
               })
             } else {
               wx.showToast({

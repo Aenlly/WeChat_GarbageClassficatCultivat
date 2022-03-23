@@ -1,7 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-const recorderManager = wx.getRecorderManager() //全局录音管理器
+var recorderManager = wx.getRecorderManager()
 var date = new Date()
 const options = {
   duration: 30000, //录音时长30秒
@@ -21,10 +21,9 @@ Page({
     API_RES_URL: getApp().globalData.API_RES_URL,
     video_url: '',
     msgList: [{
-        url: "",
-        title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
-      },
-    ],
+      url: "",
+      title: "关于印发《长沙市装饰装修垃圾处理作业规范(试行)》的通知"
+    }, ],
     startRecord: 0, //长按开始时间
     stopRecord: 0, //长按结束时间
     carousel: [],
@@ -68,10 +67,10 @@ Page({
   // 打开用户图库操作
   clickPictu() {
     var _this = this
-    if(!_this.isLogin()){
+    if (!_this.isLogin()) {
       wx.showToast({
         title: '请先登录！',
-        icon:'error'
+        icon: 'error'
       })
       return
     }
@@ -104,7 +103,18 @@ Page({
                 title: '识别成功！',
               })
               wx.navigateTo({
-                url: '../indexs/search/search?name=' + data.data + "&type=语音搜索",
+                url: '../indexs/search/search?name=' + data.data + "&type=图片识别",
+              })
+            } else if (data.code == 403) {
+              wx.showToast({
+                title: '请重新登录授权！',
+                icon: 'error'
+              })
+              wx.clearStorage()
+              //登录状态
+              wx.setStorage({
+                key: "hasUserInfo",
+                data: false
               })
             } else {
               wx.showToast({
@@ -132,6 +142,20 @@ Page({
       url: '/pages/indexs/search/search'
     })
   },
+  //判断是否授权
+  settingRecord() {
+    wx.getSetting({
+      success(res) {
+        console.log(res)
+        if (!res.authSetting['scope.record']) {
+          wx.showToast({
+            title: '请先录音授权',
+          })
+          return
+        }
+      }
+    })
+  },
 
   // 录音长按事件
   startRecord: function (e) {
@@ -150,7 +174,7 @@ Page({
         wx.showLoading({
           title: '正在识别中',
         })
-        
+
         wx.uploadFile({
           filePath: res.tempFilePath, //录音临时路径
           name: 'voice',
@@ -167,6 +191,17 @@ Page({
               })
               wx.navigateTo({
                 url: '../indexs/search/search?name=' + data.data + "&type=语音搜索",
+              })
+            } else if (data.code == 403) {
+              wx.showToast({
+                title: '请重新登录授权！',
+                icon: 'error'
+              })
+              wx.clearStorage()
+              //登录状态
+              wx.setStorage({
+                key: "hasUserInfo",
+                data: false
               })
             } else {
               wx.showToast({
@@ -320,7 +355,7 @@ Page({
     }
   },
 
-  
+
   /**
    * 生命周期函数--监听页面显示
    */

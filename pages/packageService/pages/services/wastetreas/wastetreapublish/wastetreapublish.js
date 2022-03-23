@@ -129,6 +129,17 @@ Page({
           wx.navigateBack({
             delta: 1,
           })
+        } else if (data.code == 403) {
+          wx.showToast({
+            title: '请重新登录授权！',
+            icon: 'error'
+          })
+          wx.clearStorage()
+          //登录状态
+          wx.setStorage({
+            key: "hasUserInfo",
+            data: false
+          })
         } else {
           wx.showToast({
             title: '提交失败！',

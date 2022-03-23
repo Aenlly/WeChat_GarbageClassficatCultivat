@@ -12,60 +12,82 @@ Page({
   data: {},
   // 搜索事件
   search: function (value) {
-    var _this=this
+    var _this = this
     return new Promise(() => {
       setTimeout(() => {
         wx.request({
-          url: API_URL+'/search/getSearchByName',
-          data:{
-            name:value,
-            userId:userId
+          url: API_URL + '/search/getSearchByName',
+          data: {
+            name: value,
+            userId: userId
           },
-          success(res){
-            let data=res.data
-            if(data.code==200){
-            _this.setData({
-              searchs:data.data
-            })
-          }else{
-            wx.showToast({
-              title: '搜索失败！',
-              icon:'error'
-            })
-          }
+          success(res) {
+            let data = res.data
+            if (data.code == 200) {
+              _this.setData({
+                searchs: data.data
+              })
+            } else if (data.code == 403) {
+              wx.showToast({
+                title: '请重新登录授权！',
+                icon: 'error'
+              })
+              wx.clearStorage()
+              //登录状态
+              wx.setStorage({
+                key: "hasUserInfo",
+                data: false
+              })
+            } else {
+              wx.showToast({
+                title: '搜索失败！',
+                icon: 'error'
+              })
+            }
           }
         })
       }, 500)
     })
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this=this
+    var _this = this
     if (userId == null) {
       wx.showToast({
         title: '请先登录！',
-        icon:'error'
+        icon: 'error'
       })
     } else {
       wx.request({
         url: API_URL + '/search/get',
-        header:{
+        header: {
           'token': userId
         },
-        success(res){
-          let data=res.data
-          if(data.code){
+        success(res) {
+          let data = res.data
+          if (data.code) {
             _this.setData({
-              searchs:data.data,
+              searchs: data.data,
               search: _this.search.bind(this)
             })
-          }else{
+          } else if (data.code == 403) {
+            wx.showToast({
+              title: '请重新登录授权！',
+              icon: 'error'
+            })
+            wx.clearStorage()
+            //登录状态
+            wx.setStorage({
+              key: "hasUserInfo",
+              data: false
+            })
+          } else {
             wx.showToast({
               title: '请求数据失败！',
-              icon:'error'
+              icon: 'error'
             })
           }
         }
@@ -73,10 +95,10 @@ Page({
     }
   },
 
-  onClickSearch:function(e){
+  onClickSearch: function (e) {
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '/pages/indexs/search/search?name='+e.currentTarget.dataset.name,  
+      url: '/pages/indexs/search/search?name=' + e.currentTarget.dataset.name,
     })
   },
 

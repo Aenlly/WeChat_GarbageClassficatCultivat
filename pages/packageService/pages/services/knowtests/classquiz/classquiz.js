@@ -31,7 +31,7 @@ Page({
         option_name: "D、塑料瓶",
         iscorrect: true,
       }]
-    
+
     }],
     //正确选项的样式
     correct: {
@@ -112,10 +112,21 @@ Page({
               nocorrect: nocorrect,
               btninfo: btninfo
             })
+          } else if (data.code == 403) {
+            wx.showToast({
+              title: '请重新登录授权！',
+              icon: 'error'
+            })
+            wx.clearStorage()
+            //登录状态
+            wx.setStorage({
+              key: "hasUserInfo",
+              data: false
+            })
           } else {
             wx.showToast({
               title: '服务器异常！',
-              icon:'error',
+              icon: 'error',
               mask: true
             })
           }
@@ -182,14 +193,25 @@ Page({
             } else {
               wx.showToast({
                 title: "交卷失败",
-                icon:'error',
+                icon: 'error',
                 mask: true
               })
             }
+          } else if (data.code == 403) {
+            wx.showToast({
+              title: '请重新登录授权！',
+              icon: 'error'
+            })
+            wx.clearStorage()
+            //登录状态
+            wx.setStorage({
+              key: "hasUserInfo",
+              data: false
+            })
           } else {
             wx.showToast({
               title: "服务器异常！",
-              icon:'error',
+              icon: 'error',
               mask: true
             })
           }
@@ -197,7 +219,7 @@ Page({
         fail: function () {
           wx.showToast({
             title: "交卷失败",
-            icon:'error',
+            icon: 'error',
             mask: true
           })
         }
@@ -259,14 +281,14 @@ Page({
     if (userId == null || userId == '') {
       wx.showToast({
         title: '请先登录！',
-        icon:'error',
+        icon: 'error',
         mask: true
       })
       return
     } else {
       wx.request({
         url: API_URL + '/answer-question/getTopics',
-        header:{
+        header: {
           'token': userId
         },
         data: {
@@ -280,10 +302,21 @@ Page({
               topics: data.data,
               randomIndex: options.index
             })
+          } else if (data.code == 403) {
+            wx.showToast({
+              title: '请重新登录授权！',
+              icon: 'error'
+            })
+            wx.clearStorage()
+            //登录状态
+            wx.setStorage({
+              key: "hasUserInfo",
+              data: false
+            })
           } else {
             wx.showToast({
               title: '请求数据异常！',
-              icon:'error',
+              icon: 'error',
               mask: true
             })
           }

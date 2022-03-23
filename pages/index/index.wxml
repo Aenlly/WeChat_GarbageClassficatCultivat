@@ -117,7 +117,7 @@
         </view>
         <view class="btn-text">文字搜索</view>
       </view>
-      <view class="btn-view-col" bindtouchstart="startRecord" bindtouchend="stopRecord">
+      <view class="btn-view-col" bindtap="settingRecord"  bindtouchstart="startRecord" bindtouchend="stopRecord">
         <view class="btn-img">
           <image class="btn-img" src="/images/index/voicesear.png"></image>
         </view>

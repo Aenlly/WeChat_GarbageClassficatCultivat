@@ -69,7 +69,7 @@ Page({
     var _this = this
     wx.request({
       url: API_URL + '/collect-entity/getByUserIdAndEntityName',
-      header:{
+      header: {
         'token': userId
       },
       data: {
@@ -82,6 +82,17 @@ Page({
           console.log(data)
           _this.setData({
             collects: data.data,
+          })
+        } else if (data.code == 403) {
+          wx.showToast({
+            title: '请重新登录授权！',
+            icon: 'error'
+          })
+          wx.clearStorage()
+          //登录状态
+          wx.setStorage({
+            key: "hasUserInfo",
+            data: false
           })
         } else {
           wx.showToast({

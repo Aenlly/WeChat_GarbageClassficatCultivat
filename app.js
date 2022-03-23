@@ -18,7 +18,7 @@ App({
     this.globalData.userInfo = userInfo
     const hasUserInfo = wx.getStorageSync('hasUserInfo') || []
 
-    if (hasUserInfo != null) {
+    if (hasUserInfo != null||hasUserInfo==true) {
       if (userInfo.nickName != "undefined") {
         // 登录
         wx.login({
@@ -75,12 +75,12 @@ App({
 
         )
       }else{
-        //登录状态
-        wx.setStorage({
+        wx.clearStorage()
+         //登录状态
+         wx.setStorage({
           key: "hasUserInfo",
           data: false
         })
-        wx.clearStorage()
       }
     }
   }

@@ -1,8 +1,8 @@
 // pages/mines/myorder/myorder.js
 // 获取应用实例
 const app = getApp()
-const API_URL=app.globalData.API_URL;
-var userId='';
+const API_URL = app.globalData.API_URL;
+var userId = '';
 Page({
 
   /**
@@ -23,15 +23,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    userId=app.globalData.userId;
-    if(userId==null||userId==''){
+    userId = app.globalData.userId;
+    if (userId == null || userId == '') {
       wx.showToast({
         title: '请先登录！',
-        icon:'error'
+        icon: 'error'
       })
-    }else{
-      this.getOrderUserList('未核销',0)
-      this.getOrderUserList('已核销',1)
+    } else {
+      this.getOrderUserList('未核销', 0)
+      this.getOrderUserList('已核销', 1)
     }
   },
 
@@ -40,24 +40,35 @@ Page({
    * @param {*订单状态} state 
    * @param {*本地索引} index 
    */
-  getOrderUserList(state,index){
-    var _this=this
+  getOrderUserList(state, index) {
+    var _this = this
     wx.request({
-      url: API_URL+'/order-user-view/getOrderUserList/'+state,
-      header:{
+      url: API_URL + '/order-user-view/getOrderUserList/' + state,
+      header: {
         'token': userId
       },
-      success(res){
-        let data=res.data
-        if(data.code==200){
+      success(res) {
+        let data = res.data
+        if (data.code == 200) {
           console.log(data)
           _this.setData({
-            ["tabs["+index+"].orders"]:data.data
+            ["tabs[" + index + "].orders"]: data.data
           })
-        }else{
+        } else if (data.code == 403) {
+          wx.showToast({
+            title: '请重新登录授权！',
+            icon: 'error'
+          })
+          wx.clearStorage()
+          //登录状态
+          wx.setStorage({
+            key: "hasUserInfo",
+            data: false
+          })
+        } else {
           wx.showToast({
             title: '请求数据异常！',
-            icon:'error'
+            icon: 'error'
           })
         }
       }
