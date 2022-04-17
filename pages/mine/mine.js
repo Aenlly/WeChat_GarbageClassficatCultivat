@@ -79,7 +79,7 @@ Page({
     userInfo: {
       avatarUrl: "/images/mine/headprictu.png",
       nickName: "未登录，点击头像授权",
-      accumulativePoints: 0,
+      remainingPoints: 0,
       points: {
         pointsName: "无"
       }
@@ -130,15 +130,30 @@ Page({
               })
             } else if (data.code == 403) {
               wx.showToast({
-                title: '请重新登录授权！',
+                title: '授权已过期！',
                 icon: 'error'
               })
-              wx.clearStorage()
+              wx.clearStorage({
+                success: (res) => {
+                  _this.setData({
+                    userInfo: {
+                      avatarUrl: "/images/mine/headprictu.png",
+                      nickName: "未登录，点击头像授权",
+                      remainingPoints: 0,
+                      points: {
+                        pointsName: "无"
+                      }
+                    },
+                    hasUserInfo: false
+                  })
+                }
+              })
               //登录状态
               wx.setStorage({
                 key: "hasUserInfo",
                 data: false
               })
+
             } else {
               wx.showToast({
                 title: '签到失败！',
@@ -164,7 +179,7 @@ Page({
           userInfo: {
             avatarUrl: "/images/mine/headprictu.png",
             nickName: "未登录，点击头像授权",
-            accumulativePoints: 0,
+            remainingPoints: 0,
             points: {
               pointsName: "无"
             }
@@ -267,16 +282,6 @@ Page({
    */
   onLoad: function (options) {
     var _this = this
-    // 获取本地信息
-    wx.getStorage({
-      key: 'userInfo',
-      success(res) {
-        console.log(res)
-        _this.setData({
-          userInfo: res.data
-        })
-      },
-    })
     // 判断本地数据是否授权
     wx.getStorage({
       key: 'hasUserInfo',
@@ -284,6 +289,31 @@ Page({
         _this.setData({
           hasUserInfo: res.data
         })
+        if (_this.data.hasUserInfo != false) {
+          // 获取本地信息
+          wx.getStorage({
+            key: 'userInfo',
+            success(res) {
+              console.log(res)
+              if (res.data.length != 0) {
+                _this.setData({
+                  userInfo: res.data
+                })
+              }
+            },
+          })
+        } else {
+          _this.setData({
+            userInfo: {
+              avatarUrl: "/images/mine/headprictu.png",
+              nickName: "未登录，点击头像授权",
+              remainingPoints: 0,
+              points: {
+                pointsName: "无"
+              }
+            }
+          })
+        }
       },
     })
   },
@@ -299,6 +329,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(111)
     this.onLoad()
   },
 

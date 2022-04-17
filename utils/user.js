@@ -5,12 +5,12 @@ const API_URL = app.globalData.API_URL;
 //获得用户数据
 function getUserById() {
   //用户编号
-const userId = app.globalData.userId;
+  const userId = app.globalData.userId;
   return new Promise((resolve) => {
     wx.request({
       url: API_URL + '/user/getById',
-      header:{
-        'token':userId
+      header: {
+        'token': userId
       },
       success(res) {
         let data = res.data
@@ -38,5 +38,5 @@ const userId = app.globalData.userId;
 }
 
 module.exports = {
-  getUserById: getUserById,
+  getUserById: getUserById
 }
