@@ -40,9 +40,6 @@ Page({
         title: '请先登录！',
         icon: 'error'
       })
-      wx.navigateBack({
-        delta: 1,
-      })
       return
     } else {
       this.getById();
@@ -101,7 +98,6 @@ Page({
                   _this.data.info.number = _this.data.info.number - 1
                   //更新用户信息
                   user.getUserById()
-                  _this.getById()
                   wx.showModal({
                     cancelColor: 'cancelColor',
                     title: "兑换码",
