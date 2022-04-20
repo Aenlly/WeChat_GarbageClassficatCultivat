@@ -99,6 +99,15 @@ Page({
             const data = JSON.parse(res.data)
             console.log(data)
             if (data.code == 200) {
+              // 判断返回的内容是否为空
+              if(data.data==''||data.data==null){
+                wx.showToast({
+                  title: '识别无内容!',
+                  icon:'error'
+                })
+                return
+              }
+
               wx.showToast({
                 title: '识别成功！',
               })
@@ -186,6 +195,15 @@ Page({
             const data = JSON.parse(res.data)
             console.log(data)
             if (data.code == 200) {
+              //判断返回的识别内容是否为空
+              if(data.data==''||data.data==null){
+                wx.showToast({
+                  title: '识别无内容!',
+                  icon:'error'
+                })
+                return
+              }
+
               wx.showToast({
                 title: '识别成功！',
               })
