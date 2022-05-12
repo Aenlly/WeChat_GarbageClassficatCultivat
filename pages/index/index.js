@@ -10,7 +10,7 @@ const options = {
   encodeBitRate: 24000, //编码码率
   numberOfChannels: 1, //通道
   format: 'wav', //格式
-  frameSize: 3 * 1024 //帧大小，单位kb
+  frameSize: 3 * 1023 //帧大小，单位kb
 }
 //获得请求地址
 const API_URL = app.globalData.API_URL;
@@ -155,7 +155,6 @@ Page({
   settingRecord() {
     wx.getSetting({
       success(res) {
-        console.log(res)
         if (!res.authSetting['scope.record']) {
           wx.showToast({
             title: '请先录音授权',
@@ -179,11 +178,10 @@ Page({
       recorderManager.onStart()
       // 录音结束事件
       recorderManager.onStop((res) => {
-
+        console.log(res)
         wx.showLoading({
           title: '正在识别中',
         })
-
         wx.uploadFile({
           filePath: res.tempFilePath, //录音临时路径
           name: 'voice',
@@ -237,10 +235,6 @@ Page({
             })
           }
         })
-        // 跳转至搜索结果页
-        // wx.navigateTo({
-        //   url: '/pages/indexs/search/search'
-        // })
       })
       // 完成指定帧大小自动结束
       recorderManager.onFrameRecorded((res) => {
